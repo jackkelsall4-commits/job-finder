@@ -1,0 +1,82 @@
+{
+  "name": "Example profile - put your real one in the PROFILE_JSON secret",
+  "qualifications": {
+    "a_levels": {
+      "Subject 1": "B",
+      "Subject 2": "B",
+      "Subject 3": "B"
+    },
+    "ucas_points": 120,
+    "gcse": {
+      "English Language": 5,
+      "Maths": 5
+    },
+    "professional": [
+      "AAT Level 4"
+    ],
+    "degree": false
+  },
+  "experience": [
+    "Audit apprenticeship"
+  ],
+  "interests": [
+    "trading",
+    "investing",
+    "corporate_finance",
+    "transaction_services",
+    "private_equity",
+    "investment_banking"
+  ],
+  "location": {
+    "country": "UK",
+    "anywhere_in_uk": true,
+    "home_city": "Birmingham"
+  },
+  "preferences": {
+    "remote_multiplier": {
+      "remote": 1.15,
+      "hybrid": 1.06,
+      "unknown": 1.0,
+      "office": 0.97
+    },
+    "min_interest": 0.2,
+    "max_results": 400
+  },
+  "search_queries": [
+    "transaction services",
+    "financial due diligence",
+    "deal advisory",
+    "corporate finance",
+    "mergers and acquisitions",
+    "investment banking",
+    "private equity",
+    "trader",
+    "trading",
+    "investment analyst",
+    "equity research",
+    "valuations",
+    "fund accountant private equity",
+    "product control",
+    "ACA part qualified",
+    "audit senior ACA",
+    "investment banking apprenticeship",
+    "degree apprenticeship finance"
+  ],
+  "apprenticeship_search_terms": [
+    "investment banking",
+    "investment",
+    "trading",
+    "markets",
+    "corporate finance",
+    "private equity",
+    "financial services",
+    "finance degree",
+    "chartered accountant",
+    "accounting",
+    "audit",
+    "tax",
+    "wealth management",
+    "actuarial",
+    "banking"
+  ]
+}

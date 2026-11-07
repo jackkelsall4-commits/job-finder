@@ -1,0 +1,36 @@
+name: Job finder
+
+# Refreshes jobs/data/jobs.json every morning so the Pay Ladder page stays live.
+on:
+  schedule:
+    - cron: "17 6 * * *"   # 06:17 UTC daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Find and rank jobs
+        working-directory: .
+        env:
+          PROFILE_JSON: ${{ secrets.PROFILE_JSON }}
+          # Optional: add these as repository secrets to search the whole UK market.
+          ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+          REED_API_KEY: ${{ secrets.REED_API_KEY }}
+          FAA_API_KEY: ${{ secrets.FAA_API_KEY }}
+        run: python -m finder.run --top 20
+      - name: Commit results
+        run: |
+          git config user.name "job-finder-bot"
+          git config user.email "job-finder-bot@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "Refresh job rankings"
+          git push

@@ -1,0 +1,12 @@
+PAY LADDER - live UK finance job finder
+
+To get fresh results (Mac):
+1. Open the Terminal app.
+2. Type:  cd   (with a space after it), drag this job-finder folder into the Terminal window, press Enter.
+3. Type:  python3 -m finder.run   and press Enter. It takes about 40 seconds.
+4. Type:  python3 -m http.server   and press Enter.
+5. Open http://localhost:8000 in your browser to see the ranked page.
+   (Press Ctrl+C in Terminal when you're done.)
+
+The ranked list is also saved as data/report.md.
+To change your grades, interests or remote-work preference, edit profile.json.

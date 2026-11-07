@@ -1,0 +1,84 @@
+{
+  "_comment": "Employers polled directly through their public careers APIs. category drives the pay estimate when a listing has no salary. Add a firm by copying a line; run `python3 -m finder.run --probe` to check it answers.",
+  "greenhouse": [
+    {"name": "Jane Street", "slug": "janestreet", "category": "prop_trading"},
+    {"name": "IMC Trading", "slug": "imc", "category": "prop_trading"},
+    {"name": "Jump Trading", "slug": "jumptrading", "category": "prop_trading"},
+    {"name": "DRW", "slug": "drweng", "category": "prop_trading"},
+    {"name": "Hudson River Trading", "slug": "wehrtyou", "category": "prop_trading"},
+    {"name": "XTX Markets", "slug": "xtxmarketstechnologies", "category": "prop_trading"},
+    {"name": "Tower Research Capital", "slug": "towerresearchcapital", "category": "prop_trading"},
+    {"name": "Akuna Capital", "slug": "akunacapital", "category": "prop_trading"},
+    {"name": "Flow Traders", "slug": "flowtraders", "category": "prop_trading"},
+    {"name": "Squarepoint Capital", "slug": "squarepointcapital", "category": "hedge_fund"},
+    {"name": "Virtu Financial", "slug": "virtu", "category": "prop_trading"},
+    {"name": "Point72", "slug": "point72", "category": "hedge_fund"},
+    {"name": "Schonfeld", "slug": "schonfeld", "category": "hedge_fund"},
+    {"name": "AQR", "slug": "aqr", "category": "hedge_fund"},
+    {"name": "Man Group", "slug": "mangroup", "category": "hedge_fund"},
+    {"name": "Winton", "slug": "winton", "category": "hedge_fund"},
+    {"name": "General Atlantic", "slug": "generalatlantic", "category": "pe_megafund"},
+    {"name": "Monzo", "slug": "monzo", "category": "fintech"},
+    {"name": "Wise", "slug": "wise", "category": "fintech"},
+    {"name": "Ebury", "slug": "ebury", "category": "fintech"},
+    {"name": "GoCardless", "slug": "gocardless", "category": "fintech"},
+    {"name": "Lincoln International", "slug": "lincolninternational", "category": "boutique"},
+    {"name": "William Blair", "slug": "williamblair", "category": "boutique"},
+    {"name": "Teneo", "slug": "teneo", "category": "mid_tier"}
+  ],
+  "smartrecruiters": [
+    {"name": "FRP Advisory", "slug": "frpadvisory", "category": "mid_tier"},
+    {"name": "Evelyn Partners", "slug": "evelynpartners", "category": "mid_tier"}
+  ],
+  "successfactors": [
+    {"name": "EY", "host": "careers.ey.com", "path": "/ey", "category": "big4",
+     "queries": ["transaction", "strategy and transactions", "due diligence", "valuation", "corporate finance", "M&A", "private equity", "Parthenon", "assurance senior"]}
+  ],
+  "ashby": [
+    {"name": "Trading 212", "slug": "trading212", "category": "fintech"}
+  ],
+  "workday": [
+    {"name": "Morgan Stanley", "host": "ms.wd5.myworkdayjobs.com", "tenant": "ms", "site": "External", "category": "bulge_bracket"},
+    {"name": "Citi", "host": "citi.wd5.myworkdayjobs.com", "tenant": "citi", "site": "2", "category": "bulge_bracket"},
+    {"name": "Barclays", "host": "barclays.wd3.myworkdayjobs.com", "tenant": "barclays", "site": "External_Career_Site_Barclays", "category": "bulge_bracket"},
+    {"name": "Deutsche Bank", "host": "db.wd3.myworkdayjobs.com", "tenant": "db", "site": "DBWebsite", "category": "bulge_bracket"},
+    {"name": "Bank of America", "host": "ghr.wd1.myworkdayjobs.com", "tenant": "ghr", "site": "Lateral-US", "category": "bulge_bracket"},
+    {"name": "Wells Fargo", "host": "wf.wd1.myworkdayjobs.com", "tenant": "wf", "site": "WellsFargoJobs", "category": "bulge_bracket"},
+    {"name": "MUFG", "host": "mufgub.wd3.myworkdayjobs.com", "tenant": "mufgub", "site": "MUFG-Careers", "category": "bulge_bracket"},
+    {"name": "Mizuho", "host": "mizuho.wd1.myworkdayjobs.com", "tenant": "mizuho", "site": "mizuhoamericas", "category": "bulge_bracket"},
+    {"name": "BMO", "host": "bmo.wd3.myworkdayjobs.com", "tenant": "bmo", "site": "External", "category": "bulge_bracket"},
+    {"name": "TD Securities", "host": "td.wd3.myworkdayjobs.com", "tenant": "td", "site": "TD_Bank_Careers", "category": "bulge_bracket"},
+    {"name": "ING", "host": "ing.wd3.myworkdayjobs.com", "tenant": "ing", "site": "ICSGBLCOR", "category": "bulge_bracket"},
+    {"name": "Santander", "host": "santander.wd3.myworkdayjobs.com", "tenant": "santander", "site": "SantanderCareers", "category": "retail_bank"},
+    {"name": "Lloyds Banking Group", "host": "lbg.wd3.myworkdayjobs.com", "tenant": "lbg", "site": "LBG_Careers", "category": "retail_bank"},
+    {"name": "Blackstone", "host": "blackstone.wd1.myworkdayjobs.com", "tenant": "blackstone", "site": "Blackstone_Careers", "category": "pe_megafund"},
+    {"name": "Blackstone (campus)", "host": "blackstone.wd1.myworkdayjobs.com", "tenant": "blackstone", "site": "Blackstone_Campus_Careers", "category": "pe_megafund"},
+    {"name": "Carlyle", "host": "carlyle.wd1.myworkdayjobs.com", "tenant": "carlyle", "site": "Carlyle", "category": "pe_megafund"},
+    {"name": "Apollo", "host": "athene.wd5.myworkdayjobs.com", "tenant": "athene", "site": "Apollo_Careers", "category": "pe_megafund"},
+    {"name": "Houlihan Lokey", "host": "hl.wd1.myworkdayjobs.com", "tenant": "hl", "site": "Campus", "category": "boutique"},
+    {"name": "ICG", "host": "icg.wd3.myworkdayjobs.com", "tenant": "icg", "site": "External_Careers", "category": "pe_midmarket"},
+    {"name": "PwC", "host": "pwc.wd3.myworkdayjobs.com", "tenant": "pwc", "site": "Global_Experienced_Careers", "category": "big4"},
+    {"name": "PwC (campus)", "host": "pwc.wd3.myworkdayjobs.com", "tenant": "pwc", "site": "Global_Campus_Careers", "category": "big4"},
+    {"name": "State Street", "host": "statestreet.wd1.myworkdayjobs.com", "tenant": "statestreet", "site": "Global", "category": "asset_manager"},
+    {"name": "Neuberger Berman", "host": "nb.wd1.myworkdayjobs.com", "tenant": "nb", "site": "NBCareers", "category": "asset_manager"},
+    {"name": "LSEG", "host": "lseg.wd3.myworkdayjobs.com", "tenant": "lseg", "site": "Careers", "category": "asset_manager"}
+  ],
+  "oracle": [
+    {"name": "J.P. Morgan", "host": "jpmc.fa.oraclecloud.com", "site": "CX_1001", "category": "bulge_bracket",
+     "keywords": ["London", "Glasgow", "Bournemouth", "Edinburgh", "United Kingdom"]}
+  ],
+  "firm_aliases": {
+    "_comment": "Used to classify employers found through Adzuna, Reed and GOV.UK apprenticeships. Lower-case substrings.",
+    "prop_trading": ["jane street", "optiver", "citadel securities", "susquehanna", "sig ", "hudson river", "jump trading", "xtx", "imc ", "drw", "flow traders", "tower research", "maven securities", "da vinci", "qube research", "g-research", "tibra", "old mission", "five rings", "virtu"],
+    "hedge_fund": ["citadel", "millennium", "brevan howard", "marshall wace", "point72", "balyasny", "man group", "capula", "rokos", "lansdowne", "egerton", "bluecrest", "squarepoint", "qube", "schonfeld", "aqr", "two sigma", "d. e. shaw", "de shaw", "winton", "eisler", "verition", "exodus point", "exoduspoint", "hudson bay"],
+    "pe_megafund": ["blackstone", "kkr", "carlyle", "apollo", "cvc", "eqt", "permira", "cinven", "apax", "bain capital", "advent international", "tpg", "warburg pincus", "general atlantic", "hellman", "partners group", "ardian", "bc partners", "brookfield", "ares management"],
+    "pe_midmarket": ["bridgepoint", "3i", "hg capital", "hgcapital", "icg", "intermediate capital", "inflexion", "livingbridge", "ldc", "lloyds development capital", "phoenix equity", "foresight", "octopus", "mayfair equity", "graphite capital", "august equity", "palatine", "maven capital", "bgf", "business growth fund", "eci partners", "lyceum", "vitruvian", "tdr capital", "charterhouse", "triton", "nordic capital", "pai partners", "investcorp", "equistone", "keensight"],
+    "bulge_bracket": ["goldman sachs", "j.p. morgan", "jp morgan", "jpmorgan", "morgan stanley", "bank of america", "bofa", "citi", "citigroup", "barclays", "deutsche bank", "ubs", "hsbc", "bnp paribas", "societe generale", "nomura", "rbc", "royal bank of canada", "wells fargo", "mufg", "mizuho", "smbc", "jefferies", "macquarie", "natixis", "credit agricole", "standard chartered", "bmo", "td securities", "ing"],
+    "boutique": ["evercore", "lazard", "rothschild", "pjt", "centerview", "moelis", "perella", "houlihan", "lincoln international", "william blair", "greenhill", "robey warshaw", "gleacher", "jamieson", "rothschild & co", "numis", "deutsche numis", "peel hunt", "cavendish", "liberum", "panmure", "stifel", "canaccord", "investec", "dc advisory", "clearwater", "baird", "harris williams", "raymond james", "oaklins", "rdb"],
+    "big4": ["kpmg", "deloitte", "pwc", "pricewaterhouse", "ernst & young", "ey "],
+    "mid_tier": ["bdo", "grant thornton", "rsm", "forvis mazars", "mazars", "moore kingston", "crowe", "azets", "kreston", "menzies", "bishop fleming", "frp advisory", "interpath", "alvarez", "a&m", "kroll", "fti consulting", "teneo", "begbies", "cooper parry", "price bailey", "evelyn partners", "buzzacott", "haysmacintyre", "saffery", "ankura", "duff & phelps"],
+    "asset_manager": ["blackrock", "vanguard", "fidelity", "schroders", "abrdn", "aberdeen", "legal & general", "m&g", "jupiter", "baillie gifford", "invesco", "pimco", "state street", "lseg", "london stock exchange", "neuberger", "ninety one", "janus henderson", "columbia threadneedle", "rathbones", "brewin", "st. james", "st james's place", "quilter", "hargreaves lansdown"],
+    "retail_bank": ["lloyds", "natwest", "santander", "nationwide", "virgin money", "tsb", "metro bank", "coventry building", "yorkshire building", "co-operative bank"],
+    "fintech": ["monzo", "revolut", "wise", "starling", "trading 212", "freetrade", "ebury", "gocardless", "oaknorth", "checkout.com", "klarna", "stripe", "plum", "chip", "moneybox", "nutmeg", "ig group", "cmc markets", "plus500", "saxo"]
+  }
+}
