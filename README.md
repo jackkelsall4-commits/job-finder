@@ -11,15 +11,23 @@ Keyless, every run:
 | Source | Employers |
 |---|---|
 | Greenhouse API | Jane Street, IMC, Jump, DRW, HRT, XTX, Tower, Akuna, Flow Traders, Virtu, Squarepoint, Point72, Schonfeld, AQR, Man Group, Winton, General Atlantic, Lincoln International, William Blair, Teneo, Monzo, Wise, Ebury, GoCardless |
-| Workday API | Morgan Stanley, Citi, Barclays, Deutsche Bank, Bank of America, Wells Fargo, MUFG, Mizuho, BMO, TD, ING, Santander, Lloyds, Blackstone, Carlyle, Apollo, ICG, Houlihan Lokey, PwC, State Street, Neuberger Berman, LSEG |
-| Oracle API | J.P. Morgan |
+| Workday API | Morgan Stanley, Citi, Barclays, Deutsche Bank, Bank of America, Wells Fargo, MUFG, Mizuho, BMO, TD, ING, Santander, Lloyds, Blackstone, Carlyle, Apollo, ICG, Houlihan Lokey, PwC, Grant Thornton UK, RSM UK, State Street, Neuberger Berman, LSEG |
+| Oracle API | J.P. Morgan, Lazard |
 | SmartRecruiters API | FRP Advisory, Evelyn Partners |
 | EY careers site | EY Strategy & Transactions, Parthenon, Assurance |
 | Ashby API | Trading 212 |
+| Workable API | Interpath Advisory |
+| Eightfold API | HSBC |
+| Oleeo (tal.net) feeds | Evercore, Jefferies (campus) |
+| Own careers sites | KPMG UK (kpmgcareers.co.uk), BDO UK (Radancy), Deloitte UK (Avature), Goldman Sachs (higher.gs.com), Rothschild & Co |
 | GOV.UK Find an apprenticeship | every finance / accounting / banking apprenticeship, highest wage first |
 
-Optional free keys open up the **whole UK market** (KPMG, Deloitte, BDO, Grant Thornton,
-Rothschild, Evercore, Goldman Sachs, recruiters, and so on), with advertised salaries:
+Deloitte UK's server rejects older TLS libraries (for example the LibreSSL in macOS's built-in
+Python 3.9), so it only answers from a newer Python such as the one GitHub Actions uses. It shows as an
+error in local runs; the Sources line on the page shows whether it answered in the daily refresh.
+
+Optional free keys open up the **whole UK market** (recruiters, smaller advisory firms and
+everyone not listed above), with advertised salaries:
 
 | Env var | Get one at |
 |---|---|

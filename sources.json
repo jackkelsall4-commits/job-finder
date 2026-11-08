@@ -61,11 +61,47 @@
     {"name": "PwC (campus)", "host": "pwc.wd3.myworkdayjobs.com", "tenant": "pwc", "site": "Global_Campus_Careers", "category": "big4"},
     {"name": "State Street", "host": "statestreet.wd1.myworkdayjobs.com", "tenant": "statestreet", "site": "Global", "category": "asset_manager"},
     {"name": "Neuberger Berman", "host": "nb.wd1.myworkdayjobs.com", "tenant": "nb", "site": "NBCareers", "category": "asset_manager"},
+    {"name": "Grant Thornton UK", "host": "ukgrantt.wd3.myworkdayjobs.com", "tenant": "ukgrantt", "site": "CareersGrantThornton", "category": "mid_tier"},
+    {"name": "RSM UK", "host": "rsmuk.wd103.myworkdayjobs.com", "tenant": "rsmuk", "site": "RSM", "category": "mid_tier"},
     {"name": "LSEG", "host": "lseg.wd3.myworkdayjobs.com", "tenant": "lseg", "site": "Careers", "category": "asset_manager"}
   ],
   "oracle": [
     {"name": "J.P. Morgan", "host": "jpmc.fa.oraclecloud.com", "site": "CX_1001", "category": "bulge_bracket",
-     "keywords": ["London", "Glasgow", "Bournemouth", "Edinburgh", "United Kingdom"]}
+     "keywords": ["London", "Glasgow", "Bournemouth", "Edinburgh", "United Kingdom"]},
+    {"name": "Lazard", "host": "icbpjb.fa.ocs.oraclecloud.com", "site": "LazardProfessionalCareers", "category": "boutique",
+     "keywords": ["London", "United Kingdom"]},
+    {"name": "Lazard (students)", "host": "icbpjb.fa.ocs.oraclecloud.com", "site": "LazardStudentCareers", "category": "boutique",
+     "keywords": ["London", "United Kingdom"]}
+  ],
+  "workable": [
+    {"name": "Interpath Advisory", "slug": "interpath-advisory", "category": "mid_tier"}
+  ],
+  "eightfold": [
+    {"name": "HSBC", "host": "portal.careers.hsbc.com", "domain": "hsbc.com", "category": "bulge_bracket",
+     "queries": ["investment banking", "corporate finance", "M&A", "markets", "trading", "leveraged", "private", "analyst", "graduate"]}
+  ],
+  "oleeo": [
+    {"name": "Evercore", "category": "boutique",
+     "feeds": ["https://evercore.tal.net/vx/mobile-0/appcentre-1/brand-5/candidate/jobboard/vacancy/3/feed"]},
+    {"name": "Jefferies", "category": "bulge_bracket",
+     "feeds": ["https://jefferies.tal.net/vx/mobile-0/appcentre-1/brand-4/candidate/jobboard/vacancy/2/feed"]}
+  ],
+  "kpmg": [
+    {"name": "KPMG UK", "category": "big4", "intake": "Experienced"}
+  ],
+  "radancy": [
+    {"name": "BDO UK", "host": "careers.bdo.co.uk", "category": "mid_tier"}
+  ],
+  "avature": [
+    {"name": "Deloitte UK", "host": "apply.deloitte.co.uk", "portal": "UKCareers", "category": "big4",
+     "queries": ["due diligence", "transaction", "corporate finance", "M&A", "valuation", "deal", "private equity", "restructuring", "debt advisory"]}
+  ],
+  "goldman": [
+    {"name": "Goldman Sachs", "category": "bulge_bracket"}
+  ],
+  "rothschild": [
+    {"name": "Rothschild & Co", "category": "boutique",
+     "paths": ["/en/careers/experienced-professionals/vacancies/", "/en/careers/students-and-graduates/opportunities/"]}
   ],
   "firm_aliases": {
     "_comment": "Used to classify employers found through Adzuna, Reed and GOV.UK apprenticeships. Lower-case substrings.",
