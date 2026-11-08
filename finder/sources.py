@@ -399,3 +399,276 @@ def faa_api(terms):
         if len(d.get("vacancies", [])) < 100:
             break
     return out
+
+
+# ================================================================ Firms without a standard ATS feed
+# Added Nov 2026 to cover KPMG, Deloitte, BDO, Grant Thornton/RSM (Workday above), Goldman Sachs,
+# Evercore, Jefferies, Lazard (Oracle above), HSBC and Interpath. Each reads a public page or
+# feed the firm's own careers site uses; nothing needs a login or key.
+
+def _relevant_first(rows, title_of, limit):
+    rows = [r for r in rows if RELEVANT_TITLE.search(title_of(r))]
+    rows.sort(key=lambda r: -scoring.interest_of(title_of(r), "")[0])
+    return rows[:limit]
+
+
+# ---------------------------------------------------------------- Workable (Interpath)
+def workable(firm):
+    d = fetch_json(f"https://apply.workable.com/api/v3/accounts/{firm['slug']}/jobs",
+                   data={"query": "", "location": [], "department": [], "worktype": [], "remote": []})
+    rows, token = list(d.get("results", [])), d.get("nextPage")
+    while token and len(rows) < 600:
+        d = fetch_json(f"https://apply.workable.com/api/v3/accounts/{firm['slug']}/jobs",
+                       data={"query": "", "location": [], "department": [], "worktype": [], "remote": [], "token": token})
+        rows += d.get("results", [])
+        token = d.get("nextPage")
+    out = []
+    for j in rows:
+        locs = [j.get("location") or {}] + (j.get("locations") or [])
+        place = " / ".join(dict.fromkeys(", ".join(filter(None, [l.get("city"), l.get("country")])) for l in locs if l))
+        if not (any(l.get("countryCode") == "GB" for l in locs) or is_uk(place)):
+            continue
+        wp = "remote" if j.get("remote") else (j.get("workplace") or None)
+        out.append(job(
+            source="workable", company=firm["name"], category=firm["category"], title=j.get("title", ""),
+            location=place, url=f"https://apply.workable.com/{firm['slug']}/j/{j.get('shortcode', '')}/",
+            posted=(j.get("published") or "")[:10], department=", ".join(j.get("department") or []),
+            workplace=wp,
+        ))
+    return out
+
+
+# ---------------------------------------------------------------- Eightfold (HSBC)
+def eightfold(firm, max_rows=400):
+    out, seen = [], set()
+    for q in firm.get("queries", [""]):
+        start = 0
+        while start < max_rows:
+            d = fetch_json(f"https://{firm['host']}/api/apply/v2/jobs?domain={firm['domain']}"
+                           f"&location=United%20Kingdom&num=50&start={start}&query={urllib.parse.quote(q)}")
+            batch = d.get("positions", [])
+            for p in batch:
+                if p["id"] in seen or not is_uk(p.get("location", ""), " ".join(p.get("locations") or [])):
+                    continue
+                seen.add(p["id"])
+                out.append(job(
+                    source="eightfold", company=firm["name"], category=firm["category"], title=p.get("name", ""),
+                    location=p.get("location", ""), url=p.get("canonicalPositionUrl") or f"https://{firm['host']}/careers?pid={p['id']}",
+                    posted=time.strftime("%Y-%m-%d", time.gmtime(p["t_create"])) if p.get("t_create") else "",
+                    department=p.get("department", ""), description=html_to_text(p.get("job_description", "")),
+                    workplace=(p.get("work_location_option") or "").lower() or None,
+                ))
+            start += 50
+            if len(batch) < 50 or start >= d.get("count", 0):
+                break
+    return out
+
+
+# ---------------------------------------------------------------- Oleeo / tal.net (Evercore, Jefferies)
+def oleeo(firm, max_details=40):
+    entries = []
+    for feed in firm["feeds"]:
+        x = fetch(feed)
+        for e in re.findall(r"<entry.*?</entry>", x, re.S):
+            link = re.search(r'<link rel="alternate" href="([^"?]+)', e)
+            title = re.search(r"<title>(.*?)</title>", e, re.S)
+            if link and title:
+                entries.append((html_to_text(title.group(1)), link.group(1),
+                                (re.search(r"<published>(.{10})", e) or [None, ""])[1]))
+    entries = list({u: (t, u, p) for t, u, p in entries}.values())
+
+    def detail(row):
+        title, url, posted = row
+        fields = {}
+        try:
+            h = fetch(url, retries=1)
+            for lab, val in re.findall(r'hform_lbl_text"\s*>(.*?)</span>.*?class="col-sm-9 form_value[^"]*"\s*>(.*?)</div>\s*</div>', h, re.S):
+                fields[html_to_text(lab).lower()] = html_to_text(val)
+        except Exception:
+            pass
+        loc = fields.get("location") or fields.get("city") or ""
+        if not is_uk(loc, title):
+            return None
+        return job(source="oleeo", company=firm["name"], category=firm["category"], title=title,
+                   location=loc or "London", url=url, posted=posted,
+                   department=fields.get("group") or fields.get("division") or "",
+                   description=fields.get("job description") or fields.get("description") or "")
+
+    # Feeds are global; only open the ones whose title doesn't name a non-UK city.
+    foreign = re.compile(r"new york|houston|san francisco|chicago|boston|los angeles|dallas|atlanta|minneapolis|"
+                         r"menlo park|washington|toronto|paris|frankfurt|madrid|milan|munich|tokyo|hong kong|"
+                         r"singapore|sydney|dubai|mumbai|são paulo|sao paulo|mexico|zurich|stockholm|amsterdam|tel aviv|"
+                         r"\b(ny|ca|tx|il|ma|mn|ga)\b", re.I)
+    rows = [r for r in entries if not foreign.search(r[0])]
+    rows = _relevant_first(rows, lambda r: r[0], max_details)
+    with ThreadPoolExecutor(6) as ex:
+        return [j for j in ex.map(detail, rows) if j]
+
+
+# ---------------------------------------------------------------- KPMG UK (own site, server-rendered)
+def kpmg(firm, max_pages=40):
+    base = "https://www.kpmgcareers.co.uk"
+    out, page, last = [], 1, 1
+    while page <= min(last, max_pages):
+        h = fetch(f"{base}/search/vacancies/?intakeType={firm.get('intake', 'Experienced')}&page={page}")
+        pages = [int(p) for p in re.findall(r'data-page="(\d+)"', h)]
+        last = max(pages) if pages else 1
+        for vid, block in re.findall(r'<div class="vacancy-description[^"]*" data-vacancy-id="(\d+)"[^>]*>(.*?)(?=<div class="vacancy-description[ "]|vacancy-search-pagination)', h, re.S):
+            title = html_to_text((re.search(r"<h3>(.*?)</h3>", block, re.S) or [None, ""])[1])
+            fields = {html_to_text(k).rstrip(":").lower(): html_to_text(v)
+                      for k, v in re.findall(r'class="vacancy-details-fields"><b>(.*?)</b>(.*?)</p>', block, re.S)}
+            link = re.search(r'href="(/Vacancies/[^"]+)"', block)
+            desc = html_to_text((re.search(r'class="vacancy-description-text">(.*?)</div>', block, re.S) or [None, ""])[1])
+            loc = fields.get("location", "")
+            out.append(job(
+                source="kpmg", company=firm["name"], category=firm["category"], title=title,
+                location=loc if is_uk(loc) else f"{loc}, United Kingdom".lstrip(", "),
+                url=base + link.group(1) if link else f"{base}/search/vacancies/",
+                department=" / ".join(filter(None, [fields.get("capability"), fields.get("business area")])),
+                description=" ".join(filter(None, [fields.get("experience level"), desc])),
+                extra={"level": fields.get("experience level", "")},
+            ))
+        page += 1
+        time.sleep(0.3)
+    return out
+
+
+# ---------------------------------------------------------------- Radancy / TMP career sites (BDO)
+def radancy(firm, max_details=40):
+    base = f"https://{firm['host']}"
+    rows, page, pages = [], 1, 1
+    while page <= min(pages, 10):
+        d = fetch_json(f"{base}/search-jobs/results?ActiveFacetID=0&CurrentPage={page}&RecordsPerPage=100&Distance=50"
+                       f"&RadiusUnitType=0&Keywords=&Location=&ShowRadius=False&IsPagination=False&FacetTerm=&FacetType=0"
+                       f"&SearchResultsModuleName=Search+Results&SearchFiltersModuleName=Search+Filters&SortCriteria=0"
+                       f"&SortDirection=0&SearchType=5&ResultsType=0", headers={"X-Requested-With": "XMLHttpRequest"})
+        r = d.get("results", "")
+        pages = int((re.search(r'data-total-pages="(\d+)"', r) or [None, 1])[1])
+        for href, title, loc in re.findall(r'<a href="(/job/[^"]+)"[^>]*>\s*<h3[^>]*>(.*?)</h3>.*?class="job-location[^"]*">(.*?)</span>', r, re.S):
+            rows.append((base + href, html_to_text(title), html_to_text(loc)))
+        page += 1
+    rows = [r for r in dict.fromkeys(rows) if is_uk(r[2]) or "united kingdom" not in r[2].lower()]
+
+    def detail(r):
+        url, title, loc = r
+        desc = ""
+        try:
+            h = fetch(url, retries=0, timeout=20)
+            m = re.search(r'class="ats-description[^"]*"[^>]*>(.*?)</div>\s*(?:</div>|<div class="job-)', h, re.S) or \
+                re.search(r'<div class="job-description[^"]*"[^>]*>(.*?)</section>', h, re.S)
+            desc = html_to_text(m.group(1)) if m else ""
+        except Exception:
+            pass
+        return job(source="radancy", company=firm["name"], category=firm["category"], title=title,
+                   location=loc, url=url, description=desc)
+
+    rows = _relevant_first(rows, lambda r: r[1], max_details)
+    with ThreadPoolExecutor(3) as ex:  # job pages are ~550 KB and the site slows down under load
+        return list(ex.map(detail, rows))
+
+
+# ---------------------------------------------------------------- Avature portals (Deloitte UK)
+def avature(firm, max_details=60):
+    """Deloitte's server refuses some older TLS stacks (e.g. macOS LibreSSL); it works from OpenSSL 3."""
+    base = f"https://{firm['host']}/{firm['portal']}"
+    rows = {}
+    for q in firm["queries"]:
+        for offset in range(0, 200, 20):
+            h = fetch(f"{base}/SearchJobs/?search={urllib.parse.quote(q)}&jobOffset={offset}")
+            found = re.findall(r'<h3 class="article__header__text__title[^"]*">\s*<a href="([^"]+/JobDetail/[^"]+)">\s*(.*?)\s*</a>'
+                               r'.*?article__header__text__subtitle">(.*?)</div>', h, re.S)
+            for href, title, sub in found:
+                spans = [html_to_text(s) for s in re.findall(r"<span>\s*(.*?)\s*</span>", sub, re.S)]
+                posted = next((s.replace("Posted:", "").strip() for s in spans if s.startswith("Posted")), "")
+                rest = [s for s in spans if not s.startswith("Posted")]
+                rows.setdefault(href, (href, html_to_text(title), rest[0] if rest else "", rest[1] if len(rest) > 1 else "", posted))
+            if len(found) < 20:
+                break
+
+    def detail(r):
+        href, title, loc, dept, posted = r
+        desc = ""
+        try:
+            h = fetch(href, retries=1)
+            i = h.find("article__content__view")
+            desc = html_to_text(h[i:h.find("<footer", i)]) if i > 0 else ""
+        except Exception:
+            pass
+        return job(source="avature", company=firm["name"], category=firm["category"], title=title,
+                   location=loc if is_uk(loc) else f"{loc}, United Kingdom", url=href, posted=posted,
+                   department=dept, description=desc)
+
+    picked = _relevant_first(list(rows.values()), lambda r: r[1], max_details)
+    with ThreadPoolExecutor(6) as ex:
+        return list(ex.map(detail, picked))
+
+
+# ---------------------------------------------------------------- Goldman Sachs (higher.gs.com GraphQL)
+_GS_QUERY = ("query GetRoles($searchQueryInput: RoleSearchQueryInput!) { roleSearch(searchQueryInput: $searchQueryInput) "
+             "{ totalCount items { roleId corporateTitle jobTitle jobFunction locations { primary state country city } "
+             "status division jobType { code description } externalSource { sourceId } } } }")
+
+
+def goldman(firm):
+    out, page, total = [], 0, None
+    while page < 15:
+        v = {"searchQueryInput": {"page": {"pageSize": 100, "pageNumber": page},
+                                  "sort": {"sortStrategy": "RELEVANCE", "sortOrder": "DESC"}, "filters": [],
+                                  "experiences": ["EARLY_CAREER", "PROFESSIONAL"], "searchTerm": ""}}
+        d = fetch_json("https://api-higher.gs.com/gateway/api/v1/graphql",
+                       data={"operationName": "GetRoles", "variables": v, "query": _GS_QUERY},
+                       headers={"Origin": "https://higher.gs.com", "Referer": "https://higher.gs.com/"})
+        rs = d["data"]["roleSearch"]
+        total = rs["totalCount"] if total is None else total
+        for r in rs["items"]:
+            locs = [l for l in (r.get("locations") or []) if l.get("country") == "United Kingdom"]
+            if not locs:
+                continue
+            place = " / ".join(", ".join(filter(None, [l.get("city"), l.get("country")])) for l in locs)
+            out.append(job(
+                source="goldman", company=firm["name"], category=firm["category"], title=r.get("jobTitle", ""),
+                location=place, url=f"https://higher.gs.com/roles/{r['roleId']}",
+                department=" / ".join(filter(None, [r.get("division"), r.get("jobFunction")])),
+                description=f"Corporate title: {r.get('corporateTitle') or ''}.",
+            ))
+        page += 1
+        if (page * 100) >= total or not rs["items"]:
+            break
+    return out
+
+
+# ---------------------------------------------------------------- Rothschild & Co (own site, server-rendered)
+def rothschild(firm, max_details=40):
+    site = "https://www.rothschildandco.com"
+    rows = {}
+    for path in firm.get("paths", ["/en/careers/experienced-professionals/vacancies/"]):
+        for page in range(1, 8):
+            h = fetch(f"{site}{path}?page={page}")
+            cards = re.findall(r'<article class="roths-career-office-event-card">(.*?)</article>', h, re.S)
+            for c in cards:
+                title = html_to_text((re.search(r"<h3[^>]*>(.*?)</h3>", c, re.S) or [None, ""])[1])
+                det = [html_to_text(x) for x in re.findall(r'card-detail">(.*?)</li>', c, re.S)]
+                href = (re.search(r'href="([^"]+)"', c) or [None, ""])[1]
+                tag = html_to_text((re.search(r'card-tag">(.*?)</span>', c, re.S) or [None, ""])[1])
+                place = ", ".join(d for d in det[:2] if d)
+                if href and is_uk(" ".join(det)):
+                    rows[href] = (title, place, tag, " / ".join(det[2:]), site + href)
+            if len(cards) < 40:
+                break
+
+    def detail(r):
+        title, place, tag, grade, url = r
+        desc = ""
+        try:
+            h = fetch(url, retries=1)
+            m = re.search(r"<main[^>]*>(.*?)</main>", h, re.S)
+            desc = html_to_text(m.group(1)) if m else ""
+        except Exception:
+            pass
+        return job(source="rothschild", company=firm["name"], category=firm["category"], title=title,
+                   location=place if is_uk(place) else f"{place}, United Kingdom", url=url,
+                   department=" / ".join(filter(None, [tag, grade])), description=desc)
+
+    picked = _relevant_first(list(rows.values()), lambda r: r[0] + " " + r[2], max_details)
+    with ThreadPoolExecutor(6) as ex:
+        return list(ex.map(detail, picked))

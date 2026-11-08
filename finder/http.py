@@ -1,5 +1,6 @@
 """Tiny stdlib HTTP helper with retries, so the finder has no dependencies."""
 import base64
+import gzip
 import json
 import time
 import urllib.error
@@ -9,7 +10,7 @@ UA = "Mozilla/5.0 (compatible; uk-job-finder/1.0)"
 
 
 def fetch(url, data=None, headers=None, timeout=25, retries=2, auth=None):
-    hdrs = {"User-Agent": UA, "Accept": "application/json, text/html;q=0.9"}
+    hdrs = {"User-Agent": UA, "Accept": "application/json, text/html;q=0.9", "Accept-Encoding": "gzip"}
     if data is not None:
         hdrs["Content-Type"] = "application/json"
         if not isinstance(data, (bytes, str)):
@@ -24,7 +25,10 @@ def fetch(url, data=None, headers=None, timeout=25, retries=2, auth=None):
         try:
             req = urllib.request.Request(url, data=data, headers=hdrs)
             with urllib.request.urlopen(req, timeout=timeout) as resp:
-                return resp.read().decode("utf-8", "replace")
+                body = resp.read()
+                if resp.headers.get("Content-Encoding") == "gzip" or body[:2] == b"\x1f\x8b":
+                    body = gzip.decompress(body)
+                return body.decode("utf-8", "replace")
         except urllib.error.HTTPError as e:
             last = e
             if e.code in (400, 401, 403, 404, 422):
