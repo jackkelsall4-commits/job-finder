@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-08T13:07:02Z",
+ "generated_at": "2026-11-09T07:44:03Z",
  "seconds": 82,
  "sources": [
   {
@@ -42,25 +42,25 @@
    "source": "Bank of America",
    "kind": "workday",
    "ok": true,
-   "count": 35
+   "count": 34
   },
   {
    "source": "Barclays",
    "kind": "workday",
    "ok": true,
-   "count": 80
+   "count": 78
   },
   {
    "source": "Blackstone",
    "kind": "workday",
-   "ok": true,
-   "count": 3
+   "ok": false,
+   "error": "https://blackstone.wd1.myworkdayjobs.com/wday/cxs/blackstone/Blackstone_Careers/jobs -> HTTP Error 401: Unauthorized"
   },
   {
    "source": "Blackstone (campus)",
    "kind": "workday",
-   "ok": true,
-   "count": 12
+   "ok": false,
+   "error": "https://blackstone.wd1.myworkdayjobs.com/wday/cxs/blackstone/Blackstone_Campus_Careers/job -> HTTP Error 401: Unauthorized"
   },
   {
    "source": "Carlyle",
@@ -276,7 +276,7 @@
    "source": "Man Group",
    "kind": "greenhouse",
    "ok": true,
-   "count": 29
+   "count": 28
   },
   {
    "source": "Mizuho",
@@ -294,7 +294,7 @@
    "source": "Morgan Stanley",
    "kind": "workday",
    "ok": true,
-   "count": 40
+   "count": 39
   },
   {
    "source": "Neuberger Berman",
@@ -342,7 +342,7 @@
    "source": "Santander",
    "kind": "workday",
    "ok": true,
-   "count": 41
+   "count": 37
   },
   {
    "source": "Schonfeld",
@@ -360,7 +360,7 @@
    "source": "State Street",
    "kind": "workday",
    "ok": true,
-   "count": 28
+   "count": 27
   },
   {
    "source": "TD Securities",
@@ -423,7 +423,7 @@
    "count": 3
   }
  ],
- "total_seen": 1752,
+ "total_seen": 1728,
  "jobs": [
   {
    "source": "greenhouse",
@@ -1213,78 +1213,6 @@
    "match": 37200
   },
   {
-   "source": "oleeo",
-   "company": "Jefferies",
-   "category": "bulge_bracket",
-   "title": "2027 Equity Research Analyst Programme - London",
-   "location": "London",
-   "url": "https://jefferies.tal.net/vx/mobile-0/appcentre-ext/brand-4/candidate/so/pm/1/pl/2/opp/1936-2027-Equity-Research-Analyst-Programme-London/en-GB",
-   "posted": "2026-08-31",
-   "department": "",
-   "description": "Please note you can only make one application per recruitment season; duplicate profiles cannot be considered. Recruitment Timelines Start Date: We are looking for a July/August 2027 start. You will be based in our London office. Deadline: Applications for this opportunity will c",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "category_label": "Investment bank",
-   "level": "entry",
-   "function": "front",
-   "interest": 1.0,
-   "tracks": [
-    "Investing",
-    "Finance / accounting",
-    "Trading",
-    "Corporate finance / IB",
-    "Transaction services"
-   ],
-   "workplace_type": "unknown",
-   "base_pay": null,
-   "comp": 100000,
-   "comp_basis": "estimated",
-   "reach": 0.37,
-   "flags": [
-    "Front-office analyst roles are fiercely competitive and often degree-screened"
-   ],
-   "match": 37200
-  },
-  {
-   "source": "oleeo",
-   "company": "Jefferies",
-   "category": "bulge_bracket",
-   "title": "2027 Private Credit Investment Analyst Programme - London",
-   "location": "London",
-   "url": "https://jefferies.tal.net/vx/mobile-0/appcentre-ext/brand-4/candidate/so/pm/1/pl/2/opp/1949-2027-Private-Credit-Investment-Analyst-Programme-London/en-GB",
-   "posted": "2026-08-31",
-   "department": "",
-   "description": "Please note you can only make one application per recruitment season; duplicate profiles cannot be considered. Recruitment Timelines Start Date: We are looking for a July/August 2027 start. You will be based in our London office. Deadline: Applications for this opportunity will c",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "category_label": "Investment bank",
-   "level": "entry",
-   "function": "front",
-   "interest": 1.0,
-   "tracks": [
-    "Investing",
-    "Private equity",
-    "Finance / accounting",
-    "Corporate finance / IB",
-    "Transaction services"
-   ],
-   "workplace_type": "unknown",
-   "base_pay": null,
-   "comp": 100000,
-   "comp_basis": "estimated",
-   "reach": 0.37,
-   "flags": [
-    "Front-office analyst roles are fiercely competitive and often degree-screened"
-   ],
-   "match": 37200
-  },
-  {
    "source": "oracle",
    "company": "J.P. Morgan",
    "category": "bulge_bracket",
@@ -1615,6 +1543,78 @@
    "match": 37200
   },
   {
+   "source": "oleeo",
+   "company": "Jefferies",
+   "category": "bulge_bracket",
+   "title": "2027 Equity Research Analyst Programme - London",
+   "location": "London",
+   "url": "https://jefferies.tal.net/vx/mobile-0/appcentre-ext/brand-4/candidate/so/pm/1/pl/2/opp/1936-2027-Equity-Research-Analyst-Programme-London/en-GB",
+   "posted": "2026-08-31",
+   "department": "",
+   "description": "Please note you can only make one application per recruitment season; duplicate profiles cannot be considered. Recruitment Timelines Start Date: We are looking for a July/August 2027 start. You will be based in our London office. Deadline: Applications for this opportunity will c",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "category_label": "Investment bank",
+   "level": "entry",
+   "function": "front",
+   "interest": 1.0,
+   "tracks": [
+    "Investing",
+    "Finance / accounting",
+    "Trading",
+    "Corporate finance / IB",
+    "Transaction services"
+   ],
+   "workplace_type": "unknown",
+   "base_pay": null,
+   "comp": 100000,
+   "comp_basis": "estimated",
+   "reach": 0.37,
+   "flags": [
+    "Front-office analyst roles are fiercely competitive and often degree-screened"
+   ],
+   "match": 37200
+  },
+  {
+   "source": "oleeo",
+   "company": "Jefferies",
+   "category": "bulge_bracket",
+   "title": "2027 Private Credit Investment Analyst Programme - London",
+   "location": "London",
+   "url": "https://jefferies.tal.net/vx/mobile-0/appcentre-ext/brand-4/candidate/so/pm/1/pl/2/opp/1949-2027-Private-Credit-Investment-Analyst-Programme-London/en-GB",
+   "posted": "2026-08-31",
+   "department": "",
+   "description": "Please note you can only make one application per recruitment season; duplicate profiles cannot be considered. Recruitment Timelines Start Date: We are looking for a July/August 2027 start. You will be based in our London office. Deadline: Applications for this opportunity will c",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "category_label": "Investment bank",
+   "level": "entry",
+   "function": "front",
+   "interest": 1.0,
+   "tracks": [
+    "Investing",
+    "Private equity",
+    "Finance / accounting",
+    "Corporate finance / IB",
+    "Transaction services"
+   ],
+   "workplace_type": "unknown",
+   "base_pay": null,
+   "comp": 100000,
+   "comp_basis": "estimated",
+   "reach": 0.37,
+   "flags": [
+    "Front-office analyst roles are fiercely competitive and often degree-screened"
+   ],
+   "match": 37200
+  },
+  {
    "source": "goldman",
    "company": "Goldman Sachs",
    "category": "bulge_bracket",
@@ -1885,6 +1885,38 @@
   },
   {
    "source": "workday",
+   "company": "State Street",
+   "category": "asset_manager",
+   "title": "Front Office Trading Services, EFC, Officer",
+   "location": "London, England (United Kingdom)",
+   "url": "https://statestreet.wd1.myworkdayjobs.com/Global/job/London-England/Front-Office-Trading-Services--EFC--Officer_R-799922",
+   "posted": "2026-10-20",
+   "department": "",
+   "description": "Job Title: Front Office Trading Services, EFC, Officer Location: London, UK Job Description Who we are looking for We are looking for a motivated candidate who is eager to learn and expand their analytical and communication skills, while providing day-to-day support for Client Ma",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {
+    "closes": "2026-11-30"
+   },
+   "category_label": "Asset manager / markets infra",
+   "level": "mid",
+   "function": "front",
+   "interest": 1.0,
+   "tracks": [
+    "Trading"
+   ],
+   "workplace_type": "unknown",
+   "base_pay": null,
+   "comp": 80000,
+   "comp_basis": "estimated",
+   "reach": 0.45,
+   "flags": [],
+   "match": 36000
+  },
+  {
+   "source": "workday",
    "company": "Citi",
    "category": "bulge_bracket",
    "title": "FX Options Trader",
@@ -2048,38 +2080,6 @@
    "flags": [
     "Associate-level: usually hired from 2-3 yrs as an analyst or Big 4 deals"
    ],
-   "match": 36000
-  },
-  {
-   "source": "workday",
-   "company": "State Street",
-   "category": "asset_manager",
-   "title": "Front Office Trading Services, EFC, Officer",
-   "location": "London, England (United Kingdom)",
-   "url": "https://statestreet.wd1.myworkdayjobs.com/Global/job/London-England/Front-Office-Trading-Services--EFC--Officer_R-799922",
-   "posted": "2026-10-20",
-   "department": "",
-   "description": "Job Title: Front Office Trading Services, EFC, Officer Location: London, UK Job Description Who we are looking for We are looking for a motivated candidate who is eager to learn and expand their analytical and communication skills, while providing day-to-day support for Client Ma",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {
-    "closes": "2026-11-30"
-   },
-   "category_label": "Asset manager / markets infra",
-   "level": "mid",
-   "function": "front",
-   "interest": 1.0,
-   "tracks": [
-    "Trading"
-   ],
-   "workplace_type": "unknown",
-   "base_pay": null,
-   "comp": 80000,
-   "comp_basis": "estimated",
-   "reach": 0.45,
-   "flags": [],
    "match": 36000
   },
   {
@@ -4349,6 +4349,36 @@
   },
   {
    "source": "greenhouse",
+   "company": "Man Group",
+   "category": "hedge_fund",
+   "title": "Team Assistant - Sales",
+   "location": "London",
+   "url": "https://job-boards.eu.greenhouse.io/mangroup/jobs/4997677101",
+   "posted": "2026-10-23",
+   "department": "Sales",
+   "description": "About Man Group Man Group is a global alternative investment management firm focused on pursuing outperformance for sophisticated clients via our Systematic, Discretionary and Solutions offerings. Powered by talent and advanced technology, our single and multi-manager investment ",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "category_label": "Hedge fund",
+   "level": "entry",
+   "function": "other",
+   "interest": 0.5,
+   "tracks": [
+    "Corporate finance / IB"
+   ],
+   "workplace_type": "hybrid",
+   "base_pay": null,
+   "comp": 60500.0,
+   "comp_basis": "estimated",
+   "reach": 0.62,
+   "flags": [],
+   "match": 24850
+  },
+  {
+   "source": "greenhouse",
    "company": "AQR",
    "category": "hedge_fund",
    "title": "ESG Business Development Analyst – EMEA",
@@ -4369,36 +4399,6 @@
    "tracks": [
     "Finance / accounting",
     "Investing"
-   ],
-   "workplace_type": "hybrid",
-   "base_pay": null,
-   "comp": 60500.0,
-   "comp_basis": "estimated",
-   "reach": 0.62,
-   "flags": [],
-   "match": 24850
-  },
-  {
-   "source": "greenhouse",
-   "company": "Man Group",
-   "category": "hedge_fund",
-   "title": "Team Assistant - Sales",
-   "location": "London",
-   "url": "https://job-boards.eu.greenhouse.io/mangroup/jobs/4997677101",
-   "posted": "2026-10-23",
-   "department": "Sales",
-   "description": "About Man Group Man Group is a global alternative investment management firm focused on pursuing outperformance for sophisticated clients via our Systematic, Discretionary and Solutions offerings. Powered by talent and advanced technology, our single and multi-manager investment ",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "category_label": "Hedge fund",
-   "level": "entry",
-   "function": "other",
-   "interest": 0.5,
-   "tracks": [
-    "Corporate finance / IB"
    ],
    "workplace_type": "hybrid",
    "base_pay": null,
@@ -4865,36 +4865,6 @@
   },
   {
    "source": "greenhouse",
-   "company": "IMC Trading",
-   "category": "prop_trading",
-   "title": "Office Assistant",
-   "location": "London, United Kingdom",
-   "url": "https://job-boards.eu.greenhouse.io/imc/jobs/4987654101",
-   "posted": "2026-11-05",
-   "department": "Operations",
-   "description": "IMC is looking for an Office Assistant to support all employees at our London office. In this varied role, you will be the first point of contact and act as host/hostess for both external and internal visitors. In addition, you will be co-responsible for a wide range of activitie",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "category_label": "Prop trading / market maker",
-   "level": "entry",
-   "function": "back",
-   "interest": 0.5,
-   "tracks": [
-    "Trading"
-   ],
-   "workplace_type": "unknown",
-   "base_pay": null,
-   "comp": 59500.0,
-   "comp_basis": "estimated",
-   "reach": 0.62,
-   "flags": [],
-   "match": 23056
-  },
-  {
-   "source": "greenhouse",
    "company": "Hudson River Trading",
    "category": "prop_trading",
    "title": "Campus Recruiter",
@@ -4915,6 +4885,36 @@
    "tracks": [
     "Trading",
     "Transaction services"
+   ],
+   "workplace_type": "unknown",
+   "base_pay": null,
+   "comp": 59500.0,
+   "comp_basis": "estimated",
+   "reach": 0.62,
+   "flags": [],
+   "match": 23056
+  },
+  {
+   "source": "greenhouse",
+   "company": "IMC Trading",
+   "category": "prop_trading",
+   "title": "Office Assistant",
+   "location": "London, United Kingdom",
+   "url": "https://job-boards.eu.greenhouse.io/imc/jobs/4987654101",
+   "posted": "2026-11-05",
+   "department": "Operations",
+   "description": "IMC is looking for an Office Assistant to support all employees at our London office. In this varied role, you will be the first point of contact and act as host/hostess for both external and internal visitors. In addition, you will be co-responsible for a wide range of activitie",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "category_label": "Prop trading / market maker",
+   "level": "entry",
+   "function": "back",
+   "interest": 0.5,
+   "tracks": [
+    "Trading"
    ],
    "workplace_type": "unknown",
    "base_pay": null,
@@ -5490,38 +5490,6 @@
   },
   {
    "source": "workday",
-   "company": "Barclays",
-   "category": "bulge_bracket",
-   "title": "Private Banker",
-   "location": "Manchester, Spinningfields (United Kingdom)",
-   "url": "https://barclays.wd3.myworkdayjobs.com/External_Career_Site_Barclays/job/Manchester-Spinningfields/Private-Banker_JR-0000121472",
-   "posted": "2026-10-29",
-   "department": "",
-   "description": "Job Description Purpose of the role Deliver exceptional sales and business performance by acquiring, developing and maintaining highly proactive, long term client relationships. Protect Barclays reputation through sound risk decisions by managing client group within their risk pr",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {
-    "closes": "2026-11-09"
-   },
-   "category_label": "Investment bank",
-   "level": "mid",
-   "function": "other",
-   "interest": 0.5,
-   "tracks": [
-    "Trading"
-   ],
-   "workplace_type": "unknown",
-   "base_pay": null,
-   "comp": 74800.0,
-   "comp_basis": "estimated",
-   "reach": 0.45,
-   "flags": [],
-   "match": 21038
-  },
-  {
-   "source": "workday",
    "company": "Apollo",
    "category": "pe_megafund",
    "title": "Associate - IG Credit (Financials)",
@@ -5714,11 +5682,11 @@
   },
   {
    "source": "oracle",
-   "company": "Lazard",
+   "company": "Lazard (students)",
    "category": "boutique",
    "title": "Compliance Associate",
    "location": "London, United Kingdom",
-   "url": "https://icbpjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/LazardProfessionalCareers/job/6544",
+   "url": "https://icbpjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/LazardStudentCareers/job/6544",
    "posted": "2026-09-04",
    "department": "",
    "description": "This Compliance Associate role (London) sits within Lazard's Legal & Compliance function, reporting to the Compliance Director in support of the financial advisory business. The position covers regulatory advisory, compliance monitoring and testing, client due diligence/KYC-AML, ",
@@ -5746,11 +5714,11 @@
   },
   {
    "source": "oracle",
-   "company": "Lazard (students)",
+   "company": "Lazard",
    "category": "boutique",
    "title": "Compliance Associate",
    "location": "London, United Kingdom",
-   "url": "https://icbpjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/LazardStudentCareers/job/6544",
+   "url": "https://icbpjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/LazardProfessionalCareers/job/6544",
    "posted": "2026-09-04",
    "department": "",
    "description": "This Compliance Associate role (London) sits within Lazard's Legal & Compliance function, reporting to the Compliance Director in support of the financial advisory business. The position covers regulatory advisory, compliance monitoring and testing, client due diligence/KYC-AML, ",
@@ -6123,39 +6091,6 @@
     "Asks for audit / ACA / AAT background - plays to your experience"
    ],
    "match": 19575
-  },
-  {
-   "source": "workday",
-   "company": "Blackstone",
-   "category": "pe_megafund",
-   "title": "Blackstone Credit & Insurance (BXCI) Investment Fund Modeling & Forecasting",
-   "location": "London (United Kingdom)",
-   "url": "https://blackstone.wd1.myworkdayjobs.com/Blackstone_Careers/job/London/Blackstone-Credit---Insurance----FP-A--Associate_41787",
-   "posted": "2026-10-28",
-   "department": "",
-   "description": "Blackstone is the world’s largest alternative asset manager. Blackstone seeks to deliver compelling returns for institutional and individual investors by strengthening the companies in which the firm invests. Blackstone’s over $1.3 trillion in assets under management include glob",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "category_label": "Private equity (large)",
-   "level": "mid",
-   "function": "other",
-   "interest": 0.5,
-   "tracks": [
-    "Investing",
-    "Private equity"
-   ],
-   "workplace_type": "unknown",
-   "base_pay": null,
-   "comp": 115500.0,
-   "comp_basis": "estimated",
-   "reach": 0.27,
-   "flags": [
-    "Asks for a degree - lean on AAT L4 + ACA progress"
-   ],
-   "match": 19491
   },
   {
    "source": "workday",
@@ -7553,37 +7488,6 @@
   },
   {
    "source": "workday",
-   "company": "Neuberger Berman",
-   "category": "asset_manager",
-   "title": "Client Associate",
-   "location": "London (United Kingdom)",
-   "url": "https://nb.wd1.myworkdayjobs.com/NBCareers/job/London/Client-Associate_R0012461",
-   "posted": "2026-09-15",
-   "department": "",
-   "description": "About Neuberger: Neuberger was founded in 1939 to do one thing: deliver compelling investment results for our clients over the long term. This remains our singular purpose today, driven by a culture rooted in deep fundamental research, the pursuit of investment insight and contin",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "category_label": "Asset manager / markets infra",
-   "level": "mid",
-   "function": "other",
-   "interest": 0.5,
-   "tracks": [
-    "Investing",
-    "Corporate finance / IB"
-   ],
-   "workplace_type": "unknown",
-   "base_pay": null,
-   "comp": 60000.0,
-   "comp_basis": "estimated",
-   "reach": 0.45,
-   "flags": [],
-   "match": 16875
-  },
-  {
-   "source": "workday",
    "company": "State Street",
    "category": "asset_manager",
    "title": "Markets Intelligence Strategic Initiatives Senior Business Strategy Analyst, Officer",
@@ -7606,6 +7510,37 @@
    "tracks": [
     "Finance / accounting",
     "Investing"
+   ],
+   "workplace_type": "unknown",
+   "base_pay": null,
+   "comp": 60000.0,
+   "comp_basis": "estimated",
+   "reach": 0.45,
+   "flags": [],
+   "match": 16875
+  },
+  {
+   "source": "workday",
+   "company": "Neuberger Berman",
+   "category": "asset_manager",
+   "title": "Client Associate",
+   "location": "London (United Kingdom)",
+   "url": "https://nb.wd1.myworkdayjobs.com/NBCareers/job/London/Client-Associate_R0012461",
+   "posted": "2026-09-15",
+   "department": "",
+   "description": "About Neuberger: Neuberger was founded in 1939 to do one thing: deliver compelling investment results for our clients over the long term. This remains our singular purpose today, driven by a culture rooted in deep fundamental research, the pursuit of investment insight and contin",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "category_label": "Asset manager / markets infra",
+   "level": "mid",
+   "function": "other",
+   "interest": 0.5,
+   "tracks": [
+    "Investing",
+    "Corporate finance / IB"
    ],
    "workplace_type": "unknown",
    "base_pay": null,
@@ -7832,40 +7767,6 @@
     "Asks for audit / ACA / AAT background - plays to your experience"
    ],
    "match": 16777
-  },
-  {
-   "source": "greenhouse",
-   "company": "Man Group",
-   "category": "hedge_fund",
-   "title": "Client Relations Associate",
-   "location": "London",
-   "url": "https://job-boards.eu.greenhouse.io/mangroup/jobs/4958873101",
-   "posted": "2026-11-06",
-   "department": "Sales",
-   "description": "About Man Group Man Group is a global alternative investment management firm focused on pursuing outperformance for sophisticated clients via our Systematic, Discretionary and Solutions offerings. Powered by talent and advanced technology, our single and multi-manager investment ",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "category_label": "Hedge fund",
-   "level": "mid",
-   "function": "other",
-   "interest": 0.5,
-   "tracks": [
-    "Investing",
-    "Corporate finance / IB",
-    "Private equity"
-   ],
-   "workplace_type": "hybrid",
-   "base_pay": null,
-   "comp": 93500.0,
-   "comp_basis": "estimated",
-   "reach": 0.27,
-   "flags": [
-    "Asks for a degree - lean on AAT L4 + ACA progress"
-   ],
-   "match": 16725
   },
   {
    "source": "oracle",
@@ -8714,6 +8615,39 @@
    "match": 15813
   },
   {
+   "source": "radancy",
+   "company": "BDO UK",
+   "category": "mid_tier",
+   "title": "Audit Semi Senior",
+   "location": "Ipswich, United Kingdom",
+   "url": "https://careers.bdo.co.uk/job/ipswich/audit-semi-senior/1469/46426459904",
+   "posted": "",
+   "department": "",
+   "description": "Ideas | People | Trust We’re BDO. An accountancy and business advisory firm, providing the advice and solutions entrepreneurial organisations need to navigate today’s changing world. We work with the companies that are Britain’s economic engine – ambitious, entrepreneurially-spir",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "category_label": "Mid-tier advisory",
+   "level": "mid",
+   "function": "other",
+   "interest": 0.5,
+   "tracks": [
+    "Finance / accounting",
+    "ACA stepping stone"
+   ],
+   "workplace_type": "hybrid",
+   "base_pay": null,
+   "comp": 44200.0,
+   "comp_basis": "estimated",
+   "reach": 0.54,
+   "flags": [
+    "Asks for audit / ACA / AAT background - plays to your experience"
+   ],
+   "match": 15813
+  },
+  {
    "source": "workday",
    "company": "Grant Thornton UK",
    "category": "mid_tier",
@@ -8832,39 +8766,6 @@
    "function": "other",
    "interest": 0.5,
    "tracks": [
-    "ACA stepping stone"
-   ],
-   "workplace_type": "hybrid",
-   "base_pay": null,
-   "comp": 44200.0,
-   "comp_basis": "estimated",
-   "reach": 0.54,
-   "flags": [
-    "Asks for audit / ACA / AAT background - plays to your experience"
-   ],
-   "match": 15813
-  },
-  {
-   "source": "radancy",
-   "company": "BDO UK",
-   "category": "mid_tier",
-   "title": "Audit Semi Senior",
-   "location": "Ipswich, United Kingdom",
-   "url": "https://careers.bdo.co.uk/job/ipswich/audit-semi-senior/1469/46426459904",
-   "posted": "",
-   "department": "",
-   "description": "Ideas | People | Trust We’re BDO. An accountancy and business advisory firm, providing the advice and solutions entrepreneurial organisations need to navigate today’s changing world. We work with the companies that are Britain’s economic engine – ambitious, entrepreneurially-spir",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "category_label": "Mid-tier advisory",
-   "level": "mid",
-   "function": "other",
-   "interest": 0.5,
-   "tracks": [
-    "Finance / accounting",
     "ACA stepping stone"
    ],
    "workplace_type": "hybrid",
@@ -11031,7 +10932,7 @@
    "workplace": null,
    "extra": {
     "course": "Financial services professional (level 6)",
-    "closes": "Closes in 23 days (Tuesday 1 December 2026)",
+    "closes": "Closes in 22 days (Tuesday 1 December 2026)",
     "start": "1 April 2027"
    },
    "category_label": "UK bank",
@@ -12306,7 +12207,7 @@
    "workplace": null,
    "extra": {
     "course": "Accounting finance manager (level 6)",
-    "closes": "Closes in 23 days (Tuesday 1 December 2026)",
+    "closes": "Closes in 22 days (Tuesday 1 December 2026)",
     "start": "1 September 2027"
    },
    "category_label": "UK bank",
@@ -12342,7 +12243,7 @@
    "workplace": null,
    "extra": {
     "course": "Accounting finance manager (level 6)",
-    "closes": "Closes in 23 days (Tuesday 1 December 2026)",
+    "closes": "Closes in 22 days (Tuesday 1 December 2026)",
     "start": "1 September 2027"
    },
    "category_label": "UK bank",
@@ -13527,6 +13428,101 @@
    "match": 8415
   },
   {
+   "source": "oracle",
+   "company": "J.P. Morgan",
+   "category": "bulge_bracket",
+   "title": "International Private Banker, Vice President, Private Banker, UK Financial Institutions Group",
+   "location": "LONDON, LONDON, United Kingdom",
+   "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210772870",
+   "posted": "2026-09-02",
+   "department": "Client Advisory / Client Management",
+   "description": "The UK Financial Institutions Group within JP Morgan's Private Bank is looking for a VP level Private Banker to join on a full time basis.",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "category_label": "Investment bank",
+   "level": "senior",
+   "function": "front",
+   "interest": 0.35,
+   "tracks": [
+    "Finance / accounting"
+   ],
+   "workplace_type": "unknown",
+   "base_pay": null,
+   "comp": 260000,
+   "comp_basis": "estimated",
+   "reach": 0.06,
+   "flags": [],
+   "match": 7995
+  },
+  {
+   "source": "workday",
+   "company": "ICG",
+   "category": "pe_midmarket",
+   "title": "Vice President, Investment Valuations",
+   "location": "London (United Kingdom)",
+   "url": "https://icg.wd3.myworkdayjobs.com/external_careers/job/London/Vice-President--Investment-Valuations_R3347-1",
+   "posted": "2026-10-28",
+   "department": "",
+   "description": "Job Title: Vice President, Investment Valuations Contract Type: Permanent, Full-Time Location: London Department: Investment Office What the Hiring Manager says…. “The Investment Office plays the central function for deal support, portfolio monitoring, and valuation for the priva",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "category_label": "Private equity (mid-market)",
+   "level": "senior",
+   "function": "front",
+   "interest": 1.0,
+   "tracks": [
+    "Transaction services",
+    "Private equity"
+   ],
+   "workplace_type": "unknown",
+   "base_pay": null,
+   "comp": 190000,
+   "comp_basis": "estimated",
+   "reach": 0.04,
+   "flags": [
+    "Wants a qualified accountant - open to you once ACA is complete"
+   ],
+   "match": 7980
+  },
+  {
+   "source": "greenhouse",
+   "company": "Ebury",
+   "category": "fintech",
+   "title": "Commercial Analyst",
+   "location": "London",
+   "url": "https://job-boards.eu.greenhouse.io/ebury/jobs/5020371101",
+   "posted": "2026-10-30",
+   "department": "Sales Acceleration",
+   "description": "Ebury helps ambitious businesses unlock global growth, and we take the same approach with our people. We encourage innovation and movement, collaboration and problem-solving, and foster an environment where everyone can feel they belong, are valued, supported and empowered to suc",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "category_label": "Fintech / broker",
+   "level": "entry",
+   "function": "other",
+   "interest": 0.35,
+   "tracks": [
+    "Finance / accounting"
+   ],
+   "workplace_type": "hybrid",
+   "base_pay": null,
+   "comp": 39000.0,
+   "comp_basis": "estimated",
+   "reach": 0.37,
+   "flags": [
+    "Asks for a degree - lean on AAT L4 + ACA progress"
+   ],
+   "match": 7881
+  },
+  {
    "source": "gov.uk apprenticeships",
    "company": "MHA",
    "category": "other",
@@ -13791,7 +13787,7 @@
    "workplace": null,
    "extra": {
     "course": "Financial services customer adviser (level 3)",
-    "closes": "Closes in 10 days (Wednesday 18 November 2026 at 11:59pm)",
+    "closes": "Closes in 9 days (Wednesday 18 November 2026 at 11:59pm)",
     "start": "21 December 2026"
    },
    "category_label": "Other employer",
@@ -13895,7 +13891,7 @@
    "workplace": null,
    "extra": {
     "course": "Financial services administrator (level 3)",
-    "closes": "Closes in 5 days (Friday 13 November 2026)",
+    "closes": "Closes in 4 days (Friday 13 November 2026)",
     "start": "13 September 2027"
    },
    "category_label": "Other employer",
@@ -13967,7 +13963,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional accounting technician (level 4)",
-    "closes": "Closes in 22 days (Monday 30 November 2026)",
+    "closes": "Closes in 21 days (Monday 30 November 2026)",
     "start": "1 September 2027"
    },
    "category_label": "Other employer",
@@ -14003,7 +13999,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional accounting technician (level 4)",
-    "closes": "Closes in 22 days (Monday 30 November 2026)",
+    "closes": "Closes in 21 days (Monday 30 November 2026)",
     "start": "1 September 2027"
    },
    "category_label": "Other employer",
@@ -14039,7 +14035,7 @@
    "workplace": null,
    "extra": {
     "course": "Assistant accountant (level 3)",
-    "closes": "Closes in 13 days (Saturday 21 November 2026)",
+    "closes": "Closes in 12 days (Saturday 21 November 2026)",
     "start": "7 December 2026"
    },
    "category_label": "Other employer",
@@ -14111,7 +14107,7 @@
    "workplace": null,
    "extra": {
     "course": "Business analyst (level 4)",
-    "closes": "Closes in 17 days (Wednesday 25 November 2026)",
+    "closes": "Closes in 16 days (Wednesday 25 November 2026)",
     "start": "9 December 2026"
    },
    "category_label": "Other employer",
@@ -14147,7 +14143,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional taxation technician (level 4)",
-    "closes": "Closes in 29 days (Monday 7 December 2026)",
+    "closes": "Closes in 28 days (Monday 7 December 2026)",
     "start": "5 April 2027"
    },
    "category_label": "Other employer",
@@ -14183,7 +14179,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional taxation technician (level 4)",
-    "closes": "Closes in 29 days (Monday 7 December 2026)",
+    "closes": "Closes in 28 days (Monday 7 December 2026)",
     "start": "5 April 2027"
    },
    "category_label": "Other employer",
@@ -14291,7 +14287,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional accounting technician (level 4)",
-    "closes": "Closes in 19 days (Friday 27 November 2026 at 11:59pm)",
+    "closes": "Closes in 18 days (Friday 27 November 2026 at 11:59pm)",
     "start": "30 November 2026"
    },
    "category_label": "Other employer",
@@ -14363,7 +14359,7 @@
    "workplace": null,
    "extra": {
     "course": "Assistant accountant (level 3)",
-    "closes": "Closes in 16 days (Tuesday 24 November 2026)",
+    "closes": "Closes in 15 days (Tuesday 24 November 2026)",
     "start": "25 November 2026"
    },
    "category_label": "Other employer",
@@ -14399,7 +14395,7 @@
    "workplace": null,
    "extra": {
     "course": "Financial services administrator (level 3)",
-    "closes": "Closes in 19 days (Friday 27 November 2026 at 11:59pm)",
+    "closes": "Closes in 18 days (Friday 27 November 2026 at 11:59pm)",
     "start": "18 January 2027"
    },
    "category_label": "Other employer",
@@ -14435,7 +14431,7 @@
    "workplace": null,
    "extra": {
     "course": "Assistant accountant (level 3)",
-    "closes": "Closes in 16 days (Tuesday 24 November 2026)",
+    "closes": "Closes in 15 days (Tuesday 24 November 2026)",
     "start": "25 November 2026"
    },
    "category_label": "Other employer",
@@ -14471,7 +14467,7 @@
    "workplace": null,
    "extra": {
     "course": "Accounts or finance assistant (level 2)",
-    "closes": "Closes in 12 days (Friday 20 November 2026 at 11:59pm)",
+    "closes": "Closes in 11 days (Friday 20 November 2026 at 11:59pm)",
     "start": "14 December 2026"
    },
    "category_label": "Other employer",
