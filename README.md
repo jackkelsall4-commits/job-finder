@@ -10,16 +10,17 @@ Keyless, every run:
 
 | Source | Employers |
 |---|---|
-| Greenhouse API | Jane Street, IMC, Jump, DRW, HRT, XTX, Tower, Akuna, Flow Traders, Virtu, Squarepoint, Point72, Schonfeld, AQR, Man Group, Winton, General Atlantic, Lincoln International, William Blair, Teneo, Monzo, Wise, Ebury, GoCardless |
-| Workday API | Morgan Stanley, Citi, Barclays, Deutsche Bank, Bank of America, Wells Fargo, MUFG, Mizuho, BMO, TD, ING, Santander, Lloyds, Blackstone, Carlyle, Apollo, ICG, Houlihan Lokey, PwC, Grant Thornton UK, RSM UK, State Street, Neuberger Berman, LSEG |
+| Greenhouse API | Jane Street, IMC, Jump, DRW, HRT, XTX, Tower, Akuna, Flow Traders, Virtu, Squarepoint, Point72, Schonfeld, AQR, Man Group, Optiver, Qube, Maven, Winton, General Atlantic, Lincoln International, William Blair, Teneo, Monzo, Wise, Ebury, GoCardless |
+| Workday API | Morgan Stanley, Citi, Barclays, Deutsche Bank, Bank of America, Wells Fargo, MUFG, Mizuho, BMO, TD, ING, Santander, Lloyds, Blackstone, Carlyle, Apollo, ICG, Houlihan Lokey, PwC, Grant Thornton UK, RSM UK, State Street, Neuberger Berman, LSEG, Brevan Howard |
 | Oracle API | J.P. Morgan, Lazard |
 | SmartRecruiters API | FRP Advisory, Evelyn Partners |
 | EY careers site | EY Strategy & Transactions, Parthenon, Assurance |
 | Ashby API | Trading 212 |
-| Workable API | Interpath Advisory |
-| Eightfold API | HSBC |
+| Workable API | Interpath Advisory, Capula |
+| Eightfold API | HSBC, Millennium |
 | Oleeo (tal.net) feeds | Evercore, Jefferies (campus) |
-| Own careers sites | KPMG UK (kpmgcareers.co.uk), BDO UK (Radancy), Deloitte UK (Avature), Goldman Sachs (higher.gs.com), Rothschild & Co |
+| Own careers sites | KPMG UK (kpmgcareers.co.uk), BDO UK (Radancy), Deloitte UK (Avature), Goldman Sachs (higher.gs.com), Rothschild & Co, Susquehanna/SIG (iCIMS Jibe API), G-Research |
+| Not covered | Citadel and Citadel Securities (site blocks automated requests), Balyasny (Salesforce site), Marshall Wace (no public list of experienced roles) |
 | GOV.UK Find an apprenticeship | every finance / accounting / banking apprenticeship, highest wage first |
 
 Deloitte UK's server rejects older TLS libraries (for example the LibreSSL in macOS's built-in

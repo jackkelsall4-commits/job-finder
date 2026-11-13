@@ -16,6 +16,9 @@
     {"name": "Schonfeld", "slug": "schonfeld", "category": "hedge_fund"},
     {"name": "AQR", "slug": "aqr", "category": "hedge_fund"},
     {"name": "Man Group", "slug": "mangroup", "category": "hedge_fund"},
+    {"name": "Optiver", "slug": "optiverus", "category": "prop_trading"},
+    {"name": "Qube Research & Technologies", "slug": "quberesearchandtechnologies", "category": "hedge_fund"},
+    {"name": "Maven Securities", "slug": "mavensecuritiesholdingltd", "category": "prop_trading"},
     {"name": "Winton", "slug": "winton", "category": "hedge_fund"},
     {"name": "General Atlantic", "slug": "generalatlantic", "category": "pe_megafund"},
     {"name": "Monzo", "slug": "monzo", "category": "fintech"},
@@ -39,6 +42,7 @@
   ],
   "workday": [
     {"name": "Morgan Stanley", "host": "ms.wd5.myworkdayjobs.com", "tenant": "ms", "site": "External", "category": "bulge_bracket"},
+    {"name": "Brevan Howard", "host": "brevanhoward.wd3.myworkdayjobs.com", "tenant": "brevanhoward", "site": "BH_ExternalCareers", "category": "hedge_fund"},
     {"name": "Citi", "host": "citi.wd5.myworkdayjobs.com", "tenant": "citi", "site": "2", "category": "bulge_bracket"},
     {"name": "Barclays", "host": "barclays.wd3.myworkdayjobs.com", "tenant": "barclays", "site": "External_Career_Site_Barclays", "category": "bulge_bracket"},
     {"name": "Deutsche Bank", "host": "db.wd3.myworkdayjobs.com", "tenant": "db", "site": "DBWebsite", "category": "bulge_bracket"},
@@ -74,9 +78,12 @@
      "keywords": ["London", "United Kingdom"]}
   ],
   "workable": [
-    {"name": "Interpath Advisory", "slug": "interpath-advisory", "category": "mid_tier"}
+    {"name": "Interpath Advisory", "slug": "interpath-advisory", "category": "mid_tier"},
+    {"name": "Capula Investment Management", "slug": "capula-investment-management-ltd", "category": "hedge_fund"}
   ],
   "eightfold": [
+    {"name": "Millennium", "host": "mlp.eightfold.ai", "domain": "mlp.com", "category": "hedge_fund",
+     "queries": ["finance", "operations", "treasury", "risk", "accounting", "controller", "analyst", "trading", "audit"]},
     {"name": "HSBC", "host": "portal.careers.hsbc.com", "domain": "hsbc.com", "category": "bulge_bracket",
      "queries": ["investment banking", "corporate finance", "M&A", "markets", "trading", "leveraged", "private", "analyst", "graduate"]}
   ],
@@ -102,6 +109,12 @@
   "rothschild": [
     {"name": "Rothschild & Co", "category": "boutique",
      "paths": ["/en/careers/experienced-professionals/vacancies/", "/en/careers/students-and-graduates/opportunities/"]}
+  ],
+  "jibe": [
+    {"name": "Susquehanna (SIG)", "host": "careers.sig.com", "category": "prop_trading"}
+  ],
+  "gresearch": [
+    {"name": "G-Research", "category": "prop_trading"}
   ],
   "firm_aliases": {
     "_comment": "Used to classify employers found through Adzuna, Reed and GOV.UK apprenticeships. Lower-case substrings.",
