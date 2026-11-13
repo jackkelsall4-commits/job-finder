@@ -34,7 +34,7 @@ def plan(cfg, profile, only):
     """List of (label, kind, callable) for every source to query."""
     tasks = []
     for kind in ("greenhouse", "lever", "ashby", "smartrecruiters", "successfactors", "workday", "oracle",
-                 "workable", "eightfold", "oleeo", "kpmg", "radancy", "avature", "goldman", "rothschild"):
+                 "workable", "eightfold", "oleeo", "kpmg", "radancy", "avature", "goldman", "rothschild", "jibe", "gresearch"):
         fn = getattr(sources, kind)
         for firm in cfg.get(kind, []):
             tasks.append((firm["name"], kind, lambda f=firm, fn=fn: fn(f)))
@@ -70,7 +70,7 @@ def fmt_money(v):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--only", help="comma list of source kinds: greenhouse,lever,ashby,smartrecruiters,successfactors,workday,oracle,workable,eightfold,oleeo,kpmg,radancy,avature,goldman,rothschild,faa,adzuna,reed,faa_api")
+    ap.add_argument("--only", help="comma list of source kinds: greenhouse,lever,ashby,smartrecruiters,successfactors,workday,oracle,workable,eightfold,oleeo,kpmg,radancy,avature,goldman,rothschild,jibe,gresearch,faa,adzuna,reed,faa_api")
     ap.add_argument("--top", type=int, default=25)
     ap.add_argument("--probe", action="store_true", help="only report which sources answer")
     ap.add_argument("--out", default=str(ROOT / "data"))

@@ -672,3 +672,58 @@ def rothschild(firm, max_details=40):
     picked = _relevant_first(list(rows.values()), lambda r: r[0] + " " + r[2], max_details)
     with ThreadPoolExecutor(6) as ex:
         return list(ex.map(detail, picked))
+
+
+# ---------------------------------------------------------------- iCIMS Jibe career sites (e.g. SIG)
+def jibe(firm, max_pages=10):
+    host = firm["host"]
+    out, page = [], 1
+    while page <= max_pages:
+        d = fetch_json(f"https://{host}/api/jobs?page={page}&limit=100")
+        rows = d.get("jobs", [])
+        for r in rows:
+            j = r.get("data", r)
+            loc = j.get("full_location") or j.get("location_name") or ""
+            if not is_uk(loc, j.get("country") or ""):
+                continue
+            cats = ", ".join(c.get("name", "") for c in (j.get("categories") or []) if isinstance(c, dict))
+            out.append(job(
+                source="jibe", company=firm["name"], category=firm["category"], title=j.get("title", ""),
+                location=loc, url=f"https://{host}/jobs/{j.get('slug') or j.get('req_id')}",
+                posted=(j.get("posted_date") or j.get("create_date") or "")[:10],
+                department=j.get("department") or cats,
+                description=html_to_text((j.get("description") or "") + " " + (j.get("qualifications") or "")),
+            ))
+        if len(rows) < 100 or page * 100 >= (d.get("totalCount") or 0):
+            break
+        page += 1
+    return out
+
+
+# ---------------------------------------------------------------- G-Research (server-rendered list)
+def gresearch(firm, max_details=40):
+    site = "https://www.gresearch.com"
+    h = fetch(f"{site}/vacancies/")
+    rows = []
+    for href, body in re.findall(r'<a href="([^"]+/vacancies/[^"]+)" class="c-vacancy-result">(.*?)</a>', h, re.S):
+        title = html_to_text((re.search(r'__title">(.*?)</span>', body, re.S) or [None, ""])[1])
+        place = html_to_text((re.search(r'__location">(.*?)</span>', body, re.S) or [None, ""])[1])
+        if title and is_uk(place):
+            rows.append((title, place, href))
+
+    def detail(r):
+        title, place, url = r
+        desc = ""
+        try:
+            d = fetch(url, retries=1)
+            m = re.search(r"<main[^>]*>(.*?)</main>", d, re.S)
+            desc = html_to_text(m.group(1)) if m else ""
+        except Exception:
+            pass
+        return job(source="gresearch", company=firm["name"], category=firm["category"], title=title,
+                   location=place if "United Kingdom" in place else f"{place}, United Kingdom", url=url,
+                   description=desc)
+
+    picked = _relevant_first(rows, lambda r: r[0], max_details)
+    with ThreadPoolExecutor(6) as ex:
+        return list(ex.map(detail, picked))
