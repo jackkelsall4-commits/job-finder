@@ -26,11 +26,34 @@ RELEVANT_TITLE = re.compile(
 )
 
 
+def iso_date(s):
+    """Posting dates arrive as ISO, "1 October 2026", "Posted 3 Days Ago"...; return YYYY-MM-DD or ""."""
+    s = (s or "").strip()
+    if re.match(r"\d{4}-\d\d-\d\d", s):
+        return s[:10]
+    low = s.lower().replace("posted", "").strip()
+    day = 86400
+    if low in ("today", "just now"):
+        return time.strftime("%Y-%m-%d", time.gmtime())
+    if low == "yesterday":
+        return time.strftime("%Y-%m-%d", time.gmtime(time.time() - day))
+    m = re.match(r"(\d+)\+? days? ago", low)
+    if m:
+        return time.strftime("%Y-%m-%d", time.gmtime(time.time() - int(m.group(1)) * day))
+    for fmt in ("%d %B %Y", "%d %b %Y", "%B %d, %Y", "%b %d, %Y", "%d/%m/%Y"):
+        try:
+            return time.strftime("%Y-%m-%d", time.strptime(s, fmt))
+        except ValueError:
+            pass
+    return ""
+
+
 def job(**kw):
     base = dict(source="", company="", category=None, title="", location="", url="", posted="",
                 department="", description="", salary_min=None, salary_max=None, salary_currency=None, salary_text="",
                 workplace=None, extra={})
     base.update(kw)
+    base["posted"] = iso_date(base["posted"])
     return base
 
 

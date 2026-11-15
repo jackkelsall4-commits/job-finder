@@ -33,7 +33,7 @@ _UK_RX = re.compile(r"\b(" + "|".join(re.escape(w) for w in UK_WORDS) + r")\b|\b
 _FALSE_UK = re.compile(r"united states|\busa\b|\bu\.s\.|canada|australia|new york|new england|london,? (ontario|on\b|ky|kentucky|ohio)|birmingham,? (al|alabama|mi)|"
                        r"cambridge,? (ma|massachusetts)|manchester,? (nh|ct)|reading,? pa|york,? pa|"
                        r"aberdeen,? (sd|md|wa)|bath,? (me|ny)|newcastle,? (nsw|australia)|perth|"
-                       r"wales,? (nsw|australia)|new south wales", re.I)
+                       r"wales,? (nsw|australia)|new south wales|new london", re.I)
 
 
 def is_uk(*parts):
@@ -71,8 +71,8 @@ def is_us(*parts):
 def region_of(*parts):
     """"UK", "US" or None. A posting listed in both (e.g. "London / New York") counts as UK."""
     s = " | ".join(p for p in parts if p)
-    if is_uk(s) or (re.search(r"\blondon\b(?!,? (ontario|on\b|ky|kentucky|ohio))|canary wharf|edinburgh|glasgow|england|scotland", s, re.I)
-                    and re.search(r"[/;|]|\balso\b", s)):
+    if is_uk(s) or (re.search(r"(?<!new )\blondon\b(?!,? (ontario|on\b|ky|kentucky|ohio))|canary wharf|edinburgh|glasgow|england|scotland", s, re.I)
+                    and re.search(r"[/;|,]|\b(also|or|and)\b", s)):
         return "UK"
     if is_us(*parts):
         return "US"

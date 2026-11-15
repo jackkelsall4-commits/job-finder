@@ -80,12 +80,15 @@ TRACKS = [(n, w, re.compile(rx, re.I)) for n, w, rx in TRACKS]
 TECH = re.compile(r"engineer|developer|software|devops|\bsre\b|infrastructure|data scien|machine learning|"
                   r"cyber|security|\bit\b|technolog|desktop|help ?desk|service desk|cloud|platform|architect|network|systems|java|python|c\+\+|"
                   r"quant(itative)? (dev|research)|researcher|fpga|hardware|kdb|\bdba\b|database|postgres|\bsql\b|\biam\b|"
-                  r"identity (and|&) access|csirt|\bsoc\b|incident response", re.I)
+                  r"identity (and|&) access|csirt|\bsoc\b|incident response|application support", re.I)
 NON_FIN = re.compile(r"\b(hr|human resources|people partner|recruit\w*|talent|front desk|meteorolog\w*|scientist|social media|team assistant|office assistant|legal|counsel|paralegal|marketing|"
                      r"communications|customer experience|branch|cashier|contact centre|account executive|reporter|journalist|editor|lawyer|solicitor|attorney|designer|office manager|receptionist|facilities|executive assistant|"
                      r"personal assistant|administrator|chef|cleaner|driver|nurse|teacher|customer service|"
                      r"call centre|retail assistant|barista|warehouse|hospitality|coffee|food service|catering|concierge|"
-                     r"housekeeping|mailroom|interest form|discovery event|chess academy|high school|pact \d{4}|conference)\b", re.I)
+                     r"housekeeping|mailroom|interest form|discovery event|chess academy|high school|pact \d{4}|conference|"
+                     r"administrative (assistant|support|coordinator)|admin assistant|register your interest|expression of interest|"
+                     r"general application|proposal writer|bids? (executive|writer|manager|coordinator)|training specialist|"
+                     r"financial guide)\b", re.I)
 
 
 def interest_of(title, text):
@@ -112,7 +115,7 @@ def interest_of(title, text):
 def level_of(title, dept=""):
     t = (title or "").lower()
     if re.search(r"\bintern(ship)?s?\b|placement|summer|spring (week|insight)|insight (week|programme|day)|"
-                 r"off[- ]cycle|industrial|work experience|year in industry", t):
+                 r"off[- ]cycle|industrial|work experience|year in industry|\bco-?op\b", t):
         return "intern"
     if re.search(r"apprentic|school leaver", t) or dept == "Apprenticeship":
         return "apprentice"
@@ -289,8 +292,8 @@ def years_required(low):
 _NEEDS_EXP = re.compile(r"(?:(you have|you'll have|you will have|you'll need|you need|you must have|must have|required|requirements|"
                         r"essential|skills and experience|what you need|what you'll bring|you bring|you'll bring|ideal candidate)"
                         r"\W{0,4}(?:significant |proven |strong |solid |demonstrable |relevant |prior |previous |direct |hands-on )*"
-                        r"|\b(?:previous|prior|proven|demonstrable|direct|hands-on|solid|strong|significant|extensive|substantial|deep) )"
-                        r"(?:[\w-]+ ){0,3}?experience (?:in|of|with|within|across)\s+([^.;•]{0,90})", re.I)
+                        r"|\b(?:previous|prior|proven|demonstrable|direct|hands-on|solid|strong|significant|extensive|substantial|deep|relevant) )"
+                        r"(?:[\w-]+ ){0,3}?experience (?:(?:gained|acquired|built|working) )?(?:in|of|with|within|across|at)\s+([^.;•]{0,90})", re.I)
 # Roles that need an existing client book, deal leadership or people management.
 _BOOK = re.compile(r"book of business|portfolio of clients|client book|established (network|relationships|client)|"
                    r"deep (industry|client) relationships|lead coverage|assume (lead )?coverage|track record of (generating|originating|winning|"
@@ -362,7 +365,7 @@ _SOFT = re.compile(r"^[^.]{0,40}\b(preferred|preferable|desirable|advantage|adva
 _SOFT_BEFORE = re.compile(r"\b(ideally|preferably|desirable|nice to have|bonus|plus)\b[^.]{0,30}$", re.I)
 _ADV_DEGREE = re.compile(r"\b(master'?s(?! (of|in) (none|excel))|msc|m\.sc|mba|ph\.?d|doctorate|doctoral|advanced degree|"
                          r"postgraduate (degree|qualification))\b", re.I)
-_DEGREE = re.compile(r"(bachelor'?s?|undergraduate|university|third[- ]level|3rd[- ]level|college) degree|degree[- ](level|educated)|"
+_DEGREE = re.compile(r"\bbachelor|degree or equivalent|(undergraduate|university|third[- ]level|3rd[- ]level|college) degree|degree[- ](level|educated)|"
                      r"educated to degree|tertiary (qualification|degree|education)|\b2[:.]1\b|degree (is )?(required|essential)|hold a degree|have a degree|"
                      r"(a|relevant|strong) degree in|\bbsc\b|\bb\.?a\.? in\b|\bbs\b (in|degree)|degree in (finance|economics|"
                      r"accounting|business|math)", re.I)
@@ -370,7 +373,22 @@ _STEM_DEGREE = re.compile(r"degree[^.]{0,30}?\b(in|of)\b([^.]{0,90})", re.I)
 _STEM = re.compile(r"meteorolog|atmospheric|physics|mathemat|\bmaths\b|computer science|engineering|statistics|chemistry|"
                    r"biology|\blaw\b|medicine|data science|machine learning|actuarial science", re.I)
 _FIN_SUBJ = re.compile(r"financ|account|econom|business", re.I)
-_QUALIFIED = re.compile(r"newly[- ]qualified|\bnq\b|fully[- ]qualified|qualified (aca|acca|cima|cpa|accountant|chartered)|"
+_NO_DEGREE = re.compile(r"(don'?t|do not|doesn'?t|does not) (need|require|have to have) a degree|with or without a degree|"
+                        r"degree (is )?not (required|necessary|essential|needed)|no degree (required|needed|necessary)|"
+                        r"regardless of (your )?degree", re.I)
+# Specialist qualifications the candidate doesn't hold (AAT/ACA don't cover them).
+_OTHER_QUAL = re.compile(r"\b(m?rics)\b|chartered surveyor|qualified (real estate )?valu\w* professional|statement of professional standing|"
+                         r"\bdippfs\b|diploma in (regulated )?financial planning|chartered financial planner|"
+                         r"qualified financial (adviser|advisor|planner)|\bcta[- ]qualified|qualified cta\b|\batt[- ]qualified|"
+                         r"cfa charter ?holder", re.I)
+_OTHER_QUAL_NAME = [("rics", "RICS (chartered surveyor)"), ("surveyor", "RICS (chartered surveyor)"),
+                    ("valu", "a property-valuation (RICS) qualification"), ("professional standing", "a regulated financial-adviser qualification"),
+                    ("financial planning", "a regulated financial-adviser qualification"), ("dippfs", "a regulated financial-adviser qualification"),
+                    ("planner", "a regulated financial-adviser qualification"), ("adviser", "a regulated financial-adviser qualification"),
+                    ("advisor", "a regulated financial-adviser qualification"), ("cta", "a tax qualification (CTA)"),
+                    ("att", "a tax qualification (ATT)"), ("cfa", "the CFA charter")]
+_QUALIFIED = re.compile(r"newly[- ]qualified|\bnq\b|fully[- ]qualified|qualified \(?(aca|acca|cima|cpa|accountant|chartered|auditors?|"
+                        r"(audit|assurance) (or (audit|assurance) )?professional)|"
                         r"\b(aca|acca|cima|cpa|icaew)\b[^.]{0,30}?\bqualified\b|chartered accountan(t|cy)|post[- ]qualification|"
                         r"\bpqe\b|qualified accountant|(accountancy|accounting) qualification( or equivalent)?( is)? (required|essential)|"
                         r"(aca|acca|cima|cpa)( or (aca|acca|cima|cpa|equivalent))*,? (is )?(required|essential)|"
@@ -413,18 +431,26 @@ _BOILER2 = re.compile(r"if you are looking for|if you're looking for|our roles g
                       r"\d[\d,]* (people|employees|colleagues)|countries|years of (history|heritage)|our clients include", re.I)
 
 
+def _boiler(x, title_low=""):
+    """Company blurb / pay / HR wording - unless the word is the job's own subject (a Compensation Analyst's advert says "compensation")."""
+    if _BOILER2.search(x):
+        return True
+    return any(m.group(0).lower() not in title_low for m in _BOILER.finditer(x))
+
+
 def role_summary(desc, title="", n=210):
     """The advert's own sentence(s) on what the job is; '' if the advert text is too short to tell.
     Picks the early sentence that best describes the job: role wording ("you will", "we are looking for")
     and the title's own words count for it, company blurb counts against it."""
     if not desc or len(desc) < 120:
         return ""
-    words = {w for w in re.findall(r"[a-z&]+", (title or "").lower()) if w not in _STOP and len(w) > 2}
+    tl = (title or "").lower()
+    words = {w for w in re.findall(r"[a-z&]+", tl) if w not in _STOP and len(w) > 2}
     sents = [x.strip() for x in _SENT_SPLIT.split(desc[:9000]) if x and len(x.strip()) > 25][:45]
     best, best_score = None, 0
     for i, x in enumerate(sents):
         body = _HEADER.sub("", x)
-        if not 40 <= len(body) <= 600 or _BOILER.search(x) or _BOILER2.search(x):
+        if not 40 <= len(body) <= 600 or _boiler(x, tl):
             continue
         sc = sum(3 - k * .5 for k, rx in enumerate(_ROLE_RX) if rx.search(x))
         sc += 1.5 * min(3, sum(1 for w in words if re.search(r"\b" + re.escape(w), x.lower())))
@@ -432,13 +458,13 @@ def role_summary(desc, title="", n=210):
         if sc > best_score:
             best, best_score = i, sc
     if best is None:
-        best = next((i for i, x in enumerate(sents) if len(x) >= 50 and not _BOILER.search(x) and not _BOILER2.search(x)), None)
+        best = next((i for i, x in enumerate(sents) if len(x) >= 50 and not _boiler(x, tl)), None)
     if best is None:
         return ""
     out = _HEADER.sub("", sents[best])
     out = re.sub(r"^(purpose of the role|about the role|the role)\s+", "", out, flags=re.I)
     nxt = sents[best + 1] if best + 1 < len(sents) else ""
-    if len(out) < 120 and nxt and not _BOILER.search(nxt) and not _BOILER2.search(nxt):
+    if len(out) < 120 and nxt and not _boiler(nxt, tl):
         out = out.rstrip(".") + ". " + _HEADER.sub("", nxt)
     out = out[0].upper() + out[1:] if out else out
     return _clip(out, n)
@@ -571,7 +597,7 @@ def eligibility(job, level, profile, stage="now"):
                  r"soon[- ]to[- ]be graduates?|graduated (in|within)|class of 20\d\d|(in|of) your (final|penultimate) year|"
                  r"graduation (year|date) of 20\d\d|job family: undergraduate|graduate (programme|scheme) for (graduates|students)|"
                  r"are you a student|(first|second|1st|2nd)[- ]year (college |university )?students?|high school students?|"
-                 r"open to (college|university) students", low):
+                 r"open to (college|university) students|students? in the (last|final) year of|(last|final) year of (their|your) (bachelor|degree|studies)", low):
         m *= .2
         flags.append("Student / recent-graduate only")
 
@@ -589,7 +615,9 @@ def eligibility(job, level, profile, stage="now"):
         f = _gap_factor(3 - st["years"] * credit)
         if f < 1 and (worst is None or f < worst[0]):
             worst = (f, 3, False, "senior title, no years given", credit)
-    need = next((x for x in _NEEDS_EXP.finditer(low) if not _soft(low, x)), None) if advert_read else None
+    need = next((x for x in _NEEDS_EXP.finditer(low) if not _soft(low, x)
+                 and not re.search(r"\b(is |are )?(preferred|desirable|a plus|advantageous|an advantage|beneficial)\b", x.group(2))),
+                None) if advert_read else None
     if need and _credit(need.group(2)) < 1:
         c = _credit(need.group(2))
         m *= .5 if c == 0 else .75
@@ -642,7 +670,7 @@ def eligibility(job, level, profile, stage="now"):
             flags.append("Python/SQL is a plus, not required - worth learning")
 
     # Degrees
-    if not q.get("degree") and level not in ("apprentice", "intern") and advert_read:
+    if not q.get("degree") and level not in ("apprentice", "intern") and advert_read and not _NO_DEGREE.search(low):
         # A master's offered as an alternative to a first degree ("bachelor's or master's") isn't a master's requirement.
         adv = next((x for x in _ADV_DEGREE.finditer(low)
                     if not re.search(r"(bachelor|undergraduate|ba/bsc|bsc|first degree|\bor\b|and/or)[^.]{0,30}$",
@@ -660,6 +688,10 @@ def eligibility(job, level, profile, stage="now"):
         elif deg:
             equiv = re.search(r"degree[^.]{0,60}\bor\b[^.]{0,30}(equivalent|professional qualification|aca|acca|"
                               r"relevant experience|experience)|no degree|degree not required", low)
+            # "Bachelor's degree or equivalent: in Finance ... or equivalent degree - Required" means an equivalent *degree*.
+            if equiv and re.search(r"equivalent (degree|qualification from)|(degree|diploma)[^.]{0,20}equivalent[^.]{0,80}"
+                                   r"\bdegree\b[^.]{0,15}required", low[equiv.start():equiv.end() + 120]):
+                equiv = None
             if _soft(low, deg):
                 m *= 1 if aca else .85
                 flags.append("A degree is preferred, not required")
@@ -670,6 +702,27 @@ def eligibility(job, level, profile, stage="now"):
                 m *= .85 if aca else .5
                 flags.append("Asks for a degree" + (" - many firms accept ACA instead, but check" if aca
                                                      else " - you'd need them to accept AAT L4 + experience"))
+
+    # Graduate schemes: normally degree-gated, and they restart a 3-year training contract.
+    # (Campus hiring: "Graduate Analyst", "2027 Data & AI Program", "New Grad", "Campus".)
+    if level == "entry" and re.search(r"\bgraduates?\b|\bgrad\b|\bcampus\b|\b20\d\d\b[^|]{0,60}\bprogram(me)?\b|\bprogram(me)?\b[^|]{0,40}\b20\d\d\b",
+                                      title) and not re.search(r"\bnon[- ]graduate", title):
+        if not q.get("degree") and not _NO_DEGREE.search(low) and not any(f.startswith(("Asks for a degree", "A degree is")) for f in flags):
+            m *= .5 if aca else .3
+            flags.append("Graduate programme - usually needs a degree" + (", though ACA may count" if aca else ""))
+        if not aca and re.search(r"\b(aca|acca|cima|icas|chartered accountan)", low):
+            m *= .6
+            flags.append("Restarts a professional-qualification training contract - a step back from year 3 of yours")
+
+    # Specialist qualifications outside accountancy (RICS, regulated financial planning, CTA/ATT, CFA charter).
+    other = next((x for x in _OTHER_QUAL.finditer(low)
+                  if not _soft(low, x) and not re.search(r"(\bor\b|towards|studying|working)[^.]{0,25}$", low[max(0, x.start() - 30):x.start()])),
+                 None) if advert_read and level not in ("apprentice", "intern") else None
+    if other:
+        g = other.group(0)
+        name = next((n for k, n in _OTHER_QUAL_NAME if k in g), "a specialist qualification")
+        m *= .2
+        flags.append(f"Needs {name} - AAT/ACA don't cover it")
 
     # Accountancy qualification
     qual = next((x for x in _QUALIFIED.finditer(low)
@@ -752,7 +805,8 @@ def eligibility(job, level, profile, stage="now"):
             m *= .35
             flags.append(f"Level {lvl.group(1)} - at or below a level you already hold")
         elif lvl and int(lvl.group(1)) >= 6:
-            flags.append(f"Level {lvl.group(1)} degree apprenticeship")
+            m *= .4
+            flags.append(f"Level {lvl.group(1)} degree apprenticeship - restarts training on apprentice pay, a step back from year 3 of yours")
         if re.search(r"\baat\b", job.get("title", ""), re.I):
             m *= .5
     # GCSE / UCAS checks
