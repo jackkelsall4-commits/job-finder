@@ -13,7 +13,7 @@ import urllib.parse
 from concurrent.futures import ThreadPoolExecutor
 
 from .http import fetch, fetch_json
-from .text import html_to_text, is_uk
+from .text import html_to_text, is_uk, is_us, in_scope, US_HUBS
 from . import scoring
 
 # Titles worth fetching full descriptions for (Workday/Oracle list views have no body text).
@@ -28,7 +28,7 @@ RELEVANT_TITLE = re.compile(
 
 def job(**kw):
     base = dict(source="", company="", category=None, title="", location="", url="", posted="",
-                department="", description="", salary_min=None, salary_max=None, salary_text="",
+                department="", description="", salary_min=None, salary_max=None, salary_currency=None, salary_text="",
                 workplace=None, extra={})
     base.update(kw)
     return base
@@ -41,11 +41,12 @@ def greenhouse(firm):
     for j in d.get("jobs", []):
         offices = " / ".join(o.get("name", "") + " " + (o.get("location") or "") for o in j.get("offices", []))
         loc = (j.get("location") or {}).get("name", "")
-        if not is_uk(loc, offices):
+        if not in_scope(loc, offices):
             continue
-        if not is_uk(loc):  # multi-office posting: show the UK office
-            uk = [o.get("name", "") for o in j.get("offices", []) if is_uk(o.get("name", ""), o.get("location") or "")]
-            loc = " / ".join(uk) + (f" (also {loc})" if loc else "")
+        if not in_scope(loc):  # multi-office posting: show the UK (or US) office
+            mine = [o.get("name", "") for o in j.get("offices", []) if is_uk(o.get("name", ""), o.get("location") or "")] or \
+                   [o.get("name", "") for o in j.get("offices", []) if is_us(o.get("name", ""), o.get("location") or "")]
+            loc = " / ".join(mine) + (f" (also {loc})" if loc else "")
         out.append(job(
             source="greenhouse", company=firm["name"], category=firm["category"], title=j["title"],
             location=loc, url=j.get("absolute_url", ""), posted=(j.get("updated_at") or "")[:10],
@@ -62,17 +63,18 @@ def lever(firm):
     for j in d:
         c = j.get("categories", {})
         locs = " / ".join([c.get("location") or ""] + (c.get("allLocations") or []))
-        if not is_uk(locs, j.get("country")):
+        if not in_scope(locs, j.get("country")):
             continue
         sr = j.get("salaryRange") or {}
+        cur = sr.get("currency") if sr.get("currency") in ("GBP", "USD") else None
         out.append(job(
             source="lever", company=firm["name"], category=firm["category"], title=j["text"],
             location=locs, url=j.get("hostedUrl", ""),
             posted=time.strftime("%Y-%m-%d", time.gmtime(j.get("createdAt", 0) / 1000)),
             department=" / ".join(filter(None, [c.get("department"), c.get("team")])),
             description=(j.get("descriptionPlain") or "")[:15000],
-            salary_min=sr.get("min") if sr.get("currency") == "GBP" else None,
-            salary_max=sr.get("max") if sr.get("currency") == "GBP" else None,
+            salary_min=sr.get("min") if cur else None, salary_max=sr.get("max") if cur else None,
+            salary_currency=cur,
             workplace=j.get("workplaceType"),
         ))
     return out
@@ -85,19 +87,19 @@ def ashby(firm):
     for j in d.get("jobs", []):
         locs = " / ".join([j.get("location") or ""] + [s.get("location", "") for s in j.get("secondaryLocations", [])])
         country = (((j.get("address") or {}).get("postalAddress") or {}).get("addressCountry")) or ""
-        if not is_uk(locs, country):
+        if not in_scope(locs, country):
             continue
-        smin = smax = None
+        smin = smax = cur = None
         for comp in ((j.get("compensation") or {}).get("summaryComponents") or []):
-            if comp.get("compensationType") == "Salary" and comp.get("currencyCode") == "GBP":
-                smin, smax = comp.get("minValue"), comp.get("maxValue")
+            if comp.get("compensationType") == "Salary" and comp.get("currencyCode") in ("GBP", "USD"):
+                smin, smax, cur = comp.get("minValue"), comp.get("maxValue"), comp.get("currencyCode")
         wp = "remote" if j.get("isRemote") else (j.get("workplaceType") or None)
         out.append(job(
             source="ashby", company=firm["name"], category=firm["category"], title=j["title"],
             location=locs, url=j.get("jobUrl", ""), posted=(j.get("publishedAt") or "")[:10],
             department=" / ".join(filter(None, [j.get("department"), j.get("team")])),
             description=(j.get("descriptionPlain") or "")[:15000],
-            salary_min=smin, salary_max=smax,
+            salary_min=smin, salary_max=smax, salary_currency=cur,
             salary_text=(j.get("compensation") or {}).get("compensationTierSummary") or "",
             workplace=wp,
         ))
@@ -107,13 +109,15 @@ def ashby(firm):
 # ---------------------------------------------------------------- SmartRecruiters
 def smartrecruiters(firm):
     base = f"https://api.smartrecruiters.com/v1/companies/{firm['slug']}/postings"
-    rows, offset = [], 0
-    while offset < 500:
-        d = fetch_json(f"{base}?limit=100&offset={offset}&country=gb")
-        rows += d.get("content", [])
-        offset += 100
-        if offset >= d.get("totalFound", 0):
-            break
+    rows = []
+    for cc in ("gb", "us"):
+        offset = 0
+        while offset < 500:
+            d = fetch_json(f"{base}?limit=100&offset={offset}&country={cc}")
+            rows += d.get("content", [])
+            offset += 100
+            if offset >= d.get("totalFound", 0):
+                break
 
     def detail(r):
         desc = ""
@@ -131,7 +135,7 @@ def smartrecruiters(firm):
             description=desc[:15000], workplace=wp,
         )
 
-    rows = [r for r in rows if is_uk(r.get("location", {}).get("fullLocation", ""), r.get("location", {}).get("country", ""))]
+    rows = [r for r in rows if in_scope(r.get("location", {}).get("fullLocation", ""), r.get("location", {}).get("country", ""))]
     with ThreadPoolExecutor(6) as ex:
         return list(ex.map(detail, rows[:80]))
 
@@ -174,9 +178,14 @@ def successfactors(firm, max_details=60):
 
 
 # ---------------------------------------------------------------- Workday
-def _find_uk_facet(facets):
-    """Workday facet filter for UK jobs: the country facet if the site has one,
-    otherwise every location value that looks British."""
+COUNTRIES = {"UK": (("United Kingdom", "UK", "Great Britain"), is_uk),
+             "US": (("United States", "United States of America", "USA", "US"), is_us)}
+
+
+def _find_country_facet(facets, region):
+    """Workday facet filter for one country: the country facet if the site has one,
+    otherwise every location value in that country."""
+    names, test = COUNTRIES[region]
     country, places = None, {}
 
     def walk(fs):
@@ -186,59 +195,96 @@ def _find_uk_facet(facets):
             for v in f.get("values", []) or []:
                 if "facetParameter" in v:
                     walk([v])
-                elif "ountry" in param and v.get("descriptor") in ("United Kingdom", "UK", "Great Britain"):
+                elif "ountry" in param and v.get("descriptor") in names:
                     country = (param, [v["id"]])
-                elif "ocation" in param and is_uk(v.get("descriptor", "")):
+                elif "ocation" in param and test(v.get("descriptor", "")) and \
+                        (region == "UK" or not is_uk(v.get("descriptor", ""))):
                     places.setdefault(param, []).append(v["id"])
     walk(facets)
     if country:
         return country
     if places:
         param = max(places, key=lambda k: len(places[k]))
-        return param, places[param]
+        ids = places[param]
+        if len(ids) > 60:  # e.g. Bank of America lists 500 US branches; the site refuses that many, so keep finance hubs
+            hub = {v["id"] for f in (facets or []) for v in _facet_values(f) if US_HUBS.search(v.get("descriptor", ""))}
+            ids = [i for i in ids if i in hub][:60] or ids[:60]
+        return param, ids
     return None
 
 
-def workday(firm, max_details=80):
-    base = f"https://{firm['host']}/wday/cxs/{firm['tenant']}/{firm['site']}"
-    first = fetch_json(base + "/jobs", data={"appliedFacets": {}, "limit": 20, "offset": 0, "searchText": ""})
-    facet = _find_uk_facet(first.get("facets"))
-    applied = {facet[0]: facet[1]} if facet else {}
-    search = "" if facet else "United Kingdom"
-    postings, offset, total = [], 0, None
-    while offset < 600:
-        page = fetch_json(base + "/jobs", data={"appliedFacets": applied, "limit": 20, "offset": offset, "searchText": search})
-        total = page.get("total", 0) if total is None else total
-        batch = page.get("jobPostings", [])
-        postings += batch
-        offset += 20
-        if not batch or offset >= total:
-            break
-    keep = [p for p in postings if RELEVANT_TITLE.search(p.get("title", ""))]
-    keep.sort(key=lambda p: -scoring.interest_of(p.get("title", ""), "")[0])
-    site_root = f"https://{firm['host']}/en-US/{firm['site']}"
+def _facet_values(f):
+    for v in f.get("values", []) or []:
+        if "facetParameter" in v:
+            yield from _facet_values(v)
+        else:
+            yield v
 
-    def detail(p):
-        info = {}
+
+def _wd(url, data=None, retries=2):
+    """Workday throttles bursts (HTTP 429/500/503); back off and try again rather than lose the firm."""
+    for attempt in range(4):
         try:
-            info = fetch_json(base + p["externalPath"], retries=1).get("jobPostingInfo", {})
-        except Exception:
-            pass
-        loc = info.get("location") or p.get("locationsText", "")
-        country = ((info.get("country") or {}).get("descriptor")) or ""
-        if not facet and not is_uk(loc, country):
-            return None
-        return job(
-            source="workday", company=firm["name"], category=firm["category"], title=p["title"],
-            location=loc + (f" ({country})" if country and country not in loc else ""),
-            url=info.get("externalUrl") or site_root + p["externalPath"],
-            posted=info.get("startDate") or p.get("postedOn", ""),
-            description=html_to_text(info.get("jobDescription", "")),
-            extra={"closes": info.get("endDate")} if info.get("endDate") else {},
-        )
+            return fetch_json(url, data=data, retries=retries) if data is not None else fetch_json(url, retries=retries)
+        except Exception as e:
+            if attempt == 3 or not re.search(r"\b(429|500|502|503)\b", str(e)):
+                raise
+            time.sleep(6 * (attempt + 1))
 
-    with ThreadPoolExecutor(8) as ex:
-        return [j for j in ex.map(detail, keep[:max_details]) if j]
+
+def workday(firm, max_details=80):
+    """UK roles, plus US roles where the firm hires there (each country gets its own detail budget)."""
+    base = f"https://{firm['host']}/wday/cxs/{firm['tenant']}/{firm['site']}"
+    first = _wd(base + "/jobs", data={"appliedFacets": {}, "limit": 20, "offset": 0, "searchText": ""})
+    site_root = f"https://{firm['host']}/en-US/{firm['site']}"
+    out = []
+    for region in firm.get("regions", ["UK", "US"]):
+        facet = _find_country_facet(first.get("facets"), region)
+        if not facet and region != "UK":
+            continue  # no US presence on this site
+        applied = {facet[0]: facet[1]} if facet else {}
+        search = "" if facet else "United Kingdom"
+        postings, offset, total = [], 0, None
+        while offset < 600:
+            try:
+                page = _wd(base + "/jobs", data={"appliedFacets": applied, "limit": 20, "offset": offset, "searchText": search})
+            except Exception:
+                if region == "UK" and not postings:
+                    raise
+                break  # a US listing failing shouldn't lose the UK roles
+            total = page.get("total", 0) if total is None else total
+            batch = page.get("jobPostings", [])
+            postings += batch
+            offset += 20
+            if not batch or offset >= total:
+                break
+        keep = [p for p in postings if RELEVANT_TITLE.search(p.get("title", ""))]
+        keep.sort(key=lambda p: -scoring.interest_of(p.get("title", ""), "")[0])
+        names, test = COUNTRIES[region]
+
+        def detail(p, facet=facet, test=test, names=names):
+            info = {}
+            try:
+                info = _wd(base + p["externalPath"], retries=1).get("jobPostingInfo", {})
+            except Exception:
+                pass
+            loc = info.get("location") or p.get("locationsText", "")
+            country = ((info.get("country") or {}).get("descriptor")) or ""
+            # A location facet can't tell Birmingham, Alabama from Birmingham, England; the country field can.
+            if (country and country not in names) or (not country and not facet and not test(loc)):
+                return None
+            return job(
+                source="workday", company=firm["name"], category=firm["category"], title=p["title"],
+                location=loc + (f" ({country})" if country and country not in loc else ""),
+                url=info.get("externalUrl") or site_root + p["externalPath"],
+                posted=info.get("startDate") or p.get("postedOn", ""),
+                description=html_to_text(info.get("jobDescription", "")),
+                extra={"closes": info.get("endDate")} if info.get("endDate") else {},
+            )
+
+        with ThreadPoolExecutor(5) as ex:
+            out += [j for j in ex.map(detail, keep[:max_details]) if j]
+    return out
 
 
 # ---------------------------------------------------------------- Oracle (J.P. Morgan)
@@ -253,7 +299,7 @@ def oracle(firm, per_keyword=300):
             items = fetch_json(q)["items"]
             reqs = items[0].get("requisitionList", []) if items else []
             for r in reqs:
-                if r["Id"] not in seen and r.get("PrimaryLocationCountry") == "GB":
+                if r["Id"] not in seen and r.get("PrimaryLocationCountry") in ("GB", "US"):
                     seen.add(r["Id"])
                     rows.append(r)
             offset += 100
@@ -271,7 +317,27 @@ def oracle(firm, per_keyword=300):
             department=" / ".join(filter(None, [r.get("JobFamily"), r.get("JobFunction")])),
             description=r.get("ShortDescriptionStr") or "",
             workplace=(r.get("WorkplaceTypeCode") or "").lower() or None,
+            extra={"rid": r["Id"]},
         ))
+
+    # The list only has a one-line summary; fetch the full advert (requirements included) for the most relevant roles.
+    def full(j):
+        try:
+            d = fetch_json(f"https://{firm['host']}/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all"
+                           f"&onlyData=true&finder=ById;Id=%22{j['extra']['rid']}%22,siteNumber={firm['site']}", retries=1)
+            it = (d.get("items") or [{}])[0]
+            txt = " ".join(html_to_text(it.get(k) or "") for k in
+                           ("ExternalDescriptionStr", "ExternalResponsibilitiesStr", "ExternalQualificationsStr"))
+            if len(txt) > len(j["description"]):
+                j["description"] = txt.strip()[:15000]
+        except Exception:
+            pass
+
+    picked = sorted(out, key=lambda j: -scoring.interest_of(j["title"], "")[0])[:firm.get("max_details", 160)]
+    with ThreadPoolExecutor(6) as ex:
+        list(ex.map(full, picked))
+    for j in out:
+        j["extra"].pop("rid", None)
     return out
 
 
@@ -443,7 +509,7 @@ def workable(firm):
     for j in rows:
         locs = [j.get("location") or {}] + (j.get("locations") or [])
         place = " / ".join(dict.fromkeys(", ".join(filter(None, [l.get("city"), l.get("country")])) for l in locs if l))
-        if not (any(l.get("countryCode") == "GB" for l in locs) or is_uk(place)):
+        if not (any(l.get("countryCode") in ("GB", "US") for l in locs) or in_scope(place)):
             continue
         wp = "remote" if j.get("remote") else (j.get("workplace") or None)
         out.append(job(
@@ -465,14 +531,15 @@ def workable(firm):
 # ---------------------------------------------------------------- Eightfold (HSBC)
 def eightfold(firm, max_rows=400):
     out, seen = [], set()
-    for q in firm.get("queries", [""]):
+    for where, q in [(w, q) for w in firm.get("locations", ["United Kingdom", "United States"])
+                     for q in firm.get("queries", [""])]:
         start = 0
         while start < max_rows:
             d = fetch_json(f"https://{firm['host']}/api/apply/v2/jobs?domain={firm['domain']}"
-                           f"&location=United%20Kingdom&num=50&start={start}&query={urllib.parse.quote(q)}")
+                           f"&location={urllib.parse.quote(where)}&num=50&start={start}&query={urllib.parse.quote(q)}")
             batch = d.get("positions", [])
             for p in batch:
-                if p["id"] in seen or not is_uk(p.get("location", ""), " ".join(p.get("locations") or [])):
+                if p["id"] in seen or not in_scope(p.get("location", ""), " ".join(p.get("locations") or [])):
                     continue
                 seen.add(p["id"])
                 out.append(job(
@@ -497,7 +564,7 @@ def eightfold(firm, max_rows=400):
 
 
 # ---------------------------------------------------------------- Oleeo / tal.net (Evercore, Jefferies)
-def oleeo(firm, max_details=40):
+def oleeo(firm, max_details=60):
     entries = []
     for feed in firm["feeds"]:
         x = fetch(feed)
@@ -519,18 +586,16 @@ def oleeo(firm, max_details=40):
         except Exception:
             pass
         loc = fields.get("location") or fields.get("city") or ""
-        if not is_uk(loc, title):
+        if not in_scope(loc, title):
             return None
         return job(source="oleeo", company=firm["name"], category=firm["category"], title=title,
                    location=loc or "London", url=url, posted=posted,
                    department=fields.get("group") or fields.get("division") or "",
                    description=fields.get("job description") or fields.get("description") or "")
 
-    # Feeds are global; only open the ones whose title doesn't name a non-UK city.
-    foreign = re.compile(r"new york|houston|san francisco|chicago|boston|los angeles|dallas|atlanta|minneapolis|"
-                         r"menlo park|washington|toronto|paris|frankfurt|madrid|milan|munich|tokyo|hong kong|"
-                         r"singapore|sydney|dubai|mumbai|são paulo|sao paulo|mexico|zurich|stockholm|amsterdam|tel aviv|"
-                         r"\b(ny|ca|tx|il|ma|mn|ga)\b", re.I)
+    # Feeds are global; only open the ones whose title doesn't name a city outside the UK and US.
+    foreign = re.compile(r"toronto|paris|frankfurt|madrid|milan|munich|tokyo|hong kong|"
+                         r"singapore|sydney|dubai|mumbai|são paulo|sao paulo|mexico|zurich|stockholm|amsterdam|tel aviv", re.I)
     rows = [r for r in entries if not foreign.search(r[0])]
     rows = _relevant_first(rows, lambda r: r[0], max_details)
     with ThreadPoolExecutor(6) as ex:
@@ -637,7 +702,7 @@ def avature(firm, max_details=60):
 
 # ---------------------------------------------------------------- Goldman Sachs (higher.gs.com GraphQL)
 _GS_QUERY = ("query GetRoles($searchQueryInput: RoleSearchQueryInput!) { roleSearch(searchQueryInput: $searchQueryInput) "
-             "{ totalCount items { roleId corporateTitle jobTitle jobFunction locations { primary state country city } "
+             "{ totalCount items { roleId corporateTitle jobTitle jobFunction descriptionHtml locations { primary state country city } "
              "status division jobType { code description } externalSource { sourceId } } } }")
 
 
@@ -653,7 +718,10 @@ def goldman(firm):
         rs = d["data"]["roleSearch"]
         total = rs["totalCount"] if total is None else total
         for r in rs["items"]:
-            locs = [l for l in (r.get("locations") or []) if l.get("country") == "United Kingdom"]
+            if "NOTICE_OF_FILING" in str(r.get("roleId")):
+                continue  # US labour-certification notices, not vacancies
+            locs = [l for l in (r.get("locations") or []) if l.get("country") == "United Kingdom"] or \
+                   [l for l in (r.get("locations") or []) if l.get("country") in ("United States", "United States of America")]
             if not locs:
                 continue
             place = " / ".join(", ".join(filter(None, [l.get("city"), l.get("country")])) for l in locs)
@@ -661,7 +729,7 @@ def goldman(firm):
                 source="goldman", company=firm["name"], category=firm["category"], title=r.get("jobTitle", ""),
                 location=place, url=f"https://higher.gs.com/roles/{r['roleId']}",
                 department=" / ".join(filter(None, [r.get("division"), r.get("jobFunction")])),
-                description=f"Corporate title: {r.get('corporateTitle') or ''}.",
+                description=f"Corporate title: {r.get('corporateTitle') or ''}. " + html_to_text(r.get("descriptionHtml") or ""),
             ))
         page += 1
         if (page * 100) >= total or not rs["items"]:
@@ -716,7 +784,7 @@ def jibe(firm, max_pages=10):
         for r in rows:
             j = r.get("data", r)
             loc = j.get("full_location") or j.get("location_name") or ""
-            if not is_uk(loc, j.get("country") or ""):
+            if not in_scope(loc, j.get("country") or ""):
                 continue
             cats = ", ".join(c.get("name", "") for c in (j.get("categories") or []) if isinstance(c, dict))
             out.append(job(

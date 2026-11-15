@@ -1,14 +1,24 @@
 """Scores each vacancy for: pay, how reachable it is for this candidate now,
 fit with the target areas, and work-from-home options.
 
-All pay figures are annual GBP. When an advert shows no salary, pay is
-estimated from the employer type and the role's seniority using the bands
-below (rough London market levels for 2025-26: base plus typical bonus).
-They are deliberately round numbers; edit them if you know better.
+All pay figures are annual GBP (US dollar pay is converted, and the dollar figure kept).
+When an advert shows no salary, pay is estimated from the employer type and the role's
+seniority using the bands below (rough London market levels for 2025-26: base plus
+typical bonus; big US finance centres run higher). They are deliberately round numbers;
+edit them if you know better.
+
+Every role also gets a one-line summary taken from the advert's own words, the parts of the
+advert that play to the candidate's experience ("pros") and the gaps ("flags"). All of it is
+plain pattern matching on the advert text - nothing is guessed from the title alone.
 """
 import re
 
-from .text import is_london
+from .text import is_london, region_of, US_HUBS
+
+# GBP per USD. run.py replaces this with the day's rate when it can fetch one.
+USD_TO_GBP = 0.75
+# US pay against the London bands above, in GBP terms.
+US_PAY = {"hub": 1.35, "other": 1.15}
 
 LEVELS = ["apprentice", "intern", "entry", "mid", "senior", "exec"]
 
@@ -74,7 +84,8 @@ TECH = re.compile(r"engineer|developer|software|devops|\bsre\b|infrastructure|da
 NON_FIN = re.compile(r"\b(hr|human resources|people partner|recruit\w*|talent|front desk|meteorolog\w*|scientist|social media|team assistant|office assistant|legal|counsel|paralegal|marketing|"
                      r"communications|customer experience|branch|cashier|contact centre|account executive|reporter|journalist|editor|lawyer|solicitor|attorney|designer|office manager|receptionist|facilities|executive assistant|"
                      r"personal assistant|administrator|chef|cleaner|driver|nurse|teacher|customer service|"
-                     r"call centre|retail assistant|barista|warehouse)\b", re.I)
+                     r"call centre|retail assistant|barista|warehouse|hospitality|coffee|food service|catering|concierge|"
+                     r"housekeeping|mailroom|interest form|discovery event|chess academy|high school|pact \d{4}|conference)\b", re.I)
 
 
 def interest_of(title, text):
@@ -113,7 +124,8 @@ def level_of(title, dept=""):
         return "senior"
     if re.search(r"assistant manager|\bavp\b|assistant vice president|\bsenior\b", t):
         return "mid"
-    if re.search(r"graduates?|\bgrads?\b|junior|trainee|entry|new grad|campus|\banalyst\b(?!.*senior)|\bassistant\b|\bexecutive\b", t) \
+    if re.search(r"rotational|\b20\d\d (start|program)|program(me)?:? (january|june|july|august|september|fall|summer) 20\d\d|"
+                 r"graduates?|\bgrads?\b|junior|trainee|entry|new grad|campus|\banalyst\b(?!.*senior)|\bassistant\b|\bexecutive\b", t) \
             and not re.search(r"senior|\bassociate\b(?!.*analyst)", t):
         return "entry"
     if re.search(r"analyst ?/ ?associate|associate ?/ ?analyst", t):
@@ -139,15 +151,26 @@ def function_of(title, dept=""):
 
 
 # ---------------------------------------------------------------- salary parsing
-_MONEY = re.compile(r"£\s?(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)\s?(k\b)?", re.I)
+_MONEY = {"GBP": re.compile(r"(?:£|\bgbp\s?)\s?(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)\s?(k\b)?", re.I),
+          "USD": re.compile(r"(?:\$|\busd\s?)\s?(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)\s?(k\b)?", re.I)}
+_PAY_WORDS = re.compile(r"salary|base pay|base compensation|pay range|compensation|annual(ly)?|hiring range|wage|\bpay\b|\bbase\b", re.I)
 
 
-def parse_salary(text):
-    """Return (min, max) annual GBP from text such as '£45,000 - £55,000 a year' or '£500 a week'."""
+def find_pay_text(desc, currency):
+    """US adverts often put the legally required pay range near the end: find it anywhere."""
+    for m in _MONEY[currency].finditer(desc or ""):
+        if _PAY_WORDS.search(desc[max(0, m.start() - 160):m.start()]):
+            return desc[m.start():m.start() + 90]
+    return ""
+
+
+def parse_salary(text, currency="GBP"):
+    """Return (min, max) annual pay in the advert's currency from text such as
+    '£45,000 - £55,000 a year', '£500 a week' or '$150,000 - $200,000'."""
     if not text:
         return None, None
     vals = []
-    for m in list(_MONEY.finditer(text))[:3]:
+    for m in list(_MONEY[currency].finditer(text))[:3]:
         v = float(m.group(1).replace(",", ""))
         if m.group(2):
             v *= 1000
@@ -266,8 +289,14 @@ def years_required(low):
 _NEEDS_EXP = re.compile(r"(?:(you have|you'll have|you will have|you'll need|you need|you must have|must have|required|requirements|"
                         r"essential|skills and experience|what you need|what you'll bring|you bring|you'll bring|ideal candidate)"
                         r"\W{0,4}(?:significant |proven |strong |solid |demonstrable |relevant |prior |previous |direct |hands-on )*"
-                        r"|\b(?:previous|prior|proven|demonstrable|direct|hands-on) )"
-                        r"experience (?:in|of|with|within|across)\s+([^.;]{0,90})", re.I)
+                        r"|\b(?:previous|prior|proven|demonstrable|direct|hands-on|solid|strong|significant|extensive|substantial|deep) )"
+                        r"(?:[\w-]+ ){0,3}?experience (?:in|of|with|within|across)\s+([^.;•]{0,90})", re.I)
+# Roles that need an existing client book, deal leadership or people management.
+_BOOK = re.compile(r"book of business|portfolio of clients|client book|established (network|relationships|client)|"
+                   r"deep (industry|client) relationships|lead coverage|assume (lead )?coverage|track record of (generating|originating|winning|"
+                   r"bringing in)|originat\w* (new )?(business|clients|mandates)", re.I)
+_LEADS = re.compile(r"track record of leading|managing junior|manage junior|leading (live )?(deals|transactions)|lead(ing)? bond transactions|"
+                    r"line management|people management experience|managing (a|the) team of|experience (of |in )?managing (a )?team", re.I)
 
 # Coding. The candidate can't write code yet, so a hard Python/SQL requirement is a big gap at either stage.
 _CODE = re.compile(r"\b(python|sql|vba|c\+\+|c#|java|javascript|kdb\+?|powershell|programming languages?|coding|scripting)(?![\w+#])", re.I)
@@ -299,7 +328,23 @@ def _credit(ctx):
         return .5 if related else 0
     if _NEAR_EXP.search(ctx):
         return .75 if related else .5
-    return 1
+    if not ctx or related or _GENERIC_EXP.match(ctx):
+        return 1
+    return .5  # experience in some other named field (consulting, corporate actions...): audit only partly stands in
+
+
+_GENERIC_EXP = re.compile(r"^((is |are )?(preferred|required|desirable|essential|needed|ideal)|would|will|or more|experience\b|"
+                          r"professional|relevant|work|working|industry|full[- ]time|post|of\b|and\b|"
+                          r"(in|within|at) (a|an) (professional|similar|relevant|fast|busy|office|corporate|client|large|global|team)|"
+                          r"a (professional|corporate|similar|relevant|business))", re.I)
+
+
+_LANGS = (r"japanese|mandarin|cantonese|chinese|french|german|spanish|portuguese|italian|arabic|korean|russian|dutch|"
+          r"hindi|turkish|polish|hebrew|swedish|norwegian|danish|greek")
+
+
+def _soft_years(ctx):
+    return bool(re.search(r"preferred|not required|desirable|a plus", ctx or ""))
 
 
 def _short(t, n=60):
@@ -334,18 +379,187 @@ _PART_QUALIFIED = re.compile(r"part[- ]qualified|studying (towards|for)|working 
                              r"\bqbe\b|qualified by experience|nearly qualified|finalist", re.I)
 
 
+# ---------------------------------------------------------------- what the role is (advert's own words)
+_SENT_SPLIT = re.compile(r"(?<=[.!?])\s+(?=[A-Z])|\s*[•·▪●]\s*|\n+")
+_ROLE_RX = [re.compile(rx, re.I) for rx in (
+    r"\b(we (require|need|are looking for|are seeking|are hiring|seek|are recruiting)|we're (looking for|seeking|hiring|recruiting)|"
+    r"(is|are) (looking|seeking|hiring) (for )?(an?|the) )",
+    r"\bin this role,? you\b|\bas (an?|the|our) [^,.]{3,70}, you('ll| will)\b|"
+    r"\byou (will|'ll) (be responsible|be joining|join|work|support|lead|help|own|manage|provide|play|sit|report|be working)",
+    r"\b(this|the) (role|position|opportunity|job) (is|will|involves|sits|offers|focuses|requires|supports|reports)\b",
+    r"\b(role|position|job) (overview|summary|purpose|description)\b|\bpurpose of the role\b|\babout the (role|job|position)\b|"
+    r"\bthe opportunity\b|\bwhat you('ll| will) (do|be doing)\b|\byour role\b|\bresponsibilities\b",
+)]
+_HEADER = re.compile(r"^(job description|description|job summary|overview|about the (role|job|position)|the role|role overview|"
+                     r"purpose of the role|position summary|role summary|the opportunity|your role|what you('ll| will) (do|be doing)|"
+                     r"responsibilities|key responsibilities)\s*[:\-–]?\s*", re.I)
+_BOILER = re.compile(r"\b(founded|is a leading|is one of the|equal opportunit|headquartered|our (mission|culture|values|people)|"
+                     r"we are (a|an|the|one)|we're (a|an|the|one)|award[- ]winning|diversity|inclusion|privacy|cookies|"
+                     r"benefits|recruitment agenc|reasonable adjustment|salary|compensation|pay range|start date|timelines?|"
+                     r"exciting opportunity|highly motivated|apply now|closing date)\b|[$£]\s?\d", re.I)
+
+
+def _clip(t, n):
+    t = t.strip(" -–:;,")
+    return t if len(t) <= n else t[:n].rsplit(" ", 1)[0].rstrip(" ,;:-") + "…"
+
+
+_STOP = {"and", "the", "of", "for", "to", "in", "a", "an", "&", "-", "–", "with", "on", "at", "or", "uk", "london", "new",
+         "york", "senior", "junior", "associate", "analyst", "manager", "assistant", "vice", "president", "vp", "avp",
+         "director", "lead", "head", "officer", "specialist", "team", "role", "2025", "2026", "2027", "programme", "program"}
+_BOILER2 = re.compile(r"if you are looking for|if you're looking for|our roles generate|working with us|close (for )?applications|"
+                      r"place for you|build a future|make an impact|true self|individuality|why join|life at|join us\b|"
+                      r"great place to work|we offer|we provide|you('ll| will) (enjoy|receive|get)|hybrid working|flexible working|"
+                      r"\d[\d,]* (people|employees|colleagues)|countries|years of (history|heritage)|our clients include", re.I)
+
+
+def role_summary(desc, title="", n=210):
+    """The advert's own sentence(s) on what the job is; '' if the advert text is too short to tell.
+    Picks the early sentence that best describes the job: role wording ("you will", "we are looking for")
+    and the title's own words count for it, company blurb counts against it."""
+    if not desc or len(desc) < 120:
+        return ""
+    words = {w for w in re.findall(r"[a-z&]+", (title or "").lower()) if w not in _STOP and len(w) > 2}
+    sents = [x.strip() for x in _SENT_SPLIT.split(desc[:9000]) if x and len(x.strip()) > 25][:45]
+    best, best_score = None, 0
+    for i, x in enumerate(sents):
+        body = _HEADER.sub("", x)
+        if not 40 <= len(body) <= 600 or _BOILER.search(x) or _BOILER2.search(x):
+            continue
+        sc = sum(3 - k * .5 for k, rx in enumerate(_ROLE_RX) if rx.search(x))
+        sc += 1.5 * min(3, sum(1 for w in words if re.search(r"\b" + re.escape(w), x.lower())))
+        sc -= i * .04  # earlier is better
+        if sc > best_score:
+            best, best_score = i, sc
+    if best is None:
+        best = next((i for i, x in enumerate(sents) if len(x) >= 50 and not _BOILER.search(x) and not _BOILER2.search(x)), None)
+    if best is None:
+        return ""
+    out = _HEADER.sub("", sents[best])
+    out = re.sub(r"^(purpose of the role|about the role|the role)\s+", "", out, flags=re.I)
+    nxt = sents[best + 1] if best + 1 < len(sents) else ""
+    if len(out) < 120 and nxt and not _BOILER.search(nxt) and not _BOILER2.search(nxt):
+        out = out.rstrip(".") + ". " + _HEADER.sub("", nxt)
+    out = out[0].upper() + out[1:] if out else out
+    return _clip(out, n)
+
+
+def _sentence(low, start, end, before=220, after=160):
+    """The sentence or bullet around low[start:end]."""
+    a = max(low.rfind(". ", max(0, start - before), start), low.rfind("•", max(0, start - before), start),
+            low.rfind("\n", max(0, start - before), start), start - before, 0)
+    nxt = [x for x in (low.find(". ", end), low.find("•", end), low.find("\n", end)) if x != -1]
+    b = min(nxt + [end + after])
+    return low[a:b]
+
+
+# ---------------------------------------------------------------- specialist systems the candidate hasn't used
+SYSTEMS = [(n, re.compile(rx, re.I)) for n, rx in (
+    ("Oracle", r"\boracle\b(?! (corporation|park|arena))|\bebs r12\b|\botbi\b"),
+    ("SAP", r"\bsap\b|s/?4 ?hana"),
+    ("Workday Financials", r"workday (financials|adaptive|prism|accounting)|adaptive insights"),
+    ("Hyperion/HFM", r"hyperion|\bhfm\b|essbase"),
+    ("OneStream", r"onestream"), ("BlackLine", r"blackline"), ("Anaplan", r"anaplan"), ("NetSuite", r"netsuite"),
+    ("Coupa", r"\bcoupa\b"), ("Tagetik", r"tagetik"), ("Workiva", r"workiva"), ("Kyriba", r"kyriba"),
+    ("Murex", r"\bmurex\b"), ("Calypso", r"\bcalypso\b"), ("Aladdin", r"\baladdin\b"), ("SimCorp", r"simcorp"),
+    ("Advent Geneva", r"advent geneva|\bgeneva\b(?=[^.]{0,25}(system|platform|accounting))"),
+    ("Investran", r"investran"), ("eFront", r"\befront\b"), ("Allvue", r"allvue"), ("Yardi", r"\byardi\b"),
+    ("Charles River", r"charles river (ims|development)"), ("Temenos", r"temenos"),
+    ("AxiomSL", r"axiom ?sl\b|axiom (cv|controllerview)"),
+    ("Microsoft Dynamics", r"dynamics 365|\bd365\b|navision|business central"), ("Salesforce", r"salesforce"),
+)]
+_SYS_REQ = re.compile(r"experience|expertise|knowledge|proficien|hands[- ]on|skilled|specialist|expert|implement|configur|"
+                      r"functional|consultant|certif|background|familiar|working with|track record|understanding", re.I)
+_SYS_DEEP = re.compile(r"\b(deep|extensive|expert|in-depth|advanced|strong|proven|significant|hands[- ]on|certified|\d+\+? ?years?)\b", re.I)
+_SYS_GENERIC = re.compile(r"such as|e\.g|\beg\b|for example|or similar|or equivalent|or other|any (major )?erp|\blike\b|i\.e", re.I)
+_SYS_SOFT = re.compile(r"\b(a plus|plus\b|desirable|advantag\w*|nice to have|bonus|prefer\w*|ideally|beneficial|exposure|"
+                       r"helpful|a benefit|not (required|essential)|highly valued|valued)\b", re.I)
+_SYS_RANK = {"title": 0, "deep": 1, "req": 2, "generic": 3, "soft": 4}
+_SYS_MULT = {"title": .25, "deep": .4, "req": .55, "generic": .85, "soft": .95}
+
+
+def systems_need(title, low, known=()):
+    """(kind, [system names]) for the hardest specialist-system demand in the advert, or (None, [])."""
+    known = {k.lower() for k in known}
+    hits = []
+    for name, rx in SYSTEMS:
+        if name.lower() in known:
+            continue
+        if rx.search(title or ""):
+            hits.append(("title", name))
+            continue
+        for m in rx.finditer(low):
+            sent = _sentence(low, m.start(), m.end())
+            if _SYS_GENERIC.search(sent):
+                kind = "generic"
+            elif _SYS_SOFT.search(sent):
+                kind = "soft"
+            elif _SYS_REQ.search(sent):
+                kind = "deep" if _SYS_DEEP.search(sent) else "req"
+            else:
+                continue
+            hits.append((kind, name))
+            break
+    if not hits:
+        return None, []
+    worst = min(hits, key=lambda h: _SYS_RANK[h[0]])[0]
+    return worst, [n for k, n in hits if k == worst][:3]
+
+
+# ---------------------------------------------------------------- what in the advert plays to an audit background
+_ASKS = re.compile(r"experience|background|knowledge|understanding|exposure|familiar|skills?\b|you (have|bring|will have|'ll have|'ll bring)|"
+                   r"candidate|ideally|essential|required|requirements|preferred|desirable|qualifi|track record|proficien|"
+                   r"demonstrat|grounding|expertise|comfortable", re.I)
+# Where the advert's requirements start; strengths found after this count without a sentence check.
+_REQ_HEAD = re.compile(r"essential (skills|criteria|requirements)|you must have|requirements:|what you('ll| will)? need|what we('re| are) looking for|"
+                       r"skills (and|&) experience|experience (and|&) skills|qualifications:|about you|to be successful|"
+                       r"the ideal candidate|who you are|what you('ll| will)? bring|you will have|you('ll| will) need|your (skills|experience|profile)|"
+                       r"basic qualifications|preferred qualifications|minimum qualifications|requirements of the role|key requirements|"
+                       r"candidate profile|person specification", re.I)
+_STRENGTH_SKIP = re.compile(r"may be assessed|critical skills relevant|all colleagues will be expected", re.I)
+STRENGTHS = [(k, re.compile(rx, re.I)) for k, rx in (
+    ("audit", r"\b(audit(ing)? (experience|background|firm|practice|requirements|skills)|external audit|statutory audit|"
+              r"big ?(4|four)|(audit|assurance) (and|&) (assurance|advisory)|assurance|(?<!internal )audit(?! (committee|evidence|trail|log)))\b"),
+    ("reporting", r"financial (reporting|statements|accounts)|statutory (accounts|reporting)|\bifrs\b|\b(uk |us )?gaap\b|"
+                  r"(year|period|month|quarter)[- ]end( close| reporting| processes)?|financial close"),
+    ("controls", r"\bsox\b|sarbanes|internal controls?|controls? testing|control (framework|environment)|risk and controls?"),
+    ("recs", r"reconciliations?|balance sheet (review|substantiation|reconciliation)"),
+    ("accounting", r"accounting (background|knowledge|experience|principles|standards|skills)|accountancy|\baccounting\b"),
+    ("diligence", r"due diligence|transaction services|financial diligence|\bfdd\b|quality of earnings"),
+    ("excel", r"\bexcel\b"),
+)]
+
+
+def strengths_in(low):
+    """{key: matched phrase} for audit-relevant things the advert asks for (in a requirement sentence)."""
+    out = {}
+    head = _REQ_HEAD.search(low)
+    for key, rx in STRENGTHS:
+        for m in rx.finditer(low):
+            sent = _sentence(low, m.start(), m.end())
+            if _STRENGTH_SKIP.search(sent):
+                continue
+            if (head and m.start() > head.start()) or (not head and _ASKS.search(sent)):
+                out[key] = m.group(0).strip()
+                break
+    return out
+
+
 def _soft(low, m):
     return bool(_SOFT.search(low[m.end():m.end() + 70]) or _SOFT_BEFORE.search(low[max(0, m.start() - 40):m.start()]))
 
 
 def eligibility(job, level, profile, stage="now"):
-    """Return (multiplier, flags) for how realistic the role is at this stage ("now" or "aca")."""
+    """Return (reach, flags, pros) for how realistic the role is at this stage ("now" or "aca").
+    flags are the gaps; pros are the parts of the advert that play to the candidate's experience."""
     st = stages(profile)[stage]
     aca = st["aca"]
     q = profile["qualifications"]
     text = " ".join([job.get("title", ""), job.get("description", ""), job["extra"].get("course", "")])
     low = text.lower().replace("’", "'")
-    flags, m = [], 1.0
+    flags, pros, m = [], [], 1.0
+    us = job.get("_region") == "US"
+    you = f"ACA + about {st['years']:g} yrs of audit" if aca else f"your {st['years']:g} yrs of audit"
     base = {"apprentice": .85, "intern": .08, "entry": .62, "mid": .45,
             "senior": .15 if aca else .06, "exec": .02 if aca else .015}[level]
     advert_read = len(job.get("description") or "") >= 300 or level == "apprentice"
@@ -355,7 +569,9 @@ def eligibility(job, level, profile, stage="now"):
     if re.search(r"currently (studying|enrolled)|penultimate year|final[- ]year (student|undergrad)|"
                  r"graduating in 20\d\d|expected graduation|pursuing a (bachelor|degree)|recent graduates?|"
                  r"soon[- ]to[- ]be graduates?|graduated (in|within)|class of 20\d\d|(in|of) your (final|penultimate) year|"
-                 r"graduation (year|date) of 20\d\d|job family: undergraduate|graduate (programme|scheme) for (graduates|students)", low):
+                 r"graduation (year|date) of 20\d\d|job family: undergraduate|graduate (programme|scheme) for (graduates|students)|"
+                 r"are you a student|(first|second|1st|2nd)[- ]year (college |university )?students?|high school students?|"
+                 r"open to (college|university) students", low):
         m *= .2
         flags.append("Student / recent-graduate only")
 
@@ -379,6 +595,28 @@ def eligibility(job, level, profile, stage="now"):
         m *= .5 if c == 0 else .75
         flags.append(f"Wants direct experience in {_short(need.group(2))} - "
                      + ("audit doesn't cover this" if c == 0 else "audit only partly covers this"))
+    met = [(n, ctx) for n, pqe, ctx, credit in reqs if not pqe and credit == 1 and st["years"] >= n and not _soft_years(ctx)]
+    if met and not worst:
+        n, ctx = max(met)
+        pros.append(f"Asks for {n}+ yrs" + (f" ({_short(ctx, 45)})" if ctx else "") + f" - you have {st['years']:g}")
+    if advert_read and level not in ("apprentice", "intern"):
+        if _BOOK.search(low):
+            m *= .3
+            flags.append("Wants an established client book / industry relationships - you'd be building these from scratch")
+        if level in ("entry", "mid") and _LEADS.search(low):
+            m *= .5
+            flags.append("Wants someone who already leads deals or manages people")
+    langs = profile.get("languages", ["english"])
+    lang = re.search(r"\b(?:fluen\w*|native|proficien\w*|business[- ]level|bilingual|strong)\b[^.•]{0,25}?\b(" + _LANGS + r")\b|"
+                     r"\b(" + _LANGS + r")\b[^.•]{0,15}?\b(fluency|fluent|speaker|speaking|language skills|(is )?required|proficiency)\b", low)
+    if advert_read and lang and (lang.group(1) or lang.group(2)) not in langs:
+        near = low[max(0, lang.start() - 50):lang.end() + 40]  # adverts often lose bullet breaks, so look close by
+        if not _SYS_SOFT.search(near):
+            m *= .2
+            flags.append(f"Needs fluent {(lang.group(1) or lang.group(2)).title()}")
+    elif re.search(r"\bbilingual\b", job.get("title", ""), re.I):
+        m *= .2
+        flags.append("Needs a second language (bilingual role)")
     if worst:
         f, n, pqe, ctx, credit = worst
         m *= f
@@ -439,19 +677,71 @@ def eligibility(job, level, profile, stage="now"):
                                                        low[max(0, x.start() - 30):x.start()])), None)
     if level == "apprentice":
         qual = None  # apprenticeships describe the qualification you'll gain, not one you need
-    part = _PART_QUALIFIED.search(low)
-    background = re.search(r"\b(aca|acca|aat|icaew|cima)\b|\bbig ?(4|four)\b|audit (background|experience)|"
-                           r"accounting qualification", low)
+    part = _PART_QUALIFIED.search(low) if advert_read else None
     if qual and not part:
-        if aca:
+        sent = _sentence(low, qual.start(), qual.end())
+        cpa_only = re.search(r"\bcpa\b", sent) and not re.search(r"\b(aca|acca|icaew|chartered|ca\b|cima)|or equivalent|"
+                                                                r"(cpa|or) (or|/) ?(equivalent|international)", sent)
+        if cpa_only:
+            m *= .5 if aca else .15
+            flags.append("Wants a US CPA - ACA may not be accepted on its own; you'd likely need the CPA too" if aca
+                         else "Needs a qualified CPA - not yet")
+        elif aca:
             m *= 1.15
-            flags.append("Wants a qualified accountant - ACA ticks this")
+            pros.append("Wants a qualified accountant - ACA ticks this")
         else:
             m *= .15
-            flags.append("Needs a qualified accountant (ACA/ACCA) - not yet")
-    elif part or background:
-        m *= 1.2
-        flags.append("Asks for audit / ACA / AAT background - plays to your experience")
+            flags.append("Needs a qualified accountant - you're part-way through ACA, not qualified yet")
+    elif part and aca:
+        pros.append("Takes part-qualified or qualified accountants - ACA ticks this")
+    elif part:
+        m *= 1.15
+        pros.append(f'Open to part-qualified candidates ("{_short(part.group(0), 30)}") - you are, with AAT L4 and ACA under way')
+    elif advert_read and not aca and re.search(r"\baat\b", low) and level != "apprentice":
+        pros.append("Mentions AAT - you hold AAT Level 4")
+    if advert_read and not qual and re.search(r"accounting qualification|accountancy qualification|qualified accountant", low):
+        pros.append("Values an accounting qualification - " + ("ACA ticks this" if aca else "you have AAT L4, ACA under way"))
+
+    # Specialist systems (Oracle, SAP...): the candidate knows Excel and audit tools, not finance platforms.
+    if advert_read or re.search(r"\b(oracle|sap)\b", job.get("title", ""), re.I):
+        kind, names = systems_need(job.get("title", ""), low, profile.get("systems_known", []))
+        if kind:
+            m *= _SYS_MULT[kind]
+            nm = "/".join(names)
+            flags.append({
+                "title": f"Specialist {nm} role - needs deep hands-on {nm} experience you don't have",
+                "deep": f"Needs deep hands-on {nm} experience - you've worked in Excel and audit tools, not {nm}",
+                "req": f"Asks for {nm} experience - you haven't used {nm}",
+                "generic": f"Wants finance-system experience (e.g. {nm}) - you've seen clients' systems in audit, not run them",
+                "soft": f"{nm} experience is a plus, not required",
+            }[kind])
+
+    # What the advert asks for that audit gives you - quoted from the advert, never assumed.
+    if advert_read and level != "apprentice":
+        found = strengths_in(low)
+        core = [found[k] for k in ("audit", "reporting", "controls", "recs", "accounting", "diligence") if k in found]
+        if core:
+            m *= 1 + .05 * min(len(core), 3)
+            pros.append("Asks for " + ", ".join(dict.fromkeys(core[:3])) + f" - core to {you}")
+        if "excel" in found:
+            pros.append("Excel-heavy - your strongest tool")
+
+    # An experienced hire whose advert asks for nothing audit gives you: you'd be up against people from that field.
+    if advert_read and level in ("mid", "senior") and not [x for x in pros if not x.startswith(("Excel-heavy", "Needs US work"))]:
+        m *= .75
+        flags.append("Nothing in the advert matches audit experience - you'd compete with people already in this field")
+
+    # US roles: no visa issue, but UK qualifications are less familiar there.
+    if us:
+        if re.search(r"sponsor|work authori[sz]ation|authori[sz]ed to work|eligible to work in the (u\.?s|united states)|"
+                     r"u\.s\. (citizen|person)|us citizen", low):
+            pros.append("Needs US work rights / no visa sponsorship - your US citizenship covers this")
+        if aca:
+            m *= .9
+            flags.append("US role: ACA is respected, but some US employers prefer a CPA")
+        else:
+            m *= .8
+            flags.append("US role: AAT isn't known in the US - lean on your audit experience")
 
     if level == "apprentice":
         lvl = re.search(r"level (\d)", low)
@@ -487,26 +777,58 @@ def eligibility(job, level, profile, stage="now"):
     if not advert_read:
         m *= .85
         flags.append("Advert text not available - check the requirements yourself")
-    return min(base * m, .95), flags
+    return min(base * m, .95), flags, pros
+
+
+# Banks state the corporate title in the advert ("Vice President Expectations", "Corporate title: Associate").
+_CORP_TITLE = re.compile(r"\b(assistant vice president|vice president|managing director|executive director|director|associate|analyst)"
+                         r"\s+expectations\b|corporate title:?\s*(assistant vice president|vice president|managing director|"
+                         r"executive director|director|associate|analyst)\b", re.I)
+_CORP_LEVEL = {"analyst": "entry", "associate": "mid", "assistant vice president": "mid", "vice president": "senior",
+               "executive director": "senior", "director": "exec", "managing director": "exec"}
+
+
+def level_from_advert(title, desc, dept=""):
+    level = level_of(title, dept)
+    if level in ("entry", "mid") and not re.search(r"assistant manager|\bavp\b|assistant vice president|\bsenior\b", title or "", re.I):
+        c = _CORP_TITLE.search(desc or "")
+        # "Corporate title: X" is explicit; Barclays-style "X Expectations" only fills in a title with no level words.
+        if c and (c.group(2) or level == "mid"):
+            return _CORP_LEVEL[(c.group(1) or c.group(2)).lower()]
+    return level
 
 
 # ---------------------------------------------------------------- main scorer
 def score(job, profile, aliases):
     cat = job.get("category") or classify(job.get("company"), aliases)
     job["_category"] = cat
-    level = level_of(job["title"], job.get("department", ""))
+    region = job.get("region") or ("UK" if job.get("source") in ("adzuna", "reed", "gov.uk apprenticeships")
+                                   else region_of(job.get("location")) or "UK")
+    job["_region"] = region
+    level = level_from_advert(job["title"], job.get("description", ""), job.get("department", ""))
     func = function_of(job["title"], job.get("department", ""))
     interest, tracks = interest_of(job["title"], f"{job.get('department', '')} {job.get('description', '')}")
 
+    cur = job.get("salary_currency") or ("USD" if region == "US" else "GBP")
     smin, smax = job.get("salary_min"), job.get("salary_max")
     if not smin and not smax:
-        smin, smax = parse_salary(job.get("salary_text") or "")
+        smin, smax = parse_salary(job.get("salary_text") or "", cur)
     if not smin and not smax and job.get("source") not in ("gov.uk apprenticeships",):
-        # Only trust salaries spelled out in the first part of the description.
-        smin, smax = parse_salary((job.get("description") or "")[:2500])
+        # Only trust salaries spelled out in the first part of the description (US: next to a pay word, anywhere).
+        desc = job.get("description") or ""
+        smin, smax = parse_salary(find_pay_text(desc, cur) if cur == "USD" else desc[:2500], cur)
     base_pay = None
     if smin or smax:
         base_pay = ((smin or smax) + (smax or smin)) / 2
+        if cur == "USD":
+            base_pay *= USD_TO_GBP
+    # Advertised pay well above entry level means it isn't an entry job, whatever the title says (prop firms excepted).
+    if base_pay and cat not in ("prop_trading", "hedge_fund") and level in ("entry", "mid"):
+        usd = base_pay / USD_TO_GBP
+        if level == "entry" and (usd > 150_000 if region == "US" else base_pay > 90_000):
+            level = "mid"
+        if level == "mid" and (usd > 260_000 if region == "US" else base_pay > 150_000):
+            level = "senior"
     li = LEVELS.index(level)
     london = is_london(job.get("location")) or "remote" in (job.get("location") or "").lower()
     if base_pay:
@@ -520,12 +842,14 @@ def score(job, profile, aliases):
                 comp *= BACK_OFFICE[cat]
             elif func in ("other", "tech") and cat not in ("big4", "mid_tier", "other"):
                 comp *= (.55 if cat in ELITE else .75) if func == "other" else .9
-        if not london:
+        if region == "US":
+            comp *= US_PAY["hub" if US_HUBS.search(job.get("location") or "") else "other"]
+        elif not london:
             comp *= .85
         comp_basis = "estimated"
 
     def reach_at(stage):
-        reach, flags = eligibility(job, level, profile, stage)
+        reach, flags, pros = eligibility(job, level, profile, stage)
         if cat in ELITE and func == "front":
             if level == "mid":
                 reach *= .5
@@ -535,22 +859,25 @@ def score(job, profile, aliases):
                 flags.append("Front-office analyst roles are fiercely competitive and often degree-screened")
         if "Transaction services" in tracks and cat in ("big4", "mid_tier") and level in ("entry", "mid"):
             reach = min(reach * 1.25, .95)
-            flags.append("Audit -> TS is the classic Big 4 move")
-        return reach, flags
+            pros.append("Audit -> deal advisory (TS, restructuring, forensic) is a well-trodden move")
+        return reach, flags, pros
 
-    reach, flags = reach_at("now")
-    reach_aca, flags_aca = reach_at("aca")
+    reach, flags, pros = reach_at("now")
+    reach_aca, flags_aca, pros_aca = reach_at("aca")
     wp = workplace_of(job)
     wmult = profile["preferences"]["remote_multiplier"].get(wp, 1.0)
     fit = (.25 + .75 * interest) * wmult
     match, match_aca = comp * reach * fit, comp * reach_aca * fit
 
     job.update(
-        category=cat, category_label=CATEGORY_LABEL[cat], level=level, function=func,
+        category=cat, category_label=CATEGORY_LABEL[cat], level=level, function=func, region=region,
         interest=round(interest, 2), tracks=tracks, workplace_type=wp,
-        base_pay=round(base_pay) if base_pay else None, comp=round(comp, -2), comp_basis=comp_basis,
-        reach=round(reach, 2), flags=flags, match=round(match),
-        reach_aca=round(reach_aca, 2), flags_aca=flags_aca, match_aca=round(match_aca),
+        summary=role_summary(job.get("description") or "", job.get("title", "")),
+        currency=cur, base_pay=round(base_pay) if base_pay else None, comp=round(comp, -2), comp_basis=comp_basis,
+        comp_usd=round(comp / USD_TO_GBP, -3) if region == "US" else None,
+        reach=round(reach, 2), flags=flags, pros=pros, match=round(match),
+        reach_aca=round(reach_aca, 2), flags_aca=flags_aca, pros_aca=pros_aca, match_aca=round(match_aca),
     )
     job.pop("_category", None)
+    job.pop("_region", None)
     return job

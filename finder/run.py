@@ -1,4 +1,4 @@
-"""Find and rank live UK jobs and apprenticeships for the profile in profile.json.
+"""Find and rank live UK and US jobs (and UK apprenticeships) for the profile in profile.json.
 
     cd jobs
     python3 -m finder.run                 # everything; writes data/jobs.json and data/report.md
@@ -21,7 +21,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from . import scoring, sources
-from .text import is_uk
+from .http import fetch_json
+from .text import in_scope, region_of
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -37,7 +38,7 @@ def plan(cfg, profile, only):
                  "workable", "eightfold", "oleeo", "kpmg", "radancy", "avature", "goldman", "rothschild", "jibe", "gresearch"):
         fn = getattr(sources, kind)
         for firm in cfg.get(kind, []):
-            tasks.append((firm["name"], kind, lambda f=firm, fn=fn: fn(f)))
+            tasks.append((firm["name"], kind, lambda f=firm, fn=fn: _regions(f, fn(f))))
     tasks.append(("Find an apprenticeship (GOV.UK)", "faa",
                   lambda: sources.find_an_apprenticeship(profile["apprenticeship_search_terms"])))
     tasks.append(("Adzuna", "adzuna", lambda: sources.adzuna(profile["search_queries"])))
@@ -46,6 +47,13 @@ def plan(cfg, profile, only):
     if only:
         tasks = [t for t in tasks if t[1] in only]
     return tasks
+
+
+def _regions(firm, rows):
+    """A firm can be limited to some countries ("regions": ["UK"]), e.g. when its board name is shared with another company."""
+    if not firm.get("regions") or rows is None:
+        return rows
+    return [r for r in rows if region_of(r.get("location")) in firm["regions"]]
 
 
 def dedupe(jobs):
@@ -66,6 +74,20 @@ def dedupe(jobs):
 
 def fmt_money(v):
     return f"£{v / 1000:,.0f}k" if v else "-"
+
+
+def usd_to_gbp():
+    """Today's GBP per USD from the ECB reference rates (free, no key); a fixed fallback otherwise."""
+    for url in ("https://api.frankfurter.dev/v1/latest?base=USD&symbols=GBP",
+                "https://api.frankfurter.app/latest?from=USD&to=GBP"):
+        try:
+            d = fetch_json(url, retries=1)
+            r = float(d["rates"]["GBP"])
+            if .5 < r < 1.1:
+                return r, f"ECB rate {d.get('date', '')}".strip()
+        except Exception:
+            continue
+    return scoring.USD_TO_GBP, "fixed fallback rate"
 
 
 def main(argv=None):
@@ -100,7 +122,7 @@ def main(argv=None):
                 status.append({"source": label, "kind": kind, "ok": None, "error": "no API key set (optional)"})
                 continue
             status.append({"source": label, "kind": kind, "ok": True, "count": len(rows)})
-            print(f"  {label}: {len(rows)} UK roles", file=sys.stderr)
+            print(f"  {label}: {len(rows)} UK/US roles", file=sys.stderr)
             raw += rows
     if a.probe:
         for s in sorted(status, key=lambda s: (s["ok"] is not True, s["source"])):
@@ -108,16 +130,20 @@ def main(argv=None):
         return 0
 
     # Adzuna/Reed are UK-only already; keep a light location check for the rest.
-    raw = [j for j in raw if j["source"] in ("adzuna", "reed", "gov.uk apprenticeships") or is_uk(j["location"])]
+    raw = [j for j in raw if j["source"] in ("adzuna", "reed", "gov.uk apprenticeships") or in_scope(j["location"])]
+    scoring.USD_TO_GBP, fx_note = usd_to_gbp()
     jobs = [scoring.score(j, profile, aliases) for j in dedupe(raw)]
     prefs = profile["preferences"]
     jobs = [j for j in jobs if j["interest"] >= prefs["min_interest"]]
     # Rank on the better of today's and post-ACA match so roles that open up after the ACA are kept too.
     jobs.sort(key=lambda j: -max(j["match"], j.get("match_aca", 0)))
+    # Each country keeps its own top list so higher US pay doesn't crowd out UK roles.
     # Apprenticeships pay less so would drop off the bottom; keep them as their own list.
-    top = jobs[: prefs["max_results"]]
-    extra = [j for j in jobs[prefs["max_results"]:] if j["level"] == "apprentice"][:150]
-    jobs = sorted(top + extra, key=lambda j: -j["match"])
+    n = prefs["max_results"]
+    uk = [j for j in jobs if j["region"] == "UK"]
+    us = [j for j in jobs if j["region"] == "US"]
+    extra = [j for j in uk[n:] if j["level"] == "apprentice"][:150]
+    jobs = sorted(uk[:n] + extra + us[: prefs.get("max_results_us", n // 2)], key=lambda j: -j["match"])
     for j in jobs:
         j["description"] = j["description"][:280]
 
@@ -128,6 +154,7 @@ def main(argv=None):
         "seconds": round(time.time() - t0),
         "sources": sorted(status, key=lambda s: s["source"]),
         "total_seen": len(raw),
+        "usd_to_gbp": round(scoring.USD_TO_GBP, 4), "fx_note": fx_note,
         "jobs": jobs,
     }
     (out / "jobs.json").write_text(json.dumps(payload, indent=1, ensure_ascii=False))
@@ -137,15 +164,17 @@ def main(argv=None):
 
 
 def report(p, n):
-    lines = [f"# Best live UK roles for you - {p['generated_at'][:16].replace('T', ' ')} UTC", "",
-             f"{p['total_seen']} UK vacancies scanned from {sum(1 for s in p['sources'] if s['ok'])} sources; "
+    lines = [f"# Best live UK and US roles for you - {p['generated_at'][:16].replace('T', ' ')} UTC", "",
+             f"{p['total_seen']} UK and US vacancies scanned from {sum(1 for s in p['sources'] if s['ok'])} sources; "
              f"{len(p['jobs'])} kept after filtering for your target areas.", "",
              "Match = pay x how reachable it is for you now x fit with your interests x work-from-home bonus. "
-             "Reach after ACA is the same score once you are ACA-qualified.", "",
+             "Reach after ACA is the same score once you are ACA-qualified. "
+             f"US pay is converted at $1 = £{p.get('usd_to_gbp', 0):.3f} ({p.get('fx_note', '')}).", "",
              "| # | Role | Employer | Where | Pay | Level | WFH | Reach now | Reach after ACA | Match |",
              "|---|---|---|---|---|---|---|---|---|---|"]
     for i, j in enumerate(p["jobs"][:n], 1):
-        pay = fmt_money(j["comp"]) + ("" if j["comp_basis"] == "advertised" else " est")
+        pay = fmt_money(j["comp"]) + (f" (${j['comp_usd'] / 1000:,.0f}k)" if j.get("comp_usd") else "") + \
+            ("" if j["comp_basis"] == "advertised" else " est")
         title = j["title"].replace("|", "/")[:70]
         lines.append(f"| {i} | [{title}]({j['url']}) | {j['company'][:28]} | {j['location'][:24].replace('|', '/')} | "
                      f"{pay} | {j['level']} | {j['workplace_type']} | {int(j['reach'] * 100)}% | {int(j.get('reach_aca', 0) * 100)}% | "

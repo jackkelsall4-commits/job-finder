@@ -47,3 +47,42 @@ def is_uk(*parts):
 
 def is_london(s):
     return bool(re.search(r"london|canary wharf|city of london", s or "", re.I))
+
+
+US_WORDS = [
+    "united states", "new york", "nyc", "manhattan", "brooklyn", "jersey city", "hoboken", "chicago", "boston",
+    "san francisco", "menlo park", "palo alto", "greenwich", "stamford", "miami", "west palm beach", "philadelphia",
+    "houston", "dallas", "austin", "charlotte", "los angeles", "seattle", "denver", "atlanta", "washington, dc",
+    "washington dc", "minneapolis", "salt lake city", "princeton", "baltimore", "pittsburgh", "detroit", "phoenix",
+    "san diego", "nashville", "tampa", "columbus", "cleveland", "st. louis", "kansas city", "wilmington", "jacksonville",
+]
+_US_RX = re.compile(r"\b(" + "|".join(re.escape(w) for w in US_WORDS) + r")\b|\busa\b|\bu\.s\.a?\b", re.I)
+# "Chicago, IL", "US-NY-New York", "Remote - US": state codes and a bare US are matched case-sensitively.
+_US_CODES = re.compile(r"(?:,\s*|\bUS[-, ]+)(NY|NJ|IL|MA|CA|TX|CT|FL|PA|NC|GA|WA|CO|DC|MN|UT|AZ|OH|MI|VA|MD|TN|MO|DE)\b|\bUSA?\b")
+
+
+def is_us(*parts):
+    s = " | ".join(p for p in parts if p)
+    if not s or re.search(r"london,? (ontario|on\b)|new york,? (lincolnshire|uk)", s, re.I):
+        return False
+    return bool(_US_RX.search(s) or _US_CODES.search(s))
+
+
+def region_of(*parts):
+    """"UK", "US" or None. A posting listed in both (e.g. "London / New York") counts as UK."""
+    s = " | ".join(p for p in parts if p)
+    if is_uk(s) or (re.search(r"\blondon\b(?!,? (ontario|on\b|ky|kentucky|ohio))|canary wharf|edinburgh|glasgow|england|scotland", s, re.I)
+                    and re.search(r"[/;|]|\balso\b", s)):
+        return "UK"
+    if is_us(*parts):
+        return "US"
+    return None
+
+
+def in_scope(*parts):
+    return region_of(*parts) is not None
+
+
+# Big US finance centres, where pay runs at or above London levels.
+US_HUBS = re.compile(r"new york|nyc|manhattan|jersey city|hoboken|chicago|boston|san francisco|menlo park|palo alto|"
+                     r"greenwich|stamford|miami|west palm|\bny\b", re.I)
