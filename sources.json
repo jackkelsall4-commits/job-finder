@@ -22,7 +22,7 @@
     {"name": "Winton", "slug": "winton", "category": "hedge_fund"},
     {"name": "General Atlantic", "slug": "generalatlantic", "category": "pe_megafund"},
     {"name": "Monzo", "slug": "monzo", "category": "fintech"},
-    {"name": "Wise", "slug": "wise", "category": "fintech"},
+    {"name": "Wise", "slug": "wise", "category": "fintech", "regions": ["UK"]},
     {"name": "Ebury", "slug": "ebury", "category": "fintech"},
     {"name": "GoCardless", "slug": "gocardless", "category": "fintech"},
     {"name": "Lincoln International", "slug": "lincolninternational", "category": "boutique"},
@@ -71,11 +71,11 @@
   ],
   "oracle": [
     {"name": "J.P. Morgan", "host": "jpmc.fa.oraclecloud.com", "site": "CX_1001", "category": "bulge_bracket",
-     "keywords": ["London", "Glasgow", "Bournemouth", "Edinburgh", "United Kingdom"]},
+     "keywords": ["London", "Glasgow", "Bournemouth", "Edinburgh", "United Kingdom", "New York", "Chicago", "United States"]},
     {"name": "Lazard", "host": "icbpjb.fa.ocs.oraclecloud.com", "site": "LazardProfessionalCareers", "category": "boutique",
-     "keywords": ["London", "United Kingdom"]},
+     "keywords": ["London", "United Kingdom", "New York"]},
     {"name": "Lazard (students)", "host": "icbpjb.fa.ocs.oraclecloud.com", "site": "LazardStudentCareers", "category": "boutique",
-     "keywords": ["London", "United Kingdom"]}
+     "keywords": ["London", "United Kingdom", "New York"]}
   ],
   "workable": [
     {"name": "Interpath Advisory", "slug": "interpath-advisory", "category": "mid_tier"},

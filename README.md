@@ -1,8 +1,14 @@
-# Pay Ladder: live UK job & apprenticeship finder
+# Pay Ladder: live UK & US job and apprenticeship finder
 
-Finds live UK vacancies in trading, investing, investment banking, corporate finance,
+Finds live UK and US vacancies in trading, investing, investment banking, corporate finance,
 transaction services and private equity, then ranks them for **your** profile
 (`profile.json`) by how much they pay and how realistic they are for you right now.
+US pay is converted to pounds at the day's ECB rate, with the dollar figure kept.
+
+Each role gets a one-line summary in the advert's own words, the advert's requirements that
+your experience covers (quoted, never guessed) and the gaps: years, degree, qualification,
+coding, and specialist systems such as Oracle or SAP (list any you know in
+`"systems_known"` in your profile).
 
 ## What it searches
 

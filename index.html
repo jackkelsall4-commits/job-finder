@@ -103,6 +103,14 @@ input[type="search"] { flex: 1 1 220px; }
 .flags { margin: 4px 0 0; padding: 0; list-style: none; display: grid; gap: 2px; font-size: 0.84rem; color: var(--muted); }
 .flags li::before { content: "› "; color: var(--accent); }
 .flags li.bad::before { color: var(--warn); }
+.flags li.good::before { content: "✓ "; color: var(--accent); }
+.flags li.good { color: var(--fg); }
+.summary { margin: 2px 0 0; font-size: 0.9rem; color: var(--fg); max-width: 72ch; }
+.verdict { font: 600 0.68rem/1 var(--body); letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 6px; border-radius: 4px; }
+.verdict.go { background: var(--accent-wash); color: var(--accent); }
+.verdict.maybe { background: var(--est-wash); color: var(--est); }
+.verdict.no { background: var(--warn-wash); color: var(--warn); }
+.usd { font: 500 0.8rem/1 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
 .pay { text-align: right; display: grid; gap: 4px; justify-items: end; }
 .pay b { font: 600 1.3rem/1 var(--mono); font-variant-numeric: tabular-nums; }
 .basis { font: 600 0.68rem/1 var(--body); letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 6px; border-radius: 4px; }
@@ -123,7 +131,7 @@ footer { color: var(--muted); font-size: 0.85rem; display: grid; gap: 6px; max-w
 
 <main class="page">
   <header>
-    <span class="label">Live UK roles, ranked for you</span>
+    <span class="label">Live UK and US roles, ranked for you</span>
     <h1>Pay Ladder</h1>
     <p class="lede">Every vacancy is pulled live from employers' own careers systems and GOV.UK, then ranked by
       pay × how reachable it is with your qualifications and experience × fit with trading,
@@ -160,6 +168,11 @@ footer { color: var(--muted); font-size: 0.85rem; display: grid; gap: 6px; max-w
         <option value="mid">Experienced / associate</option>
         <option value="senior">Manager / VP</option>
       </select>
+      <select id="region" aria-label="Country">
+        <option value="">UK and US</option>
+        <option value="UK">UK only</option>
+        <option value="US">US only</option>
+      </select>
       <select id="sort" aria-label="Sort">
         <option value="match">Sort: best match</option>
         <option value="comp">Sort: highest pay</option>
@@ -182,8 +195,13 @@ footer { color: var(--muted); font-size: 0.85rem; display: grid; gap: 6px; max-w
     <p><b>Pay</b> is total compensation (base plus typical bonus). <span class="basis advertised">advertised</span> means the advert states a salary;
       <span class="basis estimated">estimated</span> means it is inferred from the employer type and seniority.
       <b>Reach</b> is a rough chance-style score, not a promise. It reads each advert's requirements (years of experience,
-      degree, qualified accountant, student-only) and compares them with you today (AAT Level 4, about 2 years of audit) or,
-      with <i>After ACA</i> selected, once you are ACA-qualified with about 4 years. Roles whose advert text couldn't be read are marked.</p>
+      degree, qualified accountant, coding, specialist systems such as Oracle or SAP, student-only) and compares them with you today
+      (AAT Level 4, about 2 years of audit) or, with <i>After ACA</i> selected, once you are ACA-qualified with about 4 years.
+      <b>Worth applying</b> means reach 40%+, <b>long shot</b> 20–39%, <b>not yet</b> under 20%.</p>
+    <p>The line under each role is the advert's own description of the job. <span style="color:var(--accent)">✓</span> lines are things the advert
+      asks for that your experience covers, quoted from the advert; <span style="color:var(--warn)">›</span> lines are the gaps.
+      Roles whose advert text couldn't be read are marked.</p>
+    <p id="fx"></p>
     <p id="sources"></p>
   </footer>
 </main>
@@ -196,11 +214,14 @@ footer { color: var(--muted); font-size: 0.85rem; display: grid; gap: 6px; max-w
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const k = (v) => "£" + Math.round(v / 1000).toLocaleString("en-GB") + "k";
+  const kd = (v) => "$" + Math.round(v / 1000).toLocaleString("en-US") + "k";
   let data = null, shown = 50, area = "", stage = "now";
   try { if (localStorage.getItem("payladder-stage") === "aca") stage = "aca"; } catch (e) {}
   const R = (j) => stage === "aca" && j.reach_aca != null ? j.reach_aca : j.reach;
   const M = (j) => stage === "aca" && j.match_aca != null ? j.match_aca : j.match;
   const F = (j) => stage === "aca" && j.flags_aca ? j.flags_aca : j.flags;
+  const P = (j) => (stage === "aca" && j.pros_aca ? j.pros_aca : j.pros) || [];
+  const VERDICT = (r) => r >= 0.4 ? ["go", "Worth applying"] : r >= 0.2 ? ["maybe", "Long shot"] : ["no", "Not yet"];
   const NOTE = { now: "Roles that need the ACA, a degree you don't have or more years drop down.",
                  aca: "Assumes ACA-qualified with about 4 years' experience; post-qualification years still count against you." };
   function setStage(s) {
@@ -220,19 +241,21 @@ footer { color: var(--muted); font-size: 0.85rem; display: grid; gap: 6px; max-w
     b.onclick = () => { area = area === a ? "" : a; [...$("areas").children].forEach((c) => c.setAttribute("aria-pressed", String(c.textContent === area))); shown = 50; render(); };
     $("areas").appendChild(b);
   });
-  ["q", "level", "sort", "realistic", "wfh", "london"].forEach((id) => $(id).addEventListener("input", () => { shown = 50; render(); }));
+  ["q", "level", "region", "sort", "realistic", "wfh", "london"].forEach((id) => $(id).addEventListener("input", () => { shown = 50; render(); }));
   $("more").onclick = () => { shown += 50; render(); };
 
   function filtered() {
     const q = $("q").value.trim().toLowerCase();
     const lvl = $("level").value;
+    const reg = $("region").value;
     let rows = data.jobs.filter((j) =>
       (!area || j.tracks.includes(area)) &&
       (!lvl || j.level === lvl) &&
+      (!reg || (j.region || "UK") === reg) &&
       (!$("realistic").checked || R(j) >= 0.4) &&
       (!$("wfh").checked || j.workplace_type === "remote" || j.workplace_type === "hybrid") &&
       (!$("london").checked || !/london|canary wharf/i.test(j.location)) &&
-      (!q || (j.title + " " + j.company + " " + j.location).toLowerCase().includes(q)));
+      (!q || (j.title + " " + j.company + " " + j.location + " " + (j.summary || "")).toLowerCase().includes(q)));
     const s = $("sort").value;
     const key = { match: M, comp: (j) => j.comp * 10 + R(j), reach: (j) => R(j) * 1e6 + M(j), posted: (j) => Date.parse(j.posted) || 0 }[s];
     return rows.sort((a, b) => key(b) - key(a));
@@ -241,19 +264,24 @@ footer { color: var(--muted); font-size: 0.85rem; display: grid; gap: 6px; max-w
   function row(j, i) {
     const tracks = j.tracks.filter((t) => AREAS.includes(t)).map((t) => `<span class="tag track">${esc(t)}</span>`).join("");
     const wfh = WFH[j.workplace_type] ? `<span class="tag">${WFH[j.workplace_type]}</span>` : "";
-    const flags = F(j).map((f) => `<li class="${/asks for|wants|only|stretch|needs|competitive|usually|above|grade|ucas|level [1-4]|not yet|doesn't|not available|already hold/i.test(f) && !/plays to|classic|ticks this|should count|not required/i.test(f) ? "bad" : ""}">${esc(f)}</li>`).join("");
+    const flags = P(j).map((f) => `<li class="good">${esc(f)}</li>`).join("") +
+      F(j).map((f) => `<li class="${/should count|not required|a plus/i.test(f) ? "" : "bad"}">${esc(f)}</li>`).join("");
+    const [vc, vt] = VERDICT(R(j));
     const closes = j.extra && j.extra.closes ? ` · ${esc(String(j.extra.closes).replace(/^Closes /, "closes "))}` : "";
     return `<li class="job">
       <span class="rank">${i + 1}</span>
       <div class="main">
         <a class="title" href="${esc(j.url)}" target="_blank" rel="noopener">${esc(j.title)}</a>
         <div class="sub">${esc(j.company)} · ${esc(j.location)}${closes}</div>
-        <div class="tags"><span class="tag">${LEVEL[j.level]}</span><span class="tag">${esc(j.category_label)}</span>${wfh}${tracks}</div>
+        ${j.summary ? `<p class="summary">${esc(j.summary)}</p>` : ""}
+        <div class="tags">${j.region === "US" ? `<span class="tag">US</span>` : ""}<span class="tag">${LEVEL[j.level]}</span><span class="tag">${esc(j.category_label)}</span>${wfh}${tracks}</div>
         ${flags ? `<ul class="flags">${flags}</ul>` : ""}
       </div>
       <div class="pay">
         <b>${k(j.comp)}</b>
+        ${j.comp_usd ? `<span class="usd">${kd(j.comp_usd)}</span>` : ""}
         <span class="basis ${j.comp_basis}">${j.comp_basis}</span>
+        <span class="verdict ${vc}">${vt}</span>
         <span class="reach" title="${stage === "aca" ? "How reachable once you have the ACA" : "How reachable for you now"}">${stage === "aca" ? "after ACA" : "reach"} ${Math.round(R(j) * 100)}%<span class="bar"><i style="width:${Math.round(R(j) * 100)}%"></i></span></span>
       </div>
     </li>`;
@@ -279,9 +307,10 @@ footer { color: var(--muted); font-size: 0.85rem; display: grid; gap: 6px; max-w
     const realAca = d.jobs.filter((j) => (j.reach_aca ?? j.reach) >= 0.4).length;
     $("stats").innerHTML = [
       ["Scanned", d.total_seen.toLocaleString("en-GB")], ["Ranked", d.jobs.length], ["Realistic now", real], ["Realistic after ACA", realAca],
-      ["Apprenticeships", apprent], ["Updated", when.toLocaleDateString("en-GB", { day: "numeric", month: "short" }) + " " + when.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })],
+      ["US roles", d.jobs.filter((j) => j.region === "US").length], ["Apprenticeships", apprent], ["Updated", when.toLocaleDateString("en-GB", { day: "numeric", month: "short" }) + " " + when.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })],
     ].map(([a, b]) => `<div><span class="label">${a}</span><b>${b}</b></div>`).join("");
     const off = d.sources.filter((s) => s.ok === null).map((s) => s.source);
+    if (d.usd_to_gbp) $("fx").textContent = `US pay is shown in pounds, with the dollar figure underneath, converted at $1 = £${d.usd_to_gbp.toFixed(3)} (${d.fx_note || "daily rate"}). US estimates assume pay in New York, Chicago, Boston, San Francisco, Greenwich/Stamford and Miami runs about a third above London.`;
     $("sources").textContent = `Sources (${ok.length}): ${ok.map((s) => s.source).join(", ")}.` + (off.length ? ` Not yet switched on (free API key needed): ${off.join(", ")}.` : "");
     setStage(stage);
   }).catch(() => {
