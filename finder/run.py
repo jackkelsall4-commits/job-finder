@@ -112,11 +112,12 @@ def main(argv=None):
     jobs = [scoring.score(j, profile, aliases) for j in dedupe(raw)]
     prefs = profile["preferences"]
     jobs = [j for j in jobs if j["interest"] >= prefs["min_interest"]]
-    jobs.sort(key=lambda j: -j["match"])
+    # Rank on the better of today's and post-ACA match so roles that open up after the ACA are kept too.
+    jobs.sort(key=lambda j: -max(j["match"], j.get("match_aca", 0)))
     # Apprenticeships pay less so would drop off the bottom; keep them as their own list.
     top = jobs[: prefs["max_results"]]
     extra = [j for j in jobs[prefs["max_results"]:] if j["level"] == "apprentice"][:150]
-    jobs = top + extra
+    jobs = sorted(top + extra, key=lambda j: -j["match"])
     for j in jobs:
         j["description"] = j["description"][:280]
 
@@ -139,14 +140,16 @@ def report(p, n):
     lines = [f"# Best live UK roles for you - {p['generated_at'][:16].replace('T', ' ')} UTC", "",
              f"{p['total_seen']} UK vacancies scanned from {sum(1 for s in p['sources'] if s['ok'])} sources; "
              f"{len(p['jobs'])} kept after filtering for your target areas.", "",
-             "Match = pay x how reachable it is for you now x fit with your interests x work-from-home bonus.", "",
-             "| # | Role | Employer | Where | Pay | Level | WFH | Reach | Match |",
-             "|---|---|---|---|---|---|---|---|---|"]
+             "Match = pay x how reachable it is for you now x fit with your interests x work-from-home bonus. "
+             "Reach after ACA is the same score once you are ACA-qualified.", "",
+             "| # | Role | Employer | Where | Pay | Level | WFH | Reach now | Reach after ACA | Match |",
+             "|---|---|---|---|---|---|---|---|---|---|"]
     for i, j in enumerate(p["jobs"][:n], 1):
         pay = fmt_money(j["comp"]) + ("" if j["comp_basis"] == "advertised" else " est")
         title = j["title"].replace("|", "/")[:70]
         lines.append(f"| {i} | [{title}]({j['url']}) | {j['company'][:28]} | {j['location'][:24].replace('|', '/')} | "
-                     f"{pay} | {j['level']} | {j['workplace_type']} | {int(j['reach'] * 100)}% | {fmt_money(j['match'])} |")
+                     f"{pay} | {j['level']} | {j['workplace_type']} | {int(j['reach'] * 100)}% | {int(j.get('reach_aca', 0) * 100)}% | "
+                     f"{fmt_money(j['match'])} |")
     return "\n".join(lines) + "\n"
 
 

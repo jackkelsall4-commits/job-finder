@@ -70,7 +70,7 @@ def lever(firm):
             location=locs, url=j.get("hostedUrl", ""),
             posted=time.strftime("%Y-%m-%d", time.gmtime(j.get("createdAt", 0) / 1000)),
             department=" / ".join(filter(None, [c.get("department"), c.get("team")])),
-            description=(j.get("descriptionPlain") or "")[:6000],
+            description=(j.get("descriptionPlain") or "")[:15000],
             salary_min=sr.get("min") if sr.get("currency") == "GBP" else None,
             salary_max=sr.get("max") if sr.get("currency") == "GBP" else None,
             workplace=j.get("workplaceType"),
@@ -96,7 +96,7 @@ def ashby(firm):
             source="ashby", company=firm["name"], category=firm["category"], title=j["title"],
             location=locs, url=j.get("jobUrl", ""), posted=(j.get("publishedAt") or "")[:10],
             department=" / ".join(filter(None, [j.get("department"), j.get("team")])),
-            description=(j.get("descriptionPlain") or "")[:6000],
+            description=(j.get("descriptionPlain") or "")[:15000],
             salary_min=smin, salary_max=smax,
             salary_text=(j.get("compensation") or {}).get("compensationTierSummary") or "",
             workplace=wp,
@@ -128,7 +128,7 @@ def smartrecruiters(firm):
             source="smartrecruiters", company=firm["name"], category=firm["category"], title=r["name"],
             location=loc.get("fullLocation", ""), url=f"https://jobs.smartrecruiters.com/{firm['slug']}/{r['id']}",
             posted=(r.get("releasedDate") or "")[:10], department=(r.get("department") or {}).get("label", ""),
-            description=desc[:6000], workplace=wp,
+            description=desc[:15000], workplace=wp,
         )
 
     rows = [r for r in rows if is_uk(r.get("location", {}).get("fullLocation", ""), r.get("location", {}).get("country", ""))]
@@ -412,6 +412,23 @@ def _relevant_first(rows, title_of, limit):
     return rows[:limit]
 
 
+def _fill_descriptions(rows, get_text, limit=60):
+    """List views from some systems have no advert text; fetch it for the most relevant rows so
+    the reach score can read the requirements (years, degree, qualification)."""
+    want = [j for j in rows if not j["description"] and RELEVANT_TITLE.search(j["title"])]
+    want.sort(key=lambda j: -scoring.interest_of(j["title"], "")[0])
+
+    def one(j):
+        try:
+            j["description"] = html_to_text(get_text(j) or "")[:15000]
+        except Exception:
+            pass
+
+    with ThreadPoolExecutor(6) as ex:
+        list(ex.map(one, want[:limit]))
+    return rows
+
+
 # ---------------------------------------------------------------- Workable (Interpath)
 def workable(firm):
     d = fetch_json(f"https://apply.workable.com/api/v3/accounts/{firm['slug']}/jobs",
@@ -433,8 +450,15 @@ def workable(firm):
             source="workable", company=firm["name"], category=firm["category"], title=j.get("title", ""),
             location=place, url=f"https://apply.workable.com/{firm['slug']}/j/{j.get('shortcode', '')}/",
             posted=(j.get("published") or "")[:10], department=", ".join(j.get("department") or []),
-            workplace=wp,
+            workplace=wp, extra={"shortcode": j.get("shortcode", "")},
         ))
+
+    def text(j):
+        d = fetch_json(f"https://apply.workable.com/api/v2/accounts/{firm['slug']}/jobs/{j['extra']['shortcode']}", retries=1)
+        return (d.get("description") or "") + " " + (d.get("requirements") or "")
+    _fill_descriptions(out, text)
+    for j in out:
+        j["extra"].pop("shortcode", None)
     return out
 
 
@@ -457,10 +481,18 @@ def eightfold(firm, max_rows=400):
                     posted=time.strftime("%Y-%m-%d", time.gmtime(p["t_create"])) if p.get("t_create") else "",
                     department=p.get("department", ""), description=html_to_text(p.get("job_description", "")),
                     workplace=(p.get("work_location_option") or "").lower() or None,
+                    extra={"pid": p["id"]},
                 ))
             start += 50
             if len(batch) < 50 or start >= d.get("count", 0):
                 break
+
+    def text(j):
+        return fetch_json(f"https://{firm['host']}/api/apply/v2/jobs/{j['extra']['pid']}?domain={firm['domain']}",
+                          retries=1).get("job_description", "")
+    _fill_descriptions(out, text)
+    for j in out:
+        j["extra"].pop("pid", None)
     return out
 
 

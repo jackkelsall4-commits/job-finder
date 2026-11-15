@@ -6,7 +6,7 @@ _TAG = re.compile(r"<[^>]+>")
 _WS = re.compile(r"\s+")
 
 
-def html_to_text(s, limit=6000):
+def html_to_text(s, limit=15000):
     if not s:
         return ""
     s = html.unescape(s)  # Greenhouse double-escapes its HTML
