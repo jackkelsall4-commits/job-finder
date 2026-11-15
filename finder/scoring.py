@@ -263,10 +263,30 @@ def years_required(low):
 
 
 # "Skills you'll need: experience in a trading operations role" - specific experience with no years given.
-_NEEDS_EXP = re.compile(r"(you have|you'll have|you will have|you'll need|you need|you must have|must have|required|requirements|"
+_NEEDS_EXP = re.compile(r"(?:(you have|you'll have|you will have|you'll need|you need|you must have|must have|required|requirements|"
                         r"essential|skills and experience|what you need|what you'll bring|you bring|you'll bring|ideal candidate)"
                         r"\W{0,4}(?:significant |proven |strong |solid |demonstrable |relevant |prior |previous |direct |hands-on )*"
+                        r"|\b(?:previous|prior|proven|demonstrable|direct|hands-on) )"
                         r"experience (?:in|of|with|within|across)\s+([^.;]{0,90})", re.I)
+
+# Coding. The candidate can't write code yet, so a hard Python/SQL requirement is a big gap at either stage.
+_CODE = re.compile(r"\b(python|sql|vba|c\+\+|c#|java|javascript|kdb\+?|powershell|programming languages?|coding|scripting)(?![\w+#])", re.I)
+_CODE_SOFT = re.compile(r"\b(a plus|plus\b|desirable|advantag\w*|nice to have|we'd love|bonus|prefer\w*|willing to learn|basic|"
+                        r"ideally|beneficial|exposure|would be|helpful|a benefit|interest\w*|keen to|appetite|not required|"
+                        r"not essential|or similar tools|curious|great fit|might be a|could be a)\b", re.I)
+
+
+def coding_need(low):
+    """'hard' if the advert needs real coding, 'soft' if it's only a plus, else None."""
+    found = None
+    for m in _CODE.finditer(low):
+        a = max(0, low.rfind(".", 0, m.start()), low.rfind("•", 0, m.start()), m.start() - 250)
+        b = min([x for x in (low.find(".", m.end()), low.find("•", m.end())) if x != -1] + [m.end() + 160])
+        if _CODE_SOFT.search(low[a:b]):
+            found = found or "soft"
+        else:
+            return "hard", m.group(1)
+    return (found, None) if found else (None, None)
 
 
 def _credit(ctx):
@@ -372,6 +392,16 @@ def eligibility(job, level, profile, stage="now"):
         else:
             why = "audit doesn't count here" if credit == 0 else "audit only partly counts here"
         flags.append(f"Asks for {what}" + (f" ({_short(ctx)})" if ctx and not pqe else "") + f" - {why}")
+
+    # Coding
+    if advert_read and not profile.get("can_code"):
+        need_code, lang = coding_need(low)
+        if need_code == "hard":
+            m *= .35
+            flags.append(f"Needs you to write code ({'Python/SQL' if lang in ('python', 'sql') else lang}) - you'd need to learn it first")
+        elif need_code == "soft":
+            m *= .92
+            flags.append("Python/SQL is a plus, not required - worth learning")
 
     # Degrees
     if not q.get("degree") and level not in ("apprentice", "intern") and advert_read:
