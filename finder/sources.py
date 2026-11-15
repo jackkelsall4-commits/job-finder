@@ -222,7 +222,7 @@ def _facet_values(f):
 
 
 def _wd(url, data=None, retries=2):
-    """Workday throttles bursts (HTTP 429/500/503); back off and try again rather than lose the firm."""
+    """Workday and Workable throttle bursts (HTTP 429/500/503); back off and try again rather than lose the firm."""
     for attempt in range(4):
         try:
             return fetch_json(url, data=data, retries=retries) if data is not None else fetch_json(url, retries=retries)
@@ -497,12 +497,12 @@ def _fill_descriptions(rows, get_text, limit=60):
 
 # ---------------------------------------------------------------- Workable (Interpath)
 def workable(firm):
-    d = fetch_json(f"https://apply.workable.com/api/v3/accounts/{firm['slug']}/jobs",
-                   data={"query": "", "location": [], "department": [], "worktype": [], "remote": []})
+    d = _wd(f"https://apply.workable.com/api/v3/accounts/{firm['slug']}/jobs",
+            data={"query": "", "location": [], "department": [], "worktype": [], "remote": []})
     rows, token = list(d.get("results", [])), d.get("nextPage")
     while token and len(rows) < 600:
-        d = fetch_json(f"https://apply.workable.com/api/v3/accounts/{firm['slug']}/jobs",
-                       data={"query": "", "location": [], "department": [], "worktype": [], "remote": [], "token": token})
+        d = _wd(f"https://apply.workable.com/api/v3/accounts/{firm['slug']}/jobs",
+                data={"query": "", "location": [], "department": [], "worktype": [], "remote": [], "token": token})
         rows += d.get("results", [])
         token = d.get("nextPage")
     out = []
