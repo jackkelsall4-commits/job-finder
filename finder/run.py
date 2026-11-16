@@ -123,6 +123,8 @@ def main(argv=None):
                 continue
             status.append({"source": label, "kind": kind, "ok": True, "count": len(rows)})
             print(f"  {label}: {len(rows)} UK/US roles", file=sys.stderr)
+            for r in rows:
+                r["src"] = label  # which source it came from, so it can be carried over if that source fails
             raw += rows
     if a.probe:
         for s in sorted(status, key=lambda s: (s["ok"] is not True, s["source"])):
@@ -135,6 +137,7 @@ def main(argv=None):
     jobs = [scoring.score(j, profile, aliases) for j in dedupe(raw)]
     prefs = profile["preferences"]
     jobs = [j for j in jobs if j["interest"] >= prefs["min_interest"]]
+    jobs += carry_over(Path(a.out) / "jobs.json", status)
     # Rank on the better of today's and post-ACA match so roles that open up after the ACA are kept too.
     jobs.sort(key=lambda j: -max(j["match"], j.get("match_aca", 0)))
     # Each country keeps its own top list so higher US pay doesn't crowd out UK roles.
@@ -161,6 +164,33 @@ def main(argv=None):
     (out / "report.md").write_text(report(payload, 60))
     print(report(payload, a.top))
     return 0
+
+
+def carry_over(prev_file, status, days=7):
+    """A source that failed today (e.g. Workday refusing GitHub's servers) keeps the roles it had
+    in the last file for up to a week, marked with the date they were last seen live."""
+    failed = {s["source"] for s in status if s["ok"] is False}
+    if not failed or not prev_file.exists():
+        return []
+    try:
+        prev = json.loads(prev_file.read_text())
+    except ValueError:
+        return []
+    cutoff = time.strftime("%Y-%m-%d", time.gmtime(time.time() - days * 86400))
+    out, kept = [], {}
+    for j in prev.get("jobs", []):
+        if j.get("src") in failed:
+            since = j.get("stale_since") or prev.get("generated_at", "")[:10]
+            if since >= cutoff:
+                j["stale_since"] = since
+                out.append(j)
+                kept[j["src"]] = kept.get(j["src"], 0) + 1
+    for s in status:
+        if s["source"] in kept:
+            s["carried"] = kept[s["source"]]
+    if out:
+        print(f"  kept {len(out)} roles from the last run for {len(kept)} sources that failed today", file=sys.stderr)
+    return out
 
 
 def report(p, n):

@@ -12,12 +12,16 @@ UA = "Mozilla/5.0 (compatible; uk-job-finder/1.0)"
 
 # Workday hosts every bank's careers site on shared servers that rate-limit by caller, so
 # 17 firms fetched in parallel trip "429 Too Many Requests". Keep a few requests in flight
-# across all Workday sites, spaced out, and back off further whenever one says slow down.
+# across all Workday sites, spaced out, and back off whenever one says slow down. If it keeps
+# refusing after that (it sometimes blocks cloud servers such as GitHub's outright), stop asking
+# for the rest of the run so the other sources aren't held up; run.py then reuses the last good roles.
 _THROTTLED = {"myworkdayjobs.com": (3, 0.25)}  # domain: (max requests at once, min gap between starts, s)
 _slots = {d: threading.BoundedSemaphore(n) for d, (n, _) in _THROTTLED.items()}
 _gate = threading.Lock()
 _next_start = {d: 0.0 for d in _THROTTLED}
 _cooldown = {d: 0.0 for d in _THROTTLED}  # time before which nobody should hit this domain
+_refusals = {d: 0 for d in _THROTTLED}  # requests that gave up on 429 this run
+BLOCK_AFTER = 3  # give up on a domain for the rest of the run after this many
 
 
 def _domain(url):
@@ -35,12 +39,12 @@ def _wait_turn(dom):
 
 
 def _retry_after(e, attempt):
-    """Seconds to wait after a 429: the server's Retry-After if it gives one, else 10s, 25s, 50s, 60s."""
+    """Seconds to wait after a 429: the server's Retry-After if it gives one, else 10s then 30s."""
     try:
         v = float(e.headers.get("Retry-After") or "")
     except (TypeError, ValueError):
-        v = (10, 25, 50, 60)[min(attempt, 3)]
-    return min(max(v, 2), 90)
+        v = (10, 30)[min(attempt, 1)]
+    return min(max(v, 2), 60)
 
 
 def fetch(url, data=None, headers=None, timeout=25, retries=2, auth=None):
@@ -55,6 +59,8 @@ def fetch(url, data=None, headers=None, timeout=25, retries=2, auth=None):
         hdrs["Authorization"] = "Basic " + base64.b64encode(f"{auth[0]}:{auth[1]}".encode()).decode()
     hdrs.update(headers or {})
     dom = _domain(url)
+    if dom and _refusals[dom] >= BLOCK_AFTER:
+        raise RuntimeError(f"{url[:90]} -> skipped: {dom} kept refusing this server (429 Too Many Requests)")
     last = None
     rate_limited = 0
     attempt = 0
@@ -77,9 +83,12 @@ def fetch(url, data=None, headers=None, timeout=25, retries=2, auth=None):
             if e.code in (400, 404, 422):
                 break  # not worth retrying
             if e.code == 429:
-                # Rate limited: wait it out (up to 4 times) without using up the normal retries,
+                # Rate limited: wait it out (twice) without using up the normal retries,
                 # and make every other request to the same site wait too.
-                if rate_limited >= 4:
+                if rate_limited >= 2 or (dom and _refusals[dom] >= BLOCK_AFTER):
+                    if dom:
+                        with _gate:
+                            _refusals[dom] += 1
                     break
                 pause = _retry_after(e, rate_limited)
                 rate_limited += 1
