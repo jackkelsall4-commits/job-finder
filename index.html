@@ -280,11 +280,12 @@ footer { color: var(--muted); font-size: 0.85rem; display: grid; gap: 6px; max-w
       F(j).map((f) => `<li class="${/should count|not required|a plus/i.test(f) ? "" : "bad"}">${esc(f)}</li>`).join("");
     const [vc, vt] = VERDICT(R(j));
     const closes = j.extra && j.extra.closes ? ` · ${esc(String(j.extra.closes).replace(/^Closes /, "closes "))}` : "";
+    const stale = j.stale_since ? ` · <span title="This employer's careers site couldn't be reached today, so this is from the last successful check">last seen ${esc(new Date(j.stale_since).toLocaleDateString("en-GB", { day: "numeric", month: "short" }))}</span>` : "";
     return `<li class="job">
       <span class="rank">${i + 1}</span>
       <div class="main">
         <a class="title" href="${esc(j.url)}" target="_blank" rel="noopener">${esc(j.title)}</a>
-        <div class="sub">${esc(j.company)} · ${esc(j.location)}${closes}</div>
+        <div class="sub">${esc(j.company)} · ${esc(j.location)}${closes}${stale}</div>
         ${j.summary ? `<p class="summary">${esc(j.summary)}</p>` : ""}
         <div class="tags">${j.region === "US" ? `<span class="tag">US</span>` : ""}<span class="tag">${LEVEL[j.level]}</span><span class="tag">${esc(j.category_label)}</span>${wfh}${tracks}</div>
         ${flags ? `<ul class="flags">${flags}</ul>` : ""}
@@ -324,7 +325,9 @@ footer { color: var(--muted); font-size: 0.85rem; display: grid; gap: 6px; max-w
     ].map(([a, b]) => `<div><span class="label">${a}</span><b>${b}</b></div>`).join("");
     const off = d.sources.filter((s) => s.ok === null).map((s) => s.source);
     if (d.usd_to_gbp) $("fx").textContent = `US pay is shown in pounds, with the dollar figure underneath, converted at $1 = £${d.usd_to_gbp.toFixed(3)} (${d.fx_note || "daily rate"}). US estimates assume pay in New York, Chicago, Boston, San Francisco, Greenwich/Stamford and Miami runs about a third above London.`;
-    $("sources").textContent = `Sources (${ok.length}): ${ok.map((s) => s.source).join(", ")}.` + (off.length ? ` Not yet switched on (free API key needed): ${off.join(", ")}.` : "");
+    const down = d.sources.filter((s) => s.ok === false).map((s) => s.source + (s.carried ? ` (${s.carried} roles kept from last check)` : ""));
+    $("sources").textContent = `Sources (${ok.length}): ${ok.map((s) => s.source).join(", ")}.` + (off.length ? ` Not yet switched on (free API key needed): ${off.join(", ")}.` : "") +
+      (down.length ? ` Couldn't be reached on this run: ${down.join(", ")}.` : "");
     setStage(stage);
   }).catch(() => {
     $("count").textContent = "Couldn't load data/jobs.json. Run python3 -m finder.run in the jobs folder, then reload.";
