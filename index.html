@@ -116,6 +116,8 @@ input[type="search"] { flex: 1 1 220px; }
 .basis { font: 600 0.68rem/1 var(--body); letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 6px; border-radius: 4px; }
 .basis.advertised { background: var(--accent-wash); color: var(--accent); }
 .basis.estimated { background: var(--est-wash); color: var(--est); }
+.paylabel { font: 500 0.68rem/1.2 var(--body); color: var(--muted); }
+.base { font: 600 0.8rem/1 var(--mono); color: var(--fg); font-variant-numeric: tabular-nums; }
 .reach { display: grid; gap: 3px; justify-items: end; font: 500 0.78rem/1 var(--mono); color: var(--muted); }
 .bar { width: 84px; height: 5px; background: var(--sunken); border-radius: 3px; overflow: hidden; }
 .bar i { display: block; height: 100%; background: var(--accent); }
@@ -192,8 +194,9 @@ footer { color: var(--muted); font-size: 0.85rem; display: grid; gap: 6px; max-w
   <button class="chip more" id="more" hidden>Show 50 more</button>
 
   <footer>
-    <p><b>Pay</b> is total compensation (base plus typical bonus). <span class="basis advertised">advertised</span> means the advert states a salary;
-      <span class="basis estimated">estimated</span> means it is inferred from the employer type and seniority.
+    <p><b>Pay</b>: the big figure is <i>estimated total pay</i> (base plus a typical bonus for that kind of employer and role), and "Highest pay" sorts by it.
+      Where the advert states a salary, its base is shown underneath exactly as advertised (<span class="basis advertised">base in advert</span>) and only the bonus is estimated;
+      <span class="basis estimated">no salary in advert</span> means the whole figure is estimated from the employer type and seniority, so treat it as a ballpark.
       <b>Reach</b> is a rough chance-style score, not a promise. It reads each advert's requirements (years of experience,
       degree, qualified accountant, coding, specialist systems such as Oracle or SAP, student-only) and compares them with you today
       (AAT Level 4, about 2 years of audit) or, with <i>After ACA</i> selected, once you are ACA-qualified with about 4 years.
@@ -215,6 +218,15 @@ footer { color: var(--muted); font-size: 0.85rem; display: grid; gap: 6px; max-w
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const k = (v) => "£" + Math.round(v / 1000).toLocaleString("en-GB") + "k";
   const kd = (v) => "$" + Math.round(v / 1000).toLocaleString("en-US") + "k";
+  // The advert's own salary, in its own currency; otherwise say the whole figure is an estimate.
+  function baseLine(j) {
+    const r = j.base_range;
+    if (j.comp_basis !== "advertised" || !r) return `<span class="basis estimated" title="No salary in the advert: estimated from employer type and seniority">no salary in advert</span>`;
+    const f = j.currency === "USD" ? kd : k;
+    const range = r[0] === r[1] ? f(r[0]) : `${f(r[0])}–${f(r[1]).replace(/^[$£]/, "")}`;
+    const what = j.pay_all_in ? "total in advert" : j.comp > (j.base_pay || 0) * 1.01 ? "base in advert" : "pay in advert";
+    return `<span class="basis advertised" title="The advert's own figure; the big number adds a typical bonus">${what}</span><span class="base">${range}</span>`;
+  }
   let data = null, shown = 50, area = "", stage = "now";
   try { if (localStorage.getItem("payladder-stage") === "aca") stage = "aca"; } catch (e) {}
   const R = (j) => stage === "aca" && j.reach_aca != null ? j.reach_aca : j.reach;
@@ -278,9 +290,10 @@ footer { color: var(--muted); font-size: 0.85rem; display: grid; gap: 6px; max-w
         ${flags ? `<ul class="flags">${flags}</ul>` : ""}
       </div>
       <div class="pay">
+        <span class="paylabel">${j.comp_basis === "advertised" && (j.pay_all_in || j.comp <= (j.base_pay || 0) * 1.01) ? "pay (from advert)" : "est. total pay"}</span>
         <b>${k(j.comp)}</b>
         ${j.comp_usd ? `<span class="usd">${kd(j.comp_usd)}</span>` : ""}
-        <span class="basis ${j.comp_basis}">${j.comp_basis}</span>
+        ${baseLine(j)}
         <span class="verdict ${vc}">${vt}</span>
         <span class="reach" title="${stage === "aca" ? "How reachable once you have the ACA" : "How reachable for you now"}">${stage === "aca" ? "after ACA" : "reach"} ${Math.round(R(j) * 100)}%<span class="bar"><i style="width:${Math.round(R(j) * 100)}%"></i></span></span>
       </div>
