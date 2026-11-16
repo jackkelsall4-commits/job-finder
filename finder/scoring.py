@@ -154,40 +154,73 @@ def function_of(title, dept=""):
 
 
 # ---------------------------------------------------------------- salary parsing
-_MONEY = {"GBP": re.compile(r"(?:£|\bgbp\s?)\s?(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)\s?(k\b)?", re.I),
-          "USD": re.compile(r"(?:\$|\busd\s?)\s?(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)\s?(k\b)?", re.I)}
-_PAY_WORDS = re.compile(r"salary|base pay|base compensation|pay range|compensation|annual(ly)?|hiring range|wage|\bpay\b|\bbase\b", re.I)
+_NUM = r"(\d{1,3}(?:[, \u00a0]\d{3})+(?:[.,]\d{2}(?!\d))?|\d+(?:\.\d+)?)\s?(k\b)?"
+_MONEY = {"GBP": re.compile(r"(?:£|\bgbp\s?)\s?" + _NUM, re.I),
+          "USD": re.compile(r"(?:\$|\busd\s?)\s?" + _NUM, re.I)}
+# A range's second figure often drops the symbol: "$1,000-2,000", "$159-193K", "£30k to 35k".
+_RANGE_TAIL = {c: re.compile(r"\s*(?:-|–|—|to)\s*(?:" + sym + r")?\s?" + _NUM, re.I)
+               for c, sym in (("GBP", r"£|gbp\s?"), ("USD", r"\$|usd\s?"))}
+_PAY_WORDS = re.compile(r"salary|base pay|base compensation|pay range|compensation|annual(ly)?|hiring range|wage|\bpay\b|\bbase\b|"
+                        r"hourly rate|day rate", re.I)
+_PERIOD_AFTER = [(r"per hour|an hour|/ ?h(ou)?r|hourly|p/?h\b", "hour"), (r"per day|a day|/ ?day|daily|p/?d\b", "day"),
+                 (r"per week|a week|/ ?week|weekly|p/?w\b", "week"), (r"per month|a month|/ ?month|monthly|pcm", "month")]
+# "weekly base salary range $3,500-5,700", "an hourly rate of $36-37": the period word sits a few words before the figure.
+_PERIOD_BEFORE = re.compile(r"\b(hourly|weekly|monthly|daily)\b(?:\W+\w+){0,4}\W*$", re.I)
+
+
+def _amount(num, k):
+    num = re.sub(r"[ \u00a0]", ",", num)
+    num = re.sub(r",(\d{2})$", r".\1", num)  # "76,560,00" (European cents) -> "76,560.00"
+    v = float(num.replace(",", ""))
+    return v * 1000 if k else v
 
 
 def find_pay_text(desc, currency):
     """US adverts often put the legally required pay range near the end: find it anywhere."""
     for m in _MONEY[currency].finditer(desc or ""):
         if _PAY_WORDS.search(desc[max(0, m.start() - 160):m.start()]):
-            return desc[m.start():m.start() + 90]
+            return desc[max(0, m.start() - 60):m.start() + 90]
     return ""
 
 
 def parse_salary(text, currency="GBP"):
     """Return (min, max) annual pay in the advert's currency from text such as
-    '£45,000 - £55,000 a year', '£500 a week' or '$150,000 - $200,000'."""
+    '£45,000 - £55,000 a year', '£500 a week', '$150,000 - $200,000' or '$159-193K'."""
     if not text:
         return None, None
-    vals = []
-    for m in list(_MONEY[currency].finditer(text))[:3]:
-        v = float(m.group(1).replace(",", ""))
-        if m.group(2):
-            v *= 1000
-        after = text[m.end(): m.end() + 30].lower()  # the pay period follows the figure
-        if re.search(r"per hour|an hour|/ ?h(ou)?r|hourly|p/?h\b", after):
-            v *= 1950
-        elif re.search(r"per day|a day|/ ?day|daily|p/?d\b", after):
-            v *= 230
-        elif re.search(r"per week|a week|/ ?week|weekly|p/?w\b", after):
-            v *= 52
-        elif re.search(r"per month|a month|/ ?month|monthly|pcm", after):
-            v *= 12
-        if 8_000 <= v <= 1_500_000:
-            vals.append(v)
+    text = re.sub(r"(\d) ?(\d{0,2}) ,?(\d{3})\b", lambda g: g.group(0) if " " not in g.group(0) else
+                  (g.group(1) + g.group(2) + "," + g.group(3) if "," in g.group(0) else g.group(0)), text)  # "$15 0 ,000" -> "$150,000"
+    vals, used = [], 0
+    for m in list(_MONEY[currency].finditer(text))[:4]:
+        if m.start() < used:
+            continue  # second half of a range already read
+        if re.match(r",\d", text[m.end():m.end() + 2]):
+            continue  # malformed figure such as "$200,00"
+        if re.match(r"\s?(m|mn|bn|million|billion|trillion|%)(\b|\+)", text[m.end():m.end() + 9], re.I):
+            continue  # "$250bn a day", "£500m fund", "£1m+" are not pay
+        figs = [(m.group(1), m.group(2))]
+        end = m.end()
+        tail = _RANGE_TAIL[currency].match(text, end)
+        if tail and not _MONEY[currency].match(text, end):
+            figs.append((tail.group(1), tail.group(2)))
+            end = tail.end()
+        nums = [_amount(n, k) for n, k in figs]
+        used = end
+        if len(nums) == 2 and figs[1][1] and not figs[0][1] and nums[0] < 1000:
+            nums[0] *= 1000  # "$159-193K": the K covers both figures
+        if len(nums) == 2 and figs[0][1] and not figs[1][1] and nums[1] < 1000:
+            nums[1] *= 1000  # "$192K - $234"
+        after = text[end: end + 25].lower()
+        period = next((p for rx, p in _PERIOD_AFTER if re.match(r"^\W*(?:usd|gbp)?\W*(?:" + rx + ")", after)), None)
+        if not period:
+            before = _PERIOD_BEFORE.search(text[max(0, m.start() - 60):m.start()])
+            period = {"hourly": "hour", "weekly": "week", "monthly": "month", "daily": "day"}[before.group(1).lower()] if before else None
+        if not period and all(10 <= v <= 300 for v in nums) and _PAY_WORDS.search(text[max(0, m.start() - 80):m.start()]):
+            period = "hour"  # "$24.00 - $33.50 USD" in a US pay-transparency line is an hourly rate
+        mult = {"hour": 2080 if currency == "USD" else 1950, "day": 230, "week": 52, "month": 12}.get(period, 1)
+        vals += [v * mult for v in nums if 8_000 <= v * mult <= 1_500_000]
+        if len(vals) >= 2:
+            break
     if not vals:
         return None, None
     vals = vals[:2]
@@ -871,6 +904,12 @@ def score(job, profile, aliases):
         # Only trust salaries spelled out in the first part of the description (US: next to a pay word, anywhere).
         desc = job.get("description") or ""
         smin, smax = parse_salary(find_pay_text(desc, cur) if cur == "USD" else desc[:2500], cur)
+        if not smin and not smax and cur == "GBP":
+            smin, smax = parse_salary(find_pay_text(desc, cur), cur)  # "The starting salary is £25,000" near the end
+    # "Total Compensation Range: $150,000-190,000" already includes the bonus.
+    desc = job.get("description") or ""
+    all_in = bool(re.search(r"total (compensation|comp\b|pay|remuneration|target cash)[^.]{0,40}[$£]\s?\d", desc, re.I)) and \
+        not re.search(r"base (salary|pay|compensation)[^.]{0,60}[$£]\s?\d", desc, re.I) and not job.get("salary_min")
     base_pay = None
     if smin or smax:
         base_pay = ((smin or smax) + (smax or smin)) / 2
@@ -886,7 +925,7 @@ def score(job, profile, aliases):
     li = LEVELS.index(level)
     london = is_london(job.get("location")) or "remote" in (job.get("location") or "").lower()
     if base_pay:
-        bonus = 0 if level in ("apprentice", "intern") else BONUS[cat] * (1 if func == "front" else .4)
+        bonus = 0 if level in ("apprentice", "intern") or all_in else BONUS[cat] * (1 if func == "front" else .4)
         comp = base_pay * (1 + bonus)
         comp_basis = "advertised"
     else:
@@ -928,6 +967,8 @@ def score(job, profile, aliases):
         interest=round(interest, 2), tracks=tracks, workplace_type=wp,
         summary=role_summary(job.get("description") or "", job.get("title", "")),
         currency=cur, base_pay=round(base_pay) if base_pay else None, comp=round(comp, -2), comp_basis=comp_basis,
+        base_range=[round(smin or smax, -2), round(smax or smin, -2)] if base_pay else None,  # advert's own figures, its currency
+        pay_all_in=all_in if base_pay else None,
         comp_usd=round(comp / USD_TO_GBP, -3) if region == "US" else None,
         reach=round(reach, 2), flags=flags, pros=pros, match=round(match),
         reach_aca=round(reach_aca, 2), flags_aca=flags_aca, pros_aca=pros_aca, match_aca=round(match_aca),

@@ -70,13 +70,27 @@ def greenhouse(firm):
             mine = [o.get("name", "") for o in j.get("offices", []) if is_uk(o.get("name", ""), o.get("location") or "")] or \
                    [o.get("name", "") for o in j.get("offices", []) if is_us(o.get("name", ""), o.get("location") or "")]
             loc = " / ".join(mine) + (f" (also {loc})" if loc else "")
+        # Some boards (Jane Street) keep the US pay-transparency range in custom fields, not the advert text.
+        # Only trusted for US roles: the careers site shows it there, and the currency elsewhere isn't stated.
+        md = {(m.get("name") or "").lower(): m.get("value") for m in j.get("metadata") or [] if isinstance(m.get("value"), str)}
+        lo, hi = (_num(md.get(k)) for k in ("min salary", "max salary"))
+        pay = dict(salary_min=lo, salary_max=hi, salary_currency="USD") if (lo or hi) and is_us(loc) and not is_uk(loc) else {}
         out.append(job(
             source="greenhouse", company=firm["name"], category=firm["category"], title=j["title"],
             location=loc, url=j.get("absolute_url", ""), posted=(j.get("updated_at") or "")[:10],
             department=", ".join(x["name"] for x in j.get("departments", [])),
-            description=html_to_text(j.get("content", "")),
+            description=html_to_text(j.get("content", "")), **pay,
         ))
     return out
+
+
+def _num(s):
+    """'100,000' -> 100000.0; anything that isn't a plausible annual figure -> None."""
+    try:
+        v = float(re.sub(r"[^\d.]", "", s or ""))
+    except ValueError:
+        return None
+    return v if 8_000 <= v <= 1_500_000 else None
 
 
 # ---------------------------------------------------------------- Lever
