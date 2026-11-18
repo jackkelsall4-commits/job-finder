@@ -5,6 +5,8 @@
     python3 -m finder.run --top 40        # print more rows
     python3 -m finder.run --only greenhouse,workday
     python3 -m finder.run --probe         # check every configured employer still answers
+    python3 -m finder.run --only workday --seed   # on a Mac: save Workday roles to data/seed.json.gz for
+                                                  # GitHub to use while Workday refuses its servers
 
 Optional keys (free) widen the search to the whole UK market:
     ADZUNA_APP_ID / ADZUNA_APP_KEY   https://developer.adzuna.com
@@ -12,6 +14,7 @@ Optional keys (free) widen the search to the whole UK market:
     FAA_API_KEY                      https://developer.apprenticeships.education.gov.uk
 """
 import argparse
+import gzip
 import os
 import json
 import re
@@ -96,6 +99,8 @@ def main(argv=None):
     ap.add_argument("--top", type=int, default=25)
     ap.add_argument("--probe", action="store_true", help="only report which sources answer")
     ap.add_argument("--out", default=str(ROOT / "data"))
+    ap.add_argument("--seed", action="store_true",
+                    help="only fetch, and save the roles to data/seed.json.gz (unscored) for runs where those sites refuse the server")
     a = ap.parse_args(argv)
 
     # Your real profile can live in a PROFILE_JSON secret so it never appears in a public repo.
@@ -133,6 +138,9 @@ def main(argv=None):
 
     # Adzuna/Reed are UK-only already; keep a light location check for the rest.
     raw = [j for j in raw if j["source"] in ("adzuna", "reed", "gov.uk apprenticeships") or in_scope(j["location"])]
+    if a.seed:
+        return write_seed(Path(a.out) / "seed.json.gz", raw, status)
+    raw += from_seed(Path(a.out) / "seed.json.gz", status)
     scoring.USD_TO_GBP, fx_note = usd_to_gbp()
     jobs = [scoring.score(j, profile, aliases) for j in dedupe(raw)]
     prefs = profile["preferences"]
@@ -169,7 +177,7 @@ def main(argv=None):
 def carry_over(prev_file, status, days=7):
     """A source that failed today (e.g. Workday refusing GitHub's servers) keeps the roles it had
     in the last file for up to a week, marked with the date they were last seen live."""
-    failed = {s["source"] for s in status if s["ok"] is False}
+    failed = {s["source"] for s in status if s["ok"] is False and not s.get("carried")}  # seeded ones are covered
     if not failed or not prev_file.exists():
         return []
     try:
@@ -190,6 +198,48 @@ def carry_over(prev_file, status, days=7):
             s["carried"] = kept[s["source"]]
     if out:
         print(f"  kept {len(out)} roles from the last run for {len(kept)} sources that failed today", file=sys.stderr)
+    return out
+
+
+def write_seed(seed_file, raw, status):
+    """Save unscored roles fetched on another machine; scoring happens on GitHub with the real profile."""
+    for j in raw:
+        j["description"] = (j.get("description") or "")[:8000]
+    ok = sorted(s["source"] for s in status if s["ok"])
+    seed_file.parent.mkdir(parents=True, exist_ok=True)
+    seed_file.write_bytes(gzip.compress(json.dumps({"fetched_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                                                    "sources": ok, "jobs": raw}, ensure_ascii=False).encode()))
+    print(f"saved {len(raw)} roles from {len(ok)} sources to {seed_file}")
+    failed = [s["source"] for s in status if s["ok"] is False]
+    if failed:
+        print("failed here too:", ", ".join(failed))
+    return 0
+
+
+def from_seed(seed_file, status, days=7):
+    """Roles saved by --seed on another machine, used for sources that refused this run (up to a week old).
+    They are scored fresh like today's roles and marked with the date they were fetched."""
+    failed = {s["source"] for s in status if s["ok"] is False}
+    if not failed or not seed_file.exists():
+        return []
+    try:
+        seed = json.loads(gzip.decompress(seed_file.read_bytes()))
+    except (ValueError, OSError):
+        return []
+    since = seed.get("fetched_at", "")[:10]
+    if since < time.strftime("%Y-%m-%d", time.gmtime(time.time() - days * 86400)):
+        return []
+    out, kept = [], {}
+    for j in seed.get("jobs", []):
+        if j.get("src") in failed:
+            j["stale_since"] = since
+            out.append(j)
+            kept[j["src"]] = kept.get(j["src"], 0) + 1
+    for s in status:
+        if s["source"] in kept:
+            s["carried"] = kept[s["source"]]
+    if out:
+        print(f"  used {len(out)} seeded roles for {len(kept)} sources that failed today", file=sys.stderr)
     return out
 
 
