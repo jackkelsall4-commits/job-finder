@@ -76,6 +76,11 @@ match = pay × reach × (0.25 + 0.75 × interest fit) × work-from-home bonus
   (fund finance, product control, valuations, corporate development) at about half weight.
 - **Work from home**: remote ×1.15, hybrid ×1.06, explicit office-only ×0.97 (`profile.json`).
 
+Since November 2026 Workday often refuses GitHub's servers. To fill the gap, run
+`python3 -m finder.run --only workday --seed` on your own computer and upload the resulting
+`data/seed.json.gz`. For a week, any Workday site that refuses GitHub uses those roles instead.
+They are scored with your real profile on GitHub and shown as "last seen <date>".
+
 Every role carries plain-English flags explaining its reach score, for example
 *"Wants a qualified accountant - open to you once ACA is complete"*.
 
