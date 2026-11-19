@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-18T23:09:13Z",
- "seconds": 402,
+ "generated_at": "2026-11-19T07:49:26Z",
+ "seconds": 730,
  "sources": [
   {
    "source": "AQR",
@@ -23,9 +23,8 @@
   {
    "source": "Apollo",
    "kind": "workday",
-   "ok": false,
-   "error": "https://athene.wd5.myworkdayjobs.com/wday/cxs/athene/Apollo_Careers/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 28
+   "ok": true,
+   "count": 28
   },
   {
    "source": "BDO UK",
@@ -36,44 +35,38 @@
   {
    "source": "BMO",
    "kind": "workday",
-   "ok": false,
-   "error": "https://bmo.wd3.myworkdayjobs.com/wday/cxs/bmo/External/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 80
+   "ok": true,
+   "count": 80
   },
   {
    "source": "Bank of America",
    "kind": "workday",
-   "ok": false,
-   "error": "https://ghr.wd1.myworkdayjobs.com/wday/cxs/ghr/Lateral-US/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 80
+   "ok": true,
+   "count": 80
   },
   {
    "source": "Barclays",
    "kind": "workday",
-   "ok": false,
-   "error": "https://barclays.wd3.myworkdayjobs.com/wday/cxs/barclays/External_Career_Site_Barclays/job -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 103
+   "ok": true,
+   "count": 100
   },
   {
    "source": "Blackstone",
    "kind": "workday",
-   "ok": false,
-   "error": "https://blackstone.wd1.myworkdayjobs.com/wday/cxs/blackstone/Blackstone_Careers/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 66
+   "ok": true,
+   "count": 66
   },
   {
    "source": "Blackstone (campus)",
    "kind": "workday",
-   "ok": false,
-   "error": "https://blackstone.wd1.myworkdayjobs.com/wday/cxs/blackstone/Blackstone_Campus_Careers/job -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 11
+   "ok": true,
+   "count": 11
   },
   {
    "source": "Brevan Howard",
    "kind": "workday",
-   "ok": false,
-   "error": "https://brevanhoward.wd3.myworkdayjobs.com/wday/cxs/brevanhoward/BH_ExternalCareers/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 9
+   "ok": true,
+   "count": 9
   },
   {
    "source": "Capula Investment Management",
@@ -84,16 +77,14 @@
   {
    "source": "Carlyle",
    "kind": "workday",
-   "ok": false,
-   "error": "https://carlyle.wd1.myworkdayjobs.com/wday/cxs/carlyle/Carlyle/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 33
+   "ok": true,
+   "count": 33
   },
   {
    "source": "Citi",
    "kind": "workday",
-   "ok": false,
-   "error": "https://citi.wd5.myworkdayjobs.com/wday/cxs/citi/2/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 160
+   "ok": true,
+   "count": 160
   },
   {
    "source": "DRW",
@@ -110,9 +101,8 @@
   {
    "source": "Deutsche Bank",
    "kind": "workday",
-   "ok": false,
-   "error": "https://db.wd3.myworkdayjobs.com/wday/cxs/db/DBWebsite/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 101
+   "ok": true,
+   "count": 101
   },
   {
    "source": "EY",
@@ -148,7 +138,7 @@
    "source": "Find an apprenticeship (GOV.UK)",
    "kind": "faa",
    "ok": true,
-   "count": 70
+   "count": 69
   },
   {
    "source": "Flow Traders",
@@ -184,14 +174,13 @@
    "source": "Goldman Sachs",
    "kind": "goldman",
    "ok": true,
-   "count": 439
+   "count": 436
   },
   {
    "source": "Grant Thornton UK",
    "kind": "workday",
-   "ok": false,
-   "error": "https://ukgrantt.wd3.myworkdayjobs.com/wday/cxs/ukgrantt/CareersGrantThornton/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 77
+   "ok": true,
+   "count": 77
   },
   {
    "source": "HSBC",
@@ -202,22 +191,20 @@
   {
    "source": "Houlihan Lokey",
    "kind": "workday",
-   "ok": false,
-   "error": "https://hl.wd1.myworkdayjobs.com/wday/cxs/hl/Campus/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 36
+   "ok": true,
+   "count": 36
   },
   {
    "source": "Hudson River Trading",
    "kind": "greenhouse",
    "ok": true,
-   "count": 70
+   "count": 71
   },
   {
    "source": "ICG",
    "kind": "workday",
-   "ok": false,
-   "error": "https://icg.wd3.myworkdayjobs.com/wday/cxs/icg/External_Careers/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 9
+   "ok": true,
+   "count": 9
   },
   {
    "source": "IMC Trading",
@@ -228,9 +215,8 @@
   {
    "source": "ING",
    "kind": "workday",
-   "ok": false,
-   "error": "https://ing.wd3.myworkdayjobs.com/wday/cxs/ing/ICSGBLCOR/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 11
+   "ok": true,
+   "count": 11
   },
   {
    "source": "Interpath Advisory",
@@ -242,7 +228,7 @@
    "source": "J.P. Morgan",
    "kind": "oracle",
    "ok": true,
-   "count": 387
+   "count": 386
   },
   {
    "source": "Jane Street",
@@ -271,9 +257,8 @@
   {
    "source": "LSEG",
    "kind": "workday",
-   "ok": false,
-   "error": "https://lseg.wd3.myworkdayjobs.com/wday/cxs/lseg/Careers/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 83
+   "ok": true,
+   "count": 83
   },
   {
    "source": "Lazard",
@@ -296,16 +281,14 @@
   {
    "source": "Lloyds Banking Group",
    "kind": "workday",
-   "ok": false,
-   "error": "https://lbg.wd3.myworkdayjobs.com/wday/cxs/lbg/LBG_Careers/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 59
+   "ok": true,
+   "count": 56
   },
   {
    "source": "MUFG",
    "kind": "workday",
-   "ok": false,
-   "error": "https://mufgub.wd3.myworkdayjobs.com/wday/cxs/mufgub/MUFG-Careers/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 115
+   "ok": true,
+   "count": 115
   },
   {
    "source": "Man Group",
@@ -328,9 +311,8 @@
   {
    "source": "Mizuho",
    "kind": "workday",
-   "ok": false,
-   "error": "https://mizuho.wd1.myworkdayjobs.com/wday/cxs/mizuho/mizuhoamericas/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 78
+   "ok": true,
+   "count": 78
   },
   {
    "source": "Monzo",
@@ -341,16 +323,14 @@
   {
    "source": "Morgan Stanley",
    "kind": "workday",
-   "ok": false,
-   "error": "https://ms.wd5.myworkdayjobs.com/wday/cxs/ms/External/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 111
+   "ok": true,
+   "count": 111
   },
   {
    "source": "Neuberger Berman",
    "kind": "workday",
-   "ok": false,
-   "error": "https://nb.wd1.myworkdayjobs.com/wday/cxs/nb/NBCareers/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 57
+   "ok": true,
+   "count": 57
   },
   {
    "source": "Optiver",
@@ -367,15 +347,14 @@
   {
    "source": "PwC",
    "kind": "workday",
-   "ok": false,
-   "error": "https://pwc.wd3.myworkdayjobs.com/wday/cxs/pwc/Global_Experienced_Careers/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 3
+   "ok": true,
+   "count": 3
   },
   {
    "source": "PwC (campus)",
    "kind": "workday",
-   "ok": false,
-   "error": "https://pwc.wd3.myworkdayjobs.com/wday/cxs/pwc/Global_Campus_Careers/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)"
+   "ok": true,
+   "count": 0
   },
   {
    "source": "Qube Research & Technologies",
@@ -386,9 +365,8 @@
   {
    "source": "RSM UK",
    "kind": "workday",
-   "ok": false,
-   "error": "https://rsmuk.wd103.myworkdayjobs.com/wday/cxs/rsmuk/RSM/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 34
+   "ok": true,
+   "count": 34
   },
   {
    "source": "Reed",
@@ -405,9 +383,8 @@
   {
    "source": "Santander",
    "kind": "workday",
-   "ok": false,
-   "error": "https://santander.wd3.myworkdayjobs.com/wday/cxs/santander/SantanderCareers/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 125
+   "ok": true,
+   "count": 124
   },
   {
    "source": "Schonfeld",
@@ -424,9 +401,8 @@
   {
    "source": "State Street",
    "kind": "workday",
-   "ok": false,
-   "error": "https://statestreet.wd1.myworkdayjobs.com/wday/cxs/statestreet/Global/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 96
+   "ok": true,
+   "count": 96
   },
   {
    "source": "Susquehanna (SIG)",
@@ -437,9 +413,8 @@
   {
    "source": "TD Securities",
    "kind": "workday",
-   "ok": false,
-   "error": "https://td.wd3.myworkdayjobs.com/wday/cxs/td/TD_Bank_Careers/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 95
+   "ok": true,
+   "count": 95
   },
   {
    "source": "Teneo",
@@ -468,9 +443,8 @@
   {
    "source": "Wells Fargo",
    "kind": "workday",
-   "ok": false,
-   "error": "https://wf.wd1.myworkdayjobs.com/wday/cxs/wf/WellsFargoJobs/jobs -> skipped: myworkdayjobs.com kept refusing this server (429 Too Many Requests)",
-   "carried": 82
+   "ok": true,
+   "count": 82
   },
   {
    "source": "William Blair",
@@ -497,69 +471,10 @@
    "count": 2
   }
  ],
- "total_seen": 4842,
+ "total_seen": 4831,
  "usd_to_gbp": 0.7594,
  "fx_note": "ECB rate 2026-11-18",
  "jobs": [
-  {
-   "source": "workday",
-   "company": "Blackstone",
-   "category": "pe_megafund",
-   "title": "BXMA - Business & Financial Evaluation - Analyst",
-   "location": "New York (United States of America)",
-   "url": "https://blackstone.wd1.myworkdayjobs.com/Blackstone_Careers/job/New-York/BXMA---Business---Financial-Evaluation---Analyst_45566",
-   "posted": "2026-11-04",
-   "department": "",
-   "description": "Blackstone is the world’s largest alternative asset manager. Blackstone seeks to deliver compelling returns for institutional and individual investors by strengthening the companies in which the firm invests. Blackstone’s over $1.3 trillion in assets under management include glob",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "src": "Blackstone",
-   "stale_since": "2026-11-18",
-   "category_label": "Private equity (large)",
-   "level": "entry",
-   "function": "front",
-   "region": "US",
-   "interest": 1.0,
-   "tracks": [
-    "Transaction services",
-    "Finance / accounting",
-    "Investing",
-    "Private equity"
-   ],
-   "workplace_type": "unknown",
-   "summary": "Team and Job Description: BXMA’s Business and Financial Evaluation (“BFE”) Team is primarily responsible for performing initial and ongoing operational due diligence of hedge fund and asset management firms…",
-   "currency": "USD",
-   "base_pay": null,
-   "comp": 162000.0,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": 213000.0,
-   "reach": 0.31,
-   "flags": [
-    "US role: AAT isn't known in the US - lean on your audit experience",
-    "Front-office analyst roles are fiercely competitive and often degree-screened"
-   ],
-   "pros": [
-    "Asks for 1+ yrs (experience) - you have 2",
-    "Asks for accounting - core to your 2 yrs of audit"
-   ],
-   "match": 50622,
-   "reach_aca": 0.35,
-   "flags_aca": [
-    "US role: ACA is respected, but some US employers prefer a CPA",
-    "Front-office analyst roles are fiercely competitive and often degree-screened"
-   ],
-   "pros_aca": [
-    "Asks for 1+ yrs (experience) - you have 4",
-    "Asks for accounting - core to ACA + about 4 yrs of audit"
-   ],
-   "match_aca": 56949
-  },
   {
    "source": "greenhouse",
    "company": "Jane Street",
@@ -611,6 +526,68 @@
    ],
    "pros_aca": [],
    "match_aca": 49953
+  },
+  {
+   "source": "workday",
+   "company": "Blackstone",
+   "category": "pe_megafund",
+   "title": "BXMA - Business & Financial Evaluation - Analyst",
+   "location": "New York (United States of America)",
+   "url": "https://blackstone.wd1.myworkdayjobs.com/Blackstone_Careers/job/New-York/BXMA---Business---Financial-Evaluation---Analyst_45566",
+   "posted": "2026-11-04",
+   "department": "",
+   "description": "Blackstone is the world’s largest alternative asset manager. Blackstone seeks to deliver compelling returns for institutional and individual investors by strengthening the companies in which the firm invests. Blackstone’s over $1.3 trillion in assets under management include glob",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "src": "Blackstone",
+   "category_label": "Private equity (large)",
+   "level": "entry",
+   "function": "front",
+   "region": "US",
+   "interest": 1.0,
+   "tracks": [
+    "Transaction services",
+    "Finance / accounting",
+    "Trading",
+    "Investing",
+    "Private equity"
+   ],
+   "workplace_type": "unknown",
+   "summary": "Team and Job Description: BXMA’s Business and Financial Evaluation (“BFE”) Team is primarily responsible for performing initial and ongoing operational due diligence of hedge fund and asset management firms…",
+   "currency": "USD",
+   "base_pay": 89228,
+   "comp": 133800.0,
+   "comp_basis": "advertised",
+   "base_range": [
+    110000.0,
+    125000.0
+   ],
+   "pay_all_in": false,
+   "comp_usd": 176000.0,
+   "reach": 0.31,
+   "flags": [
+    "US role: AAT isn't known in the US - lean on your audit experience",
+    "Front-office analyst roles are fiercely competitive and often degree-screened"
+   ],
+   "pros": [
+    "Asks for 1+ yrs (experience) - you have 2",
+    "Asks for accounting - core to your 2 yrs of audit"
+   ],
+   "match": 41823,
+   "reach_aca": 0.35,
+   "flags_aca": [
+    "US role: ACA is respected, but some US employers prefer a CPA",
+    "Front-office analyst roles are fiercely competitive and often degree-screened"
+   ],
+   "pros_aca": [
+    "Asks for 1+ yrs (experience) - you have 4",
+    "Asks for accounting - core to ACA + about 4 yrs of audit"
+   ],
+   "match_aca": 47051
   },
   {
    "source": "oleeo",
@@ -805,7 +782,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -898,6 +874,65 @@
    "match_aca": 39060
   },
   {
+   "source": "workday",
+   "company": "Wells Fargo",
+   "category": "bulge_bracket",
+   "title": "CIB Markets Program Analyst - Commercial Rates & FX Sales",
+   "location": "CHICAGO, IL (United States of America)",
+   "url": "https://wd1.myworkdaysite.com/recruiting/wf/WellsFargoJobs/job/CHICAGO-IL/CIB-Markets-Program-Analyst---Commercial-Rates---FX-Sales_R-586793",
+   "posted": "2026-11-18",
+   "department": "",
+   "description": "Wells Fargo Corporate & Investment Banking delivers a comprehensive suite of capital markets, banking, and financial products and services. A trusted partner to our clients, we provide corporate and transactional banking, commercial real estate lending and servicing, investment b",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {
+    "closes": "2026-11-30"
+   },
+   "src": "Wells Fargo",
+   "category_label": "Investment bank",
+   "level": "entry",
+   "function": "front",
+   "region": "US",
+   "interest": 1.0,
+   "tracks": [
+    "Trading",
+    "Finance / accounting",
+    "Corporate finance / IB"
+   ],
+   "workplace_type": "office",
+   "summary": "About this role: Wells Fargo is seeking a CIB Markets Program Analyst to join our Commercial Rates & Foreign Exchange (FX) Solutions team.",
+   "currency": "USD",
+   "base_pay": null,
+   "comp": 135000.0,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": 178000.0,
+   "reach": 0.3,
+   "flags": [
+    "US role: AAT isn't known in the US - lean on your audit experience",
+    "Front-office analyst roles are fiercely competitive and often degree-screened"
+   ],
+   "pros": [
+    "Excel-heavy - your strongest tool",
+    "Needs US work rights / no visa sponsorship - your US citizenship covers this"
+   ],
+   "match": 38971,
+   "reach_aca": 0.33,
+   "flags_aca": [
+    "US role: ACA is respected, but some US employers prefer a CPA",
+    "Front-office analyst roles are fiercely competitive and often degree-screened"
+   ],
+   "pros_aca": [
+    "Excel-heavy - your strongest tool",
+    "Needs US work rights / no visa sponsorship - your US citizenship covers this"
+   ],
+   "match_aca": 43842
+  },
+  {
    "source": "eightfold",
    "company": "HSBC",
    "category": "bulge_bracket",
@@ -954,66 +989,6 @@
   },
   {
    "source": "workday",
-   "company": "Wells Fargo",
-   "category": "bulge_bracket",
-   "title": "CIB Markets Program Analyst - Commercial Rates & FX Sales",
-   "location": "CHICAGO, IL (United States of America)",
-   "url": "https://wd1.myworkdaysite.com/recruiting/wf/WellsFargoJobs/job/CHICAGO-IL/CIB-Markets-Program-Analyst---Commercial-Rates---FX-Sales_R-586793",
-   "posted": "2026-11-18",
-   "department": "",
-   "description": "Wells Fargo Corporate & Investment Banking delivers a comprehensive suite of capital markets, banking, and financial products and services. A trusted partner to our clients, we provide corporate and transactional banking, commercial real estate lending and servicing, investment b",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {
-    "closes": "2026-11-30"
-   },
-   "src": "Wells Fargo",
-   "stale_since": "2026-11-18",
-   "category_label": "Investment bank",
-   "level": "entry",
-   "function": "front",
-   "region": "US",
-   "interest": 1.0,
-   "tracks": [
-    "Trading",
-    "Finance / accounting",
-    "Corporate finance / IB"
-   ],
-   "workplace_type": "office",
-   "summary": "About this role: Wells Fargo is seeking a CIB Markets Program Analyst to join our Commercial Rates & Foreign Exchange (FX) Solutions team.",
-   "currency": "USD",
-   "base_pay": null,
-   "comp": 135000.0,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": 178000.0,
-   "reach": 0.3,
-   "flags": [
-    "US role: AAT isn't known in the US - lean on your audit experience",
-    "Front-office analyst roles are fiercely competitive and often degree-screened"
-   ],
-   "pros": [
-    "Excel-heavy - your strongest tool",
-    "Needs US work rights / no visa sponsorship - your US citizenship covers this"
-   ],
-   "match": 38971,
-   "reach_aca": 0.33,
-   "flags_aca": [
-    "US role: ACA is respected, but some US employers prefer a CPA",
-    "Front-office analyst roles are fiercely competitive and often degree-screened"
-   ],
-   "pros_aca": [
-    "Excel-heavy - your strongest tool",
-    "Needs US work rights / no visa sponsorship - your US citizenship covers this"
-   ],
-   "match_aca": 43842
-  },
-  {
-   "source": "workday",
    "company": "Mizuho",
    "category": "bulge_bracket",
    "title": "Investment & Corporate Banking – DCM: Capital Structure Solutions, Analyst",
@@ -1029,7 +1004,6 @@
    "workplace": null,
    "extra": {},
    "src": "Mizuho",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -1145,7 +1119,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "back",
@@ -1208,7 +1181,6 @@
     "closes": "2026-11-20"
    },
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -1514,7 +1486,6 @@
    "workplace": null,
    "extra": {},
    "src": "Apollo",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (large)",
    "level": "mid",
    "function": "other",
@@ -1568,7 +1539,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -1807,7 +1777,6 @@
     "closes": "2026-11-30"
    },
    "src": "Santander",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "mid",
    "function": "front",
@@ -1872,7 +1841,6 @@
     "closes": "2027-02-23"
    },
    "src": "Santander",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "mid",
    "function": "front",
@@ -1988,7 +1956,6 @@
    "workplace": null,
    "extra": {},
    "src": "Bank of America",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -2167,7 +2134,6 @@
    "workplace": null,
    "extra": {},
    "src": "Neuberger Berman",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "entry",
    "function": "front",
@@ -2385,7 +2351,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -2899,7 +2864,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -2951,7 +2915,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -3003,7 +2966,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -3126,7 +3088,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "front",
@@ -3178,7 +3139,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "front",
@@ -3230,7 +3190,6 @@
    "workplace": null,
    "extra": {},
    "src": "Blackstone",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (large)",
    "level": "entry",
    "function": "front",
@@ -3396,7 +3355,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -3458,7 +3416,6 @@
    "workplace": null,
    "extra": {},
    "src": "ICG",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (mid-market)",
    "level": "mid",
    "function": "front",
@@ -3629,7 +3586,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -3901,7 +3857,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -4023,7 +3978,6 @@
    "workplace": null,
    "extra": {},
    "src": "LSEG",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "mid",
    "function": "front",
@@ -4204,7 +4158,6 @@
     "closes": "2027-01-30"
    },
    "src": "BMO",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -4432,6 +4385,69 @@
    "match_aca": 48624
   },
   {
+   "source": "workday",
+   "company": "Santander",
+   "category": "retail_bank",
+   "title": "Analyst, Leveraged Finance Capital Markets",
+   "location": "Madison Ave Corp (United States of America)",
+   "url": "https://santander.wd3.myworkdayjobs.com/SantanderCareers/job/Madison-Ave-Corp/Analyst--Leveraged-Finance-Capital-Markets_Req1635573",
+   "posted": "2026-11-18",
+   "department": "",
+   "description": "Analyst, Leveraged Finance Capital Markets Country: United States of America It Starts With You: Santander is a global leader and innovator in the financial services industry and is evolving from a high-impact brand into a technology-driven organization. Our people are at the hea",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {
+    "closes": "2026-12-31"
+   },
+   "src": "Santander",
+   "category_label": "UK bank",
+   "level": "entry",
+   "function": "front",
+   "region": "US",
+   "interest": 1.0,
+   "tracks": [
+    "Corporate finance / IB",
+    "Finance / accounting",
+    "Trading",
+    "Private equity"
+   ],
+   "workplace_type": "unknown",
+   "summary": "Analyst, Leveraged Finance Capital Markets Country: United States of America It Starts With You: Santander is a global leader and innovator in the financial services industry and is evolving from a high-impact…",
+   "currency": "USD",
+   "base_pay": 93025,
+   "comp": 102300.0,
+   "comp_basis": "advertised",
+   "base_range": [
+    110000.0,
+    135000.0
+   ],
+   "pay_all_in": false,
+   "comp_usd": 135000.0,
+   "reach": 0.25,
+   "flags": [
+    "Asks for a degree - you'd need them to accept AAT L4 + experience",
+    "US role: AAT isn't known in the US - lean on your audit experience"
+   ],
+   "pros": [
+    "Excel-heavy - your strongest tool",
+    "Needs US work rights / no visa sponsorship - your US citizenship covers this"
+   ],
+   "match": 25377,
+   "reach_aca": 0.47,
+   "flags_aca": [
+    "Asks for a degree - many firms accept ACA instead, but check",
+    "US role: ACA is respected, but some US employers prefer a CPA"
+   ],
+   "pros_aca": [
+    "Excel-heavy - your strongest tool",
+    "Needs US work rights / no visa sponsorship - your US citizenship covers this"
+   ],
+   "match_aca": 48534
+  },
+  {
    "source": "greenhouse",
    "company": "DRW",
    "category": "prop_trading",
@@ -4504,7 +4520,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "front",
@@ -4568,7 +4583,6 @@
    "workplace": null,
    "extra": {},
    "src": "Neuberger Berman",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "entry",
    "function": "front",
@@ -4749,7 +4763,6 @@
     "closes": "2026-11-23"
    },
    "src": "Santander",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "entry",
    "function": "other",
@@ -4808,7 +4821,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "front",
@@ -4921,7 +4933,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -4978,7 +4989,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -5352,7 +5362,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "front",
@@ -5415,7 +5424,6 @@
    "workplace": null,
    "extra": {},
    "src": "Neuberger Berman",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "entry",
    "function": "front",
@@ -5481,7 +5489,6 @@
     "closes": "2026-11-22"
    },
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "back",
@@ -5588,7 +5595,6 @@
    "workplace": null,
    "extra": {},
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "front",
@@ -5755,7 +5761,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "front",
@@ -5819,7 +5824,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "front",
@@ -5985,7 +5989,6 @@
    "workplace": null,
    "extra": {},
    "src": "Blackstone",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (large)",
    "level": "mid",
    "function": "front",
@@ -6042,7 +6045,6 @@
    "workplace": null,
    "extra": {},
    "src": "Bank of America",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -6167,7 +6169,6 @@
     "closes": "2026-11-20"
    },
    "src": "Wells Fargo",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "back",
@@ -6330,7 +6331,6 @@
     "closes": "2026-11-30"
    },
    "src": "State Street",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "mid",
    "function": "front",
@@ -6386,7 +6386,6 @@
     "closes": "2026-12-15"
    },
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -6445,7 +6444,6 @@
     "closes": "2026-11-26"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "mid",
    "function": "front",
@@ -6479,60 +6477,6 @@
   },
   {
    "source": "workday",
-   "company": "Lloyds Banking Group",
-   "category": "retail_bank",
-   "title": "Associate – Healthcare, TMT & Leisure Sector Coverage",
-   "location": "London (United Kingdom)",
-   "url": "https://lbg.wd3.myworkdayjobs.com/LBG_Careers/job/London/Associate---Healthcare--TMT---Leisure-Sector-Coverage_165082-1",
-   "posted": "2026-11-04",
-   "department": "",
-   "description": "End Date Wednesday 18 November 2026 Salary Range £0 - £0 We support flexible working – click here for more information on flexible working options Flexible Working Options Hybrid Working, Job Share Job Description Summary . Job Description Job Title: Associate – Healthcare, TMT &",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {
-    "closes": "2026-11-19"
-   },
-   "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
-   "category_label": "UK bank",
-   "level": "mid",
-   "function": "front",
-   "region": "UK",
-   "interest": 1.0,
-   "tracks": [
-    "Corporate finance / IB"
-   ],
-   "workplace_type": "hybrid",
-   "summary": "Job Title: Associate – Healthcare, TMT & Leisure Sector Coverage Location: London Hours: Full-Time Working Pattern: Our work style is hybrid, which involves spending at least three days per week or 60% of our…",
-   "currency": "GBP",
-   "base_pay": null,
-   "comp": 60000,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": null,
-   "reach": 0.34,
-   "flags": [
-    "Nothing in the advert matches audit experience - you'd compete with people already in this field"
-   ],
-   "pros": [
-    "Excel-heavy - your strongest tool"
-   ],
-   "match": 21465,
-   "reach_aca": 0.34,
-   "flags_aca": [
-    "Nothing in the advert matches audit experience - you'd compete with people already in this field"
-   ],
-   "pros_aca": [
-    "Excel-heavy - your strongest tool"
-   ],
-   "match_aca": 21465
-  },
-  {
-   "source": "workday",
    "company": "Barclays",
    "category": "bulge_bracket",
    "title": "AI Delivery Analyst",
@@ -6550,7 +6494,6 @@
     "closes": "2026-11-25"
    },
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -6710,7 +6653,6 @@
    "workplace": null,
    "extra": {},
    "src": "Morgan Stanley",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -6779,7 +6721,6 @@
    "workplace": null,
    "extra": {},
    "src": "Carlyle",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (large)",
    "level": "mid",
    "function": "other",
@@ -6846,7 +6787,6 @@
     "closes": "2026-11-20"
    },
    "src": "Wells Fargo",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "back",
@@ -6903,7 +6843,6 @@
    "workplace": null,
    "extra": {},
    "src": "Morgan Stanley",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "back",
@@ -7166,112 +7105,6 @@
    "match_aca": 38418
   },
   {
-   "source": "goldman",
-   "company": "Goldman Sachs",
-   "category": "bulge_bracket",
-   "title": "GBM - Public, Sales, Associate - San Francisco",
-   "location": "San Francisco, United States",
-   "url": "https://higher.gs.com/roles/172825_GS_MID_CAREER",
-   "posted": "",
-   "department": "Global Banking & Markets / Sales",
-   "description": "Corporate title: Associate. The Institutional Equity Sales desk specializes in the sale of equity securities both in the US and internationally. The desk’s institutional account base consists of hedge funds, mutual funds, and pension funds based primarily in the US. Salespeople a",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "src": "Goldman Sachs",
-   "category_label": "Investment bank",
-   "level": "mid",
-   "function": "other",
-   "region": "US",
-   "interest": 0.5,
-   "tracks": [
-    "Trading",
-    "Investing"
-   ],
-   "workplace_type": "unknown",
-   "summary": "The Institutional Equity Sales desk specializes in the sale of equity securities both in the US and internationally. The desk’s institutional account base consists of hedge funds, mutual funds, and pension…",
-   "currency": "USD",
-   "base_pay": null,
-   "comp": 118800.0,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": 156000.0,
-   "reach": 0.27,
-   "flags": [
-    "Nothing in the advert matches audit experience - you'd compete with people already in this field",
-    "US role: AAT isn't known in the US - lean on your audit experience"
-   ],
-   "pros": [
-    "Excel-heavy - your strongest tool"
-   ],
-   "match": 20048,
-   "reach_aca": 0.3,
-   "flags_aca": [
-    "Nothing in the advert matches audit experience - you'd compete with people already in this field",
-    "US role: ACA is respected, but some US employers prefer a CPA"
-   ],
-   "pros_aca": [
-    "Excel-heavy - your strongest tool"
-   ],
-   "match_aca": 22553
-  },
-  {
-   "source": "workday",
-   "company": "Bank of America",
-   "category": "bulge_bracket",
-   "title": "Enterprise Financial Risk Capital Risk Sr. Specialist",
-   "location": "New York (United States of America)",
-   "url": "https://ghr.wd1.myworkdayjobs.com/Lateral-US/job/New-York/Enterprise-Financial-Risk-Capital-Risk-Sr-Specialist_26030021-2",
-   "posted": "2026-11-13",
-   "department": "",
-   "description": "Job Description: At Bank of America, we are guided by a common purpose to help make financial lives better through the power of every connection. We do this by driving Responsible Growth and delivering for our clients, teammates, communities and shareholders every day. Being a Gr",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "src": "Bank of America",
-   "stale_since": "2026-11-18",
-   "category_label": "Investment bank",
-   "level": "mid",
-   "function": "other",
-   "region": "US",
-   "interest": 0.5,
-   "tracks": [
-    "Finance / accounting",
-    "Ops / risk",
-    "Trading"
-   ],
-   "workplace_type": "unknown",
-   "summary": "Operating within BAC’s Risk Framework, understand and drive all components of the end-to-end Capital/Capital Risk management process/program for the Enterprise.",
-   "currency": "USD",
-   "base_pay": null,
-   "comp": 118800.0,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": 156000.0,
-   "reach": 0.27,
-   "flags": [
-    "Nothing in the advert matches audit experience - you'd compete with people already in this field",
-    "US role: AAT isn't known in the US - lean on your audit experience"
-   ],
-   "pros": [],
-   "match": 20048,
-   "reach_aca": 0.3,
-   "flags_aca": [
-    "Nothing in the advert matches audit experience - you'd compete with people already in this field",
-    "US role: ACA is respected, but some US employers prefer a CPA"
-   ],
-   "pros_aca": [],
-   "match_aca": 22553
-  },
-  {
    "source": "greenhouse",
    "company": "Jump Trading",
    "category": "prop_trading",
@@ -7514,7 +7347,6 @@
     "closes": "2026-11-24"
    },
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "other",
@@ -7732,7 +7564,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "back",
@@ -7792,7 +7623,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "back",
@@ -7897,7 +7727,6 @@
    "workplace": null,
    "extra": {},
    "src": "Morgan Stanley",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "back",
@@ -7948,7 +7777,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -8005,7 +7833,6 @@
    "workplace": null,
    "extra": {},
    "src": "Morgan Stanley",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "back",
@@ -8454,7 +8281,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "other",
@@ -8638,7 +8464,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -8690,7 +8515,6 @@
     "closes": "2026-12-03"
    },
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "back",
@@ -8742,7 +8566,6 @@
     "closes": "2027-01-30"
    },
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -8923,7 +8746,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -8983,7 +8805,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "back",
@@ -9098,7 +8919,6 @@
     "closes": "2026-12-31"
    },
    "src": "BMO",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -9158,7 +8978,6 @@
     "closes": "2026-12-31"
    },
    "src": "BMO",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -9391,7 +9210,6 @@
     "closes": "2026-11-22"
    },
    "src": "TD Securities",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -9451,7 +9269,6 @@
    "workplace": null,
    "extra": {},
    "src": "Blackstone",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (large)",
    "level": "mid",
    "function": "other",
@@ -9511,7 +9328,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -9564,7 +9380,6 @@
    "workplace": null,
    "extra": {},
    "src": "Morgan Stanley",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -9626,7 +9441,6 @@
     "closes": "2027-01-31"
    },
    "src": "State Street",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "mid",
    "function": "front",
@@ -9793,7 +9607,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "other",
@@ -9824,6 +9637,65 @@
     "Asks for audit, uk gaap - core to ACA + about 4 yrs of audit"
    ],
    "match_aca": 17053
+  },
+  {
+   "source": "workday",
+   "company": "TD Securities",
+   "category": "bulge_bracket",
+   "title": "Financial Advisor (Multiple Levels) - Boston, MA",
+   "location": "Boston, Massachusetts (United States of America)",
+   "url": "https://td.wd3.myworkdayjobs.com/TD_Bank_Careers/job/Boston-Massachusetts/Financial-Advisor--Multiple-Levels----Boston--MA_R_1511043",
+   "posted": "2026-11-13",
+   "department": "",
+   "description": "Work Location: Boston, Massachusetts, United States of America Hours: 40 Pay Details: $78,520 - $117,520 USD TD is committed to providing fair and equitable compensation opportunities to all colleagues. Growth opportunities and skill development are defining features of the colle",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {
+    "closes": "2026-12-04"
+   },
+   "src": "TD Securities",
+   "category_label": "Investment bank",
+   "level": "mid",
+   "function": "other",
+   "region": "US",
+   "interest": 0.5,
+   "tracks": [
+    "Finance / accounting",
+    "Transaction services"
+   ],
+   "workplace_type": "unknown",
+   "summary": "Line of Business: TD Wealth Job Description: The Financial Advisor (FA) role is a three-year program with a forgivable draw, for financial advisors or planners who will be providing financial planning guidance…",
+   "currency": "USD",
+   "base_pay": 74435,
+   "comp": 84900.0,
+   "comp_basis": "advertised",
+   "base_range": [
+    78500.0,
+    117500.0
+   ],
+   "pay_all_in": false,
+   "comp_usd": 112000.0,
+   "reach": 0.32,
+   "flags": [
+    "A degree is preferred, not required",
+    "US role: AAT isn't known in the US - lean on your audit experience"
+   ],
+   "pros": [
+    "Asks for due diligence - core to your 2 yrs of audit"
+   ],
+   "match": 17040,
+   "reach_aca": 0.43,
+   "flags_aca": [
+    "A degree is preferred, not required",
+    "US role: ACA is respected, but some US employers prefer a CPA"
+   ],
+   "pros_aca": [
+    "Asks for due diligence - core to ACA + about 4 yrs of audit"
+   ],
+   "match_aca": 22553
   },
   {
    "source": "greenhouse",
@@ -9899,7 +9771,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -9966,7 +9837,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -10031,7 +9901,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "other",
@@ -10087,7 +9956,6 @@
    "workplace": null,
    "extra": {},
    "src": "TD Securities",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "front",
@@ -10310,7 +10178,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "back",
@@ -10360,7 +10227,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -10424,7 +10290,6 @@
    "workplace": null,
    "extra": {},
    "src": "Morgan Stanley",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -10659,7 +10524,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -10726,7 +10590,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -10901,7 +10764,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -10966,7 +10828,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -11091,7 +10952,6 @@
    "workplace": null,
    "extra": {},
    "src": "Mizuho",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -11151,7 +11011,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -11214,7 +11073,6 @@
    "workplace": null,
    "extra": {},
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -11321,7 +11179,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -11548,7 +11405,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -11652,112 +11508,6 @@
   },
   {
    "source": "workday",
-   "company": "Barclays",
-   "category": "bulge_bracket",
-   "title": "Global Transaction Banking Degree Apprenticeship Programme 2027 Northampton",
-   "location": "Northampton, Barclays Campus, Pavilion Drive (United Kingdom)",
-   "url": "https://barclays.wd3.myworkdayjobs.com/External_Career_Site_Barclays/job/Northampton-Barclays-Campus-Pavilion-Drive/Global-Transaction-Banking-Degree-Apprenticeship-Programme-2027-Northampton_JR-0000124677",
-   "posted": "2026-09-18",
-   "department": "",
-   "description": "Job Description Purpose of the role To participate in the day-to-day activities of the Transaction Banking division providing insights and expertise that help senior colleagues make informed decisions, develop new products and services, and identify new market opportunities. Acco",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "src": "Barclays",
-   "stale_since": "2026-11-18",
-   "category_label": "Investment bank",
-   "level": "apprentice",
-   "function": "other",
-   "region": "UK",
-   "interest": 0.5,
-   "tracks": [
-    "Corporate finance / IB"
-   ],
-   "workplace_type": "unknown",
-   "summary": "To participate in the day-to-day activities of the Transaction Banking division providing insights and expertise that help senior colleagues make informed decisions, develop new products and services, and…",
-   "currency": "GBP",
-   "base_pay": 25200,
-   "comp": 25200.0,
-   "comp_basis": "advertised",
-   "base_range": [
-    25200.0,
-    25200.0
-   ],
-   "pay_all_in": false,
-   "comp_usd": null,
-   "reach": 0.95,
-   "flags": [],
-   "pros": [
-    "Open to part-qualified candidates (\"working towards\") - you are, with AAT L4 and ACA under way"
-   ],
-   "match": 14962,
-   "reach_aca": 0.21,
-   "flags_aca": [
-    "Apprenticeship - you'd already hold a higher qualification"
-   ],
-   "pros_aca": [
-    "Takes part-qualified or qualified accountants - ACA ticks this"
-   ],
-   "match_aca": 3347
-  },
-  {
-   "source": "workday",
-   "company": "Barclays",
-   "category": "bulge_bracket",
-   "title": "Global Transaction Banking Degree Apprenticeship Programme 2027 London",
-   "location": "Canary Wharf, 1 Churchill Place (United Kingdom)",
-   "url": "https://barclays.wd3.myworkdayjobs.com/External_Career_Site_Barclays/job/Canary-Wharf-1-Churchill-Place/Global-Transaction-Banking-Degree-Apprenticeship-Programme-2027-London_JR-0000124291",
-   "posted": "2026-09-18",
-   "department": "",
-   "description": "Job Description Purpose of the role To participate in the day-to-day activities of the Transaction Banking division providing insights and expertise that help senior colleagues make informed decisions, develop new products and services, and identify new market opportunities. Acco",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "src": "Barclays",
-   "stale_since": "2026-11-18",
-   "category_label": "Investment bank",
-   "level": "apprentice",
-   "function": "other",
-   "region": "UK",
-   "interest": 0.5,
-   "tracks": [
-    "Corporate finance / IB"
-   ],
-   "workplace_type": "unknown",
-   "summary": "To participate in the day-to-day activities of the Transaction Banking division providing insights and expertise that help senior colleagues make informed decisions, develop new products and services, and…",
-   "currency": "GBP",
-   "base_pay": 25200,
-   "comp": 25200.0,
-   "comp_basis": "advertised",
-   "base_range": [
-    25200.0,
-    25200.0
-   ],
-   "pay_all_in": false,
-   "comp_usd": null,
-   "reach": 0.95,
-   "flags": [],
-   "pros": [
-    "Open to part-qualified candidates (\"working towards\") - you are, with AAT L4 and ACA under way"
-   ],
-   "match": 14962,
-   "reach_aca": 0.21,
-   "flags_aca": [
-    "Apprenticeship - you'd already hold a higher qualification"
-   ],
-   "pros_aca": [
-    "Takes part-qualified or qualified accountants - ACA ticks this"
-   ],
-   "match_aca": 3347
-  },
-  {
-   "source": "workday",
    "company": "Bank of America",
    "category": "bulge_bracket",
    "title": "Alternative Investments Sales Strategy Analyst",
@@ -11773,7 +11523,6 @@
    "workplace": null,
    "extra": {},
    "src": "Bank of America",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -11827,7 +11576,6 @@
     "closes": "2026-11-20"
    },
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -11924,7 +11672,6 @@
    "workplace": null,
    "extra": {},
    "src": "Blackstone",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (large)",
    "level": "entry",
    "function": "other",
@@ -11984,7 +11731,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "back",
@@ -12041,7 +11787,6 @@
     "closes": "2026-12-31"
    },
    "src": "State Street",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "mid",
    "function": "back",
@@ -12152,7 +11897,6 @@
    "workplace": null,
    "extra": {},
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -12255,7 +11999,6 @@
     "closes": "2026-11-20"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "entry",
    "function": "other",
@@ -12422,7 +12165,6 @@
     "closes": "2026-12-31"
    },
    "src": "State Street",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "mid",
    "function": "back",
@@ -12481,7 +12223,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "front",
@@ -12643,7 +12384,6 @@
    "workplace": null,
    "extra": {},
    "src": "Morgan Stanley",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "other",
@@ -12695,7 +12435,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "back",
@@ -12809,7 +12548,6 @@
    "workplace": null,
    "extra": {},
    "src": "Blackstone",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (large)",
    "level": "entry",
    "function": "other",
@@ -12872,7 +12610,6 @@
    "workplace": null,
    "extra": {},
    "src": "Blackstone",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (large)",
    "level": "entry",
    "function": "other",
@@ -12931,7 +12668,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -12991,7 +12727,6 @@
    "workplace": null,
    "extra": {},
    "src": "Blackstone",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (large)",
    "level": "mid",
    "function": "back",
@@ -13039,68 +12774,6 @@
    "match_aca": 26763
   },
   {
-   "source": "greenhouse",
-   "company": "Point72",
-   "category": "hedge_fund",
-   "title": "Macro And Alternatives Trade Support Analyst",
-   "location": "Stamford, CT",
-   "url": "https://boards.greenhouse.io/point72/jobs/8845107002?gh_jid=8845107002",
-   "posted": "2026-11-09",
-   "department": "Operations",
-   "description": "A Career with Point72’s Operations Team Point72’s Operations team supports all operational aspects of trade processing, reconciliation, financing, and reporting firmwide for all products, including equities, derivatives, bonds, foreign exchange and futures, and digital assets acr",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "src": "Point72",
-   "category_label": "Hedge fund",
-   "level": "entry",
-   "function": "back",
-   "region": "US",
-   "interest": 0.5,
-   "tracks": [
-    "Finance / accounting",
-    "Trading",
-    "Investing"
-   ],
-   "workplace_type": "unknown",
-   "summary": "A Career with Point72’s Operations Team Point72’s Operations team supports all operational aspects of trade processing, reconciliation, financing, and reporting firmwide for all products, including equities…",
-   "currency": "USD",
-   "base_pay": 77837,
-   "comp": 93400.0,
-   "comp_basis": "advertised",
-   "base_range": [
-    90000.0,
-    115000.0
-   ],
-   "pay_all_in": false,
-   "comp_usd": 123000.0,
-   "reach": 0.24,
-   "flags": [
-    "Python/SQL is a plus, not required - worth learning",
-    "Asks for a degree - you'd need them to accept AAT L4 + experience",
-    "US role: AAT isn't known in the US - lean on your audit experience"
-   ],
-   "pros": [
-    "Asks for accounting - core to your 2 yrs of audit",
-    "Excel-heavy - your strongest tool"
-   ],
-   "match": 13986,
-   "reach_aca": 0.46,
-   "flags_aca": [
-    "Python/SQL is a plus, not required - worth learning",
-    "Asks for a degree - many firms accept ACA instead, but check",
-    "US role: ACA is respected, but some US employers prefer a CPA"
-   ],
-   "pros_aca": [
-    "Asks for accounting - core to ACA + about 4 yrs of audit",
-    "Excel-heavy - your strongest tool"
-   ],
-   "match_aca": 26747
-  },
-  {
    "source": "workday",
    "company": "Morgan Stanley",
    "category": "bulge_bracket",
@@ -13117,7 +12790,6 @@
    "workplace": null,
    "extra": {},
    "src": "Morgan Stanley",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -13178,7 +12850,6 @@
    "workplace": null,
    "extra": {},
    "src": "Mizuho",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -13240,7 +12911,6 @@
    "workplace": null,
    "extra": {},
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "back",
@@ -13342,7 +13012,6 @@
    "workplace": null,
    "extra": {},
    "src": "LSEG",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "entry",
    "function": "other",
@@ -13387,7 +13056,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -13448,7 +13116,6 @@
     "closes": "2026-11-28"
    },
    "src": "Wells Fargo",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "other",
@@ -13503,7 +13170,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -14002,7 +13668,6 @@
     "closes": "2026-12-31"
    },
    "src": "State Street",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "mid",
    "function": "back",
@@ -14131,7 +13796,6 @@
     "closes": "2027-01-27"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "apprentice",
    "function": "other",
@@ -14169,6 +13833,116 @@
   },
   {
    "source": "workday",
+   "company": "Barclays",
+   "category": "bulge_bracket",
+   "title": "Global Transaction Banking Degree Apprenticeship Programme 2027 Northampton",
+   "location": "Northampton, Barclays Campus, Pavilion Drive (United Kingdom)",
+   "url": "https://barclays.wd3.myworkdayjobs.com/External_Career_Site_Barclays/job/Northampton-Barclays-Campus-Pavilion-Drive/Global-Transaction-Banking-Degree-Apprenticeship-Programme-2027-Northampton_JR-0000124677",
+   "posted": "2026-09-18",
+   "department": "",
+   "description": "Job Description Purpose of the role To participate in the day-to-day activities of the Transaction Banking division providing insights and expertise that help senior colleagues make informed decisions, develop new products and services, and identify new market opportunities. Acco",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "src": "Barclays",
+   "category_label": "Investment bank",
+   "level": "apprentice",
+   "function": "other",
+   "region": "UK",
+   "interest": 0.5,
+   "tracks": [
+    "Corporate finance / IB"
+   ],
+   "workplace_type": "unknown",
+   "summary": "To participate in the day-to-day activities of the Transaction Banking division providing insights and expertise that help senior colleagues make informed decisions, develop new products and services, and…",
+   "currency": "GBP",
+   "base_pay": 25200,
+   "comp": 25200.0,
+   "comp_basis": "advertised",
+   "base_range": [
+    25200.0,
+    25200.0
+   ],
+   "pay_all_in": false,
+   "comp_usd": null,
+   "reach": 0.83,
+   "flags": [
+    "GCSE grade 6 asked for - above one of your GCSEs"
+   ],
+   "pros": [
+    "Open to part-qualified candidates (\"working towards\") - you are, with AAT L4 and ACA under way"
+   ],
+   "match": 13086,
+   "reach_aca": 0.18,
+   "flags_aca": [
+    "Apprenticeship - you'd already hold a higher qualification",
+    "GCSE grade 6 asked for - above one of your GCSEs"
+   ],
+   "pros_aca": [
+    "Takes part-qualified or qualified accountants - ACA ticks this"
+   ],
+   "match_aca": 2845
+  },
+  {
+   "source": "workday",
+   "company": "Barclays",
+   "category": "bulge_bracket",
+   "title": "Global Transaction Banking Degree Apprenticeship Programme 2027 London",
+   "location": "Canary Wharf, 1 Churchill Place (United Kingdom)",
+   "url": "https://barclays.wd3.myworkdayjobs.com/External_Career_Site_Barclays/job/Canary-Wharf-1-Churchill-Place/Global-Transaction-Banking-Degree-Apprenticeship-Programme-2027-London_JR-0000124291",
+   "posted": "2026-09-18",
+   "department": "",
+   "description": "Job Description Purpose of the role To participate in the day-to-day activities of the Transaction Banking division providing insights and expertise that help senior colleagues make informed decisions, develop new products and services, and identify new market opportunities. Acco",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "src": "Barclays",
+   "category_label": "Investment bank",
+   "level": "apprentice",
+   "function": "other",
+   "region": "UK",
+   "interest": 0.5,
+   "tracks": [
+    "Corporate finance / IB"
+   ],
+   "workplace_type": "unknown",
+   "summary": "To participate in the day-to-day activities of the Transaction Banking division providing insights and expertise that help senior colleagues make informed decisions, develop new products and services, and…",
+   "currency": "GBP",
+   "base_pay": 25200,
+   "comp": 25200.0,
+   "comp_basis": "advertised",
+   "base_range": [
+    25200.0,
+    25200.0
+   ],
+   "pay_all_in": false,
+   "comp_usd": null,
+   "reach": 0.83,
+   "flags": [
+    "GCSE grade 6 asked for - above one of your GCSEs"
+   ],
+   "pros": [
+    "Open to part-qualified candidates (\"working towards\") - you are, with AAT L4 and ACA under way"
+   ],
+   "match": 13086,
+   "reach_aca": 0.18,
+   "flags_aca": [
+    "Apprenticeship - you'd already hold a higher qualification",
+    "GCSE grade 6 asked for - above one of your GCSEs"
+   ],
+   "pros_aca": [
+    "Takes part-qualified or qualified accountants - ACA ticks this"
+   ],
+   "match_aca": 2845
+  },
+  {
+   "source": "workday",
    "company": "Citi",
    "category": "bulge_bracket",
    "title": "Markets Operations Analyst - Entry Level",
@@ -14186,7 +13960,6 @@
     "closes": "2026-12-03"
    },
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "back",
@@ -14242,7 +14015,6 @@
     "closes": "2026-11-20"
    },
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -14347,7 +14119,6 @@
    "workplace": null,
    "extra": {},
    "src": "Bank of America",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "front",
@@ -14410,7 +14181,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "front",
@@ -14466,7 +14236,6 @@
     "closes": "2026-11-27"
    },
    "src": "TD Securities",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "back",
@@ -14515,7 +14284,6 @@
    "workplace": null,
    "extra": {},
    "src": "Neuberger Berman",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "entry",
    "function": "back",
@@ -14574,7 +14342,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -14675,7 +14442,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "back",
@@ -14845,7 +14611,6 @@
     "closes": "2026-12-02"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "apprentice",
    "function": "other",
@@ -14896,7 +14661,6 @@
     "closes": "2026-12-02"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "apprentice",
    "function": "other",
@@ -14999,7 +14763,6 @@
    "workplace": null,
    "extra": {},
    "src": "Neuberger Berman",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "mid",
    "function": "other",
@@ -15058,7 +14821,6 @@
    "workplace": null,
    "extra": {},
    "src": "TD Securities",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "back",
@@ -15152,6 +14914,68 @@
    "match_aca": 23327
   },
   {
+   "source": "greenhouse",
+   "company": "Hudson River Trading",
+   "category": "prop_trading",
+   "title": "Senior Corporate Accountant",
+   "location": "Austin, TX, United States; New York, NY, United States",
+   "url": "https://www.hudsonrivertrading.com/careers/job/?gh_jid=8400678",
+   "posted": "2026-11-18",
+   "department": "Finance",
+   "description": "Hudson River Trading (HRT) is seeking an experienced Corporate Accountant to join our Accounting Team! In this role, you will leverage your core accounting expertise to design and implement innovative solutions that optimize our processes, efficiency, and workflows. You will mana",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "src": "Hudson River Trading",
+   "category_label": "Prop trading / market maker",
+   "level": "mid",
+   "function": "back",
+   "region": "US",
+   "interest": 0.5,
+   "tracks": [
+    "Finance / accounting",
+    "Trading"
+   ],
+   "workplace_type": "unknown",
+   "summary": "Hudson River Trading (HRT) is seeking an experienced Corporate Accountant to join our Accounting Team!. In this role, you will leverage your core accounting expertise to design and implement innovative…",
+   "currency": "USD",
+   "base_pay": null,
+   "comp": 122900.0,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": 162000.0,
+   "reach": 0.16,
+   "flags": [
+    "Python/SQL is a plus, not required - worth learning",
+    "Asks for a degree - you'd need them to accept AAT L4 + experience",
+    "Wants finance-system experience (e.g. Workday Financials) - you've seen clients' systems in audit, not run them",
+    "US role: AAT isn't known in the US - lean on your audit experience"
+   ],
+   "pros": [
+    "Asks for 2+ yrs (at a big 4 firm, top-tier public accounting…) - you have 2",
+    "Asks for big 4, us gaap, accounting - core to your 2 yrs of audit",
+    "Excel-heavy - your strongest tool"
+   ],
+   "match": 12429,
+   "reach_aca": 0.31,
+   "flags_aca": [
+    "Python/SQL is a plus, not required - worth learning",
+    "Asks for a degree - many firms accept ACA instead, but check",
+    "Wants finance-system experience (e.g. Workday Financials) - you've seen clients' systems in audit, not run them",
+    "US role: ACA is respected, but some US employers prefer a CPA"
+   ],
+   "pros_aca": [
+    "Asks for 2+ yrs (at a big 4 firm, top-tier public accounting…) - you have 4",
+    "Asks for big 4, us gaap, accounting - core to ACA + about 4 yrs of audit",
+    "Excel-heavy - your strongest tool"
+   ],
+   "match_aca": 23770
+  },
+  {
    "source": "workday",
    "company": "Morgan Stanley",
    "category": "bulge_bracket",
@@ -15168,7 +14992,6 @@
    "workplace": null,
    "extra": {},
    "src": "Morgan Stanley",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -15229,7 +15052,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -15280,7 +15102,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -15317,6 +15138,69 @@
   },
   {
    "source": "workday",
+   "company": "Bank of America",
+   "category": "bulge_bracket",
+   "title": "Enterprise Financial Risk Capital Risk Sr. Specialist",
+   "location": "New York (United States of America)",
+   "url": "https://ghr.wd1.myworkdayjobs.com/Lateral-US/job/New-York/Enterprise-Financial-Risk-Capital-Risk-Sr-Specialist_26030021-2",
+   "posted": "2026-11-13",
+   "department": "",
+   "description": "Job Description: At Bank of America, we are guided by a common purpose to help make financial lives better through the power of every connection. We do this by driving Responsible Growth and delivering for our clients, teammates, communities and shareholders every day. Being a Gr",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "src": "Bank of America",
+   "category_label": "Investment bank",
+   "level": "mid",
+   "function": "other",
+   "region": "US",
+   "interest": 0.5,
+   "tracks": [
+    "Finance / accounting",
+    "Ops / risk",
+    "Trading",
+    "ACA stepping stone"
+   ],
+   "workplace_type": "unknown",
+   "summary": "Operating within BAC’s Risk Framework, understand and drive all components of the end-to-end Capital/Capital Risk management process/program for the Enterprise.",
+   "currency": "USD",
+   "base_pay": 82811,
+   "comp": 94400.0,
+   "comp_basis": "advertised",
+   "base_range": [
+    84200.0,
+    133900.0
+   ],
+   "pay_all_in": false,
+   "comp_usd": 124000.0,
+   "reach": 0.21,
+   "flags": [
+    "Asks for 3+ years' experience (treasury, finance, accounting or risk management experience) - you have 2",
+    "Python/SQL is a plus, not required - worth learning",
+    "US role: AAT isn't known in the US - lean on your audit experience"
+   ],
+   "pros": [
+    "Asks for accounting - core to your 2 yrs of audit",
+    "Excel-heavy - your strongest tool"
+   ],
+   "match": 12311,
+   "reach_aca": 0.39,
+   "flags_aca": [
+    "Python/SQL is a plus, not required - worth learning",
+    "US role: ACA is respected, but some US employers prefer a CPA"
+   ],
+   "pros_aca": [
+    "Asks for 3+ yrs (treasury, finance, accounting or risk…) - you have 4",
+    "Asks for accounting - core to ACA + about 4 yrs of audit",
+    "Excel-heavy - your strongest tool"
+   ],
+   "match_aca": 23084
+  },
+  {
+   "source": "workday",
    "company": "Barclays",
    "category": "bulge_bracket",
    "title": "2027 Operations Analyst Degree Apprenticeship Programme Northampton",
@@ -15334,7 +15218,6 @@
     "closes": "2026-11-28"
    },
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "apprentice",
    "function": "back",
@@ -15390,7 +15273,6 @@
     "closes": "2026-11-28"
    },
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "apprentice",
    "function": "back",
@@ -15446,7 +15328,6 @@
     "closes": "2026-11-28"
    },
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "apprentice",
    "function": "back",
@@ -15657,7 +15538,6 @@
    "workplace": null,
    "extra": {},
    "src": "LSEG",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "mid",
    "function": "other",
@@ -15714,7 +15594,6 @@
     "closes": "2026-11-21"
    },
    "src": "Wells Fargo",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "back",
@@ -15997,7 +15876,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "other",
@@ -16115,7 +15993,6 @@
     "closes": "2026-11-28"
    },
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "apprentice",
    "function": "back",
@@ -16169,7 +16046,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "other",
@@ -16437,7 +16313,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "other",
@@ -16603,7 +16478,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -16720,7 +16594,6 @@
    "workplace": null,
    "extra": {},
    "src": "Neuberger Berman",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "mid",
    "function": "other",
@@ -17002,7 +16875,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -17039,6 +16911,69 @@
    ],
    "pros_aca": [],
    "match_aca": 23700
+  },
+  {
+   "source": "workday",
+   "company": "Citi",
+   "category": "bulge_bracket",
+   "title": "Treasury Risk Senior Officer I",
+   "location": "Tampa Florida United States (United States of America)",
+   "url": "https://citi.wd5.myworkdayjobs.com/2/job/Tampa-Florida-United-States/Treasury-Risk-Senior-Officer-I_261003013",
+   "posted": "2026-11-19",
+   "department": "",
+   "description": "Citibank, N.A. seeks a Treasury Risk Senior Officer I for its Tampa, FL location. DUTIES: Provide independent risk oversight and analysis across multiple asset classes, including private equity, venture capital, and a portfolio of fixed income investments related to insurance act",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {
+    "closes": "2027-01-08"
+   },
+   "src": "Citi",
+   "category_label": "Investment bank",
+   "level": "mid",
+   "function": "other",
+   "region": "US",
+   "interest": 0.55,
+   "tracks": [
+    "ACA stepping stone",
+    "Ops / risk",
+    "Transaction services",
+    "Private equity"
+   ],
+   "workplace_type": "hybrid",
+   "summary": "Citibank, N.A. seeks a Treasury Risk Senior Officer I for its Tampa, FL location. DUTIES: Provide independent risk oversight and analysis across multiple asset classes, including private equity, venture…",
+   "currency": "USD",
+   "base_pay": 147625,
+   "comp": 168300.0,
+   "comp_basis": "advertised",
+   "base_range": [
+    190000.0,
+    198800.0
+   ],
+   "pay_all_in": false,
+   "comp_usd": 222000.0,
+   "reach": 0.09,
+   "flags": [
+    "Asks for several years' experience (senior role, no years stated) - audit only partly counts here",
+    "Asks for a degree or equivalent - lean on AAT L4 + experience",
+    "US role: AAT isn't known in the US - lean on your audit experience"
+   ],
+   "pros": [
+    "Asks for financial statements - core to your 2 yrs of audit"
+   ],
+   "match": 10722,
+   "reach_aca": 0.26,
+   "flags_aca": [
+    "Asks for several years' experience (senior role, no years stated) - audit only partly counts here",
+    "Asks for a degree or equivalent - ACA should count",
+    "US role: ACA is respected, but some US employers prefer a CPA"
+   ],
+   "pros_aca": [
+    "Asks for financial statements - core to ACA + about 4 yrs of audit"
+   ],
+   "match_aca": 30155
   },
   {
    "source": "goldman",
@@ -17279,7 +17214,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "front",
@@ -17330,64 +17264,6 @@
   },
   {
    "source": "workday",
-   "company": "Barclays",
-   "category": "bulge_bracket",
-   "title": "Markets Desk Analyst - VP",
-   "location": "New York, 745 7th Avenue (United States of America)",
-   "url": "https://barclays.wd3.myworkdayjobs.com/External_Career_Site_Barclays/job/New-York-745-7th-Avenue/Markets-Desk-Analyst---VP_JR-0000125036",
-   "posted": "2026-11-17",
-   "department": "",
-   "description": "Job Description Purpose of the role Desk Analysts cover relevant sectors and credits and watch for news events. Desk Analysts work with Traders and Salespeople to convey company and market updates internally and externally to clients. Desk Analysts build financial models for the ",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {
-    "closes": "2026-11-19"
-   },
-   "src": "Barclays",
-   "stale_since": "2026-11-18",
-   "category_label": "Investment bank",
-   "level": "senior",
-   "function": "front",
-   "region": "US",
-   "interest": 1.0,
-   "tracks": [
-    "Trading",
-    "Finance / accounting"
-   ],
-   "workplace_type": "unknown",
-   "summary": "As a Markets Desk Analyst - VP , you will support the global Lender Finance platform by overseeing borrowing base reporting, data governance, and process controls.",
-   "currency": "USD",
-   "base_pay": 153776,
-   "comp": 207600.0,
-   "comp_basis": "advertised",
-   "base_range": [
-    155000.0,
-    250000.0
-   ],
-   "pay_all_in": false,
-   "comp_usd": 273000.0,
-   "reach": 0.05,
-   "flags": [
-    "US role: AAT isn't known in the US - lean on your audit experience"
-   ],
-   "pros": [
-    "Asks for reconciliations - core to your 2 yrs of audit"
-   ],
-   "match": 10463,
-   "reach_aca": 0.14,
-   "flags_aca": [
-    "US role: ACA is respected, but some US employers prefer a CPA"
-   ],
-   "pros_aca": [
-    "Asks for reconciliations - core to ACA + about 4 yrs of audit"
-   ],
-   "match_aca": 29427
-  },
-  {
-   "source": "workday",
    "company": "Apollo",
    "category": "pe_megafund",
    "title": "Principal, Portfolio Management",
@@ -17403,7 +17279,6 @@
    "workplace": null,
    "extra": {},
    "src": "Apollo",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (large)",
    "level": "senior",
    "function": "front",
@@ -17606,66 +17481,6 @@
    "match_aca": 10399
   },
   {
-   "source": "goldman",
-   "company": "Goldman Sachs",
-   "category": "bulge_bracket",
-   "title": "Asset & Wealth Management, Wealth Management, Global Leadership Team, Strategy and Execution, Analyst – New York",
-   "location": "New York, United States",
-   "url": "https://higher.gs.com/roles/167540_GS_MID_CAREER",
-   "posted": "",
-   "department": "Asset & Wealth Management / COO",
-   "description": "Corporate title: Analyst. YOUR IMPACT Are you an exceptional Analyst ready to tackle the most critical strategic questions for a rapidly expanding global business? We are seeking a visionary and highly analytical individual with a strong work ethic and a proven ability to innovat",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "src": "Goldman Sachs",
-   "category_label": "Investment bank",
-   "level": "entry",
-   "function": "other",
-   "region": "US",
-   "interest": 0.5,
-   "tracks": [
-    "Finance / accounting",
-    "Investing"
-   ],
-   "workplace_type": "unknown",
-   "summary": "The Global Leadership team is a team within Wealth Management that provides support and guidance to the Senior WM Executives, Regional Management Teams, Private Wealth Advisors, and many other business…",
-   "currency": "USD",
-   "base_pay": 93025,
-   "comp": 106000.0,
-   "comp_basis": "advertised",
-   "base_range": [
-    85000.0,
-    160000.0
-   ],
-   "pay_all_in": false,
-   "comp_usd": 140000.0,
-   "reach": 0.16,
-   "flags": [
-    "Asks for 2+ years' experience (the financial services industry knowledge/experience in…) - audit only partly counts here",
-    "Asks for a degree - you'd need them to accept AAT L4 + experience",
-    "US role: AAT isn't known in the US - lean on your audit experience"
-   ],
-   "pros": [
-    "Asks for financial statements - core to your 2 yrs of audit",
-    "Excel-heavy - your strongest tool"
-   ],
-   "match": 10356,
-   "reach_aca": 0.5,
-   "flags_aca": [
-    "Asks for a degree - many firms accept ACA instead, but check",
-    "US role: ACA is respected, but some US employers prefer a CPA"
-   ],
-   "pros_aca": [
-    "Asks for financial statements - core to ACA + about 4 yrs of audit",
-    "Excel-heavy - your strongest tool"
-   ],
-   "match_aca": 33009
-  },
-  {
    "source": "oracle",
    "company": "J.P. Morgan",
    "category": "bulge_bracket",
@@ -17786,7 +17601,6 @@
    "workplace": null,
    "extra": {},
    "src": "LSEG",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "entry",
    "function": "other",
@@ -17837,7 +17651,6 @@
     "closes": "2026-12-12"
    },
    "src": "State Street",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "mid",
    "function": "front",
@@ -17900,7 +17713,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -17965,7 +17777,6 @@
     "closes": "2027-01-29"
    },
    "src": "Santander",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "mid",
    "function": "other",
@@ -18020,7 +17831,6 @@
     "closes": "2026-11-21"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "mid",
    "function": "other",
@@ -18074,7 +17884,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -18194,7 +18003,6 @@
    "workplace": null,
    "extra": {},
    "src": "RSM UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "other",
@@ -18243,7 +18051,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "other",
@@ -18346,7 +18153,6 @@
     "closes": "2026-11-30"
    },
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "other",
@@ -18459,7 +18265,6 @@
    "workplace": null,
    "extra": {},
    "src": "Carlyle",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (large)",
    "level": "mid",
    "function": "other",
@@ -18522,7 +18327,6 @@
     "closes": "2026-11-23"
    },
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -18579,7 +18383,6 @@
     "closes": "2026-12-04"
    },
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -18802,7 +18605,6 @@
    "workplace": null,
    "extra": {},
    "src": "Carlyle",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (large)",
    "level": "entry",
    "function": "front",
@@ -18866,7 +18668,6 @@
    "workplace": null,
    "extra": {},
    "src": "Apollo",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (large)",
    "level": "entry",
    "function": "other",
@@ -19072,6 +18873,57 @@
    "match_aca": 29250
   },
   {
+   "source": "workday",
+   "company": "MUFG",
+   "category": "bulge_bracket",
+   "title": "Control Room Analyst",
+   "location": "London (United Kingdom)",
+   "url": "https://mufgub.wd3.myworkdayjobs.com/MUFG-Careers/job/London/Control-Room-Analyst_10080618-WD",
+   "posted": "2026-11-16",
+   "department": "",
+   "description": "Do you want your voice heard and your actions to count? Discover your opportunity with Mitsubishi UFJ Financial Group (MUFG), one of the world’s leading financial groups. Across the globe, we’re 150,000 colleagues, striving to make a difference for every client, organization, and",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {
+    "closes": "2026-11-24"
+   },
+   "src": "MUFG",
+   "category_label": "Investment bank",
+   "level": "entry",
+   "function": "back",
+   "region": "UK",
+   "interest": 0.5,
+   "tracks": [
+    "Finance / accounting",
+    "Trading",
+    "Corporate finance / IB"
+   ],
+   "workplace_type": "hybrid",
+   "summary": "As a Control Room Analyst at MUFG in London, you will play a pivotal role in supporting the management of transactional conflicts of interest and information barriers across multiple business lines within EMEA.",
+   "currency": "GBP",
+   "base_pay": null,
+   "comp": 45000.0,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": null,
+   "reach": 0.31,
+   "flags": [
+    "Asks for a degree - you'd need them to accept AAT L4 + experience"
+   ],
+   "pros": [],
+   "match": 9242,
+   "reach_aca": 0.53,
+   "flags_aca": [
+    "Asks for a degree - many firms accept ACA instead, but check"
+   ],
+   "pros_aca": [],
+   "match_aca": 15711
+  },
+  {
    "source": "greenhouse",
    "company": "Squarepoint Capital",
    "category": "hedge_fund",
@@ -19239,7 +19091,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "other",
@@ -19275,58 +19126,6 @@
    ],
    "pros_aca": [],
    "match_aca": 8720
-  },
-  {
-   "source": "workday",
-   "company": "MUFG",
-   "category": "bulge_bracket",
-   "title": "Control Room Analyst",
-   "location": "London (United Kingdom)",
-   "url": "https://mufgub.wd3.myworkdayjobs.com/MUFG-Careers/job/London/Control-Room-Analyst_10080618-WD",
-   "posted": "2026-11-16",
-   "department": "",
-   "description": "Do you want your voice heard and your actions to count? Discover your opportunity with Mitsubishi UFJ Financial Group (MUFG), one of the world’s leading financial groups. Across the globe, we’re 150,000 colleagues, striving to make a difference for every client, organization, and",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {
-    "closes": "2026-11-24"
-   },
-   "src": "MUFG",
-   "stale_since": "2026-11-18",
-   "category_label": "Investment bank",
-   "level": "entry",
-   "function": "back",
-   "region": "UK",
-   "interest": 0.5,
-   "tracks": [
-    "Finance / accounting",
-    "Trading",
-    "Corporate finance / IB"
-   ],
-   "workplace_type": "unknown",
-   "summary": "As a Control Room Analyst at MUFG in London, you will play a pivotal role in supporting the management of transactional conflicts of interest and information barriers across multiple business lines within EMEA.",
-   "currency": "GBP",
-   "base_pay": null,
-   "comp": 45000.0,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": null,
-   "reach": 0.31,
-   "flags": [
-    "Asks for a degree - you'd need them to accept AAT L4 + experience"
-   ],
-   "pros": [],
-   "match": 8719,
-   "reach_aca": 0.53,
-   "flags_aca": [
-    "Asks for a degree - many firms accept ACA instead, but check"
-   ],
-   "pros_aca": [],
-   "match_aca": 14822
   },
   {
    "source": "ashby",
@@ -19401,7 +19200,6 @@
    "workplace": null,
    "extra": {},
    "src": "ICG",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (mid-market)",
    "level": "senior",
    "function": "front",
@@ -19608,7 +19406,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -19864,7 +19661,6 @@
    "workplace": null,
    "extra": {},
    "src": "RSM UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "other",
@@ -19969,7 +19765,6 @@
     "closes": "2026-11-21"
    },
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -20028,7 +19823,6 @@
     "closes": "2026-11-23"
    },
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -20069,61 +19863,6 @@
    "match_aca": 23106
   },
   {
-   "source": "greenhouse",
-   "company": "Jane Street",
-   "category": "prop_trading",
-   "title": "Quantitative Trader",
-   "location": "London, England, United Kingdom",
-   "url": "https://www.janestreet.com/join-jane-street/apply/8576270002?gh_jid=8576270002",
-   "posted": "2026-11-03",
-   "department": "Quantitative Trading",
-   "description": "About the Position At Jane Street, quantitative traders identify market signals, analyse and execute strategies, construct quantitative models, conduct statistical analyses, build algorithmic trading systems, manage risk, develop new businesses, and more. Our trading desks are ce",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "src": "Jane Street",
-   "category_label": "Prop trading / market maker",
-   "level": "mid",
-   "function": "front",
-   "region": "UK",
-   "interest": 1.0,
-   "tracks": [
-    "Trading"
-   ],
-   "workplace_type": "unknown",
-   "summary": "At Jane Street, quantitative traders identify market signals, analyse and execute strategies, construct quantitative models, conduct statistical analyses, build algorithmic trading systems, manage risk…",
-   "currency": "GBP",
-   "base_pay": null,
-   "comp": 260000,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": null,
-   "reach": 0.03,
-   "flags": [
-    "Python/SQL is a plus, not required - worth learning",
-    "Nothing in the advert matches audit experience - you'd compete with people already in this field",
-    "Quant role: usually needs a maths / physics / CS degree",
-    "Stretch: hires on intense maths/probability tests",
-    "Associate-level: usually hired from 2-3 yrs as an analyst or Big 4 deals"
-   ],
-   "pros": [],
-   "match": 8073,
-   "reach_aca": 0.03,
-   "flags_aca": [
-    "Python/SQL is a plus, not required - worth learning",
-    "Nothing in the advert matches audit experience - you'd compete with people already in this field",
-    "Quant role: usually needs a maths / physics / CS degree",
-    "Stretch: hires on intense maths/probability tests",
-    "Associate-level: usually hired from 2-3 yrs as an analyst or Big 4 deals"
-   ],
-   "pros_aca": [],
-   "match_aca": 8073
-  },
-  {
    "source": "workday",
    "company": "Morgan Stanley",
    "category": "bulge_bracket",
@@ -20140,7 +19879,6 @@
    "workplace": null,
    "extra": {},
    "src": "Morgan Stanley",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -20265,7 +20003,6 @@
     "closes": "2026-12-31"
    },
    "src": "TD Securities",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "other",
@@ -20484,7 +20221,6 @@
    "workplace": null,
    "extra": {},
    "src": "Bank of America",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -20966,7 +20702,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -21060,6 +20795,59 @@
    "match_aca": 11903
   },
   {
+   "source": "greenhouse",
+   "company": "DRW",
+   "category": "prop_trading",
+   "title": "Macro Analyst - Event Driven",
+   "location": "London",
+   "url": "https://job-boards.greenhouse.io/drweng/jobs/7480652",
+   "posted": "2026-10-30",
+   "department": "EEIO Equity Research",
+   "description": "DRW is a diversified trading firm with over 3 decades of experience bringing sophisticated technology and exceptional people together to operate in markets around the world. We value autonomy and the ability to quickly pivot to capture opportunities, so we operate using our own c",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "src": "DRW",
+   "category_label": "Prop trading / market maker",
+   "level": "entry",
+   "function": "front",
+   "region": "UK",
+   "interest": 0.5,
+   "tracks": [
+    "Finance / accounting",
+    "Trading",
+    "Corporate finance / IB"
+   ],
+   "workplace_type": "unknown",
+   "summary": "We are looking for a results driven individual who enjoys the challenge of understanding a situation in a much greater level of detail than anyone else in the market.",
+   "currency": "GBP",
+   "base_pay": null,
+   "comp": 170000,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": null,
+   "reach": 0.07,
+   "flags": [
+    "Needs you to write code (coding) - you'd need to learn it first",
+    "Stretch: hires on intense maths/probability tests",
+    "Front-office analyst roles are fiercely competitive and often degree-screened"
+   ],
+   "pros": [],
+   "match": 6917,
+   "reach_aca": 0.07,
+   "flags_aca": [
+    "Needs you to write code (coding) - you'd need to learn it first",
+    "Stretch: hires on intense maths/probability tests",
+    "Front-office analyst roles are fiercely competitive and often degree-screened"
+   ],
+   "pros_aca": [],
+   "match_aca": 6917
+  },
+  {
    "source": "workday",
    "company": "Deutsche Bank",
    "category": "bulge_bracket",
@@ -21076,7 +20864,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "front",
@@ -21115,6 +20902,58 @@
    "match_aca": 11731
   },
   {
+   "source": "goldman",
+   "company": "Goldman Sachs",
+   "category": "bulge_bracket",
+   "title": "Global Banking and Markets - Execution Solutions Strats - Associate - London",
+   "location": "London, United Kingdom",
+   "url": "https://higher.gs.com/roles/184165_GS_MID_CAREER",
+   "posted": "",
+   "department": "Global Banking & Markets / Quantitative Engineering",
+   "description": "Corporate title: Associate. Job Summary Are you fascinated by high-paced algorithmic trading, data science and complex engineering systems? The Execution Solutions team sits at the heart of our European Electronic Trading business, working closely with clients, Sales, Trading, En",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "src": "Goldman Sachs",
+   "category_label": "Investment bank",
+   "level": "mid",
+   "function": "other",
+   "region": "UK",
+   "interest": 0.5,
+   "tracks": [
+    "Trading",
+    "Investing"
+   ],
+   "workplace_type": "unknown",
+   "summary": "The Execution Solutions team sits at the heart of our European Electronic Trading business, working closely with clients, Sales, Trading, Engineering and Quantitative Research to improve our platform’s…",
+   "currency": "GBP",
+   "base_pay": null,
+   "comp": 88000.0,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": null,
+   "reach": 0.12,
+   "flags": [
+    "Python/SQL is a plus, not required - worth learning",
+    "Nothing in the advert matches audit experience - you'd compete with people already in this field",
+    "Quant role: usually needs a maths / physics / CS degree"
+   ],
+   "pros": [],
+   "match": 6831,
+   "reach_aca": 0.12,
+   "flags_aca": [
+    "Python/SQL is a plus, not required - worth learning",
+    "Nothing in the advert matches audit experience - you'd compete with people already in this field",
+    "Quant role: usually needs a maths / physics / CS degree"
+   ],
+   "pros_aca": [],
+   "match_aca": 6831
+  },
+  {
    "source": "workday",
    "company": "Deutsche Bank",
    "category": "bulge_bracket",
@@ -21131,7 +20970,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -21189,7 +21027,6 @@
     "closes": "2026-11-30"
    },
    "src": "Santander",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "senior",
    "function": "front",
@@ -21250,7 +21087,6 @@
    "workplace": null,
    "extra": {},
    "src": "LSEG",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "entry",
    "function": "back",
@@ -21556,7 +21392,6 @@
     "closes": "2026-12-16"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "apprentice",
    "function": "other",
@@ -21612,7 +21447,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -21663,7 +21497,6 @@
    "workplace": null,
    "extra": {},
    "src": "ICG",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (mid-market)",
    "level": "mid",
    "function": "other",
@@ -21722,7 +21555,6 @@
    "workplace": null,
    "extra": {},
    "src": "RSM UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "other",
@@ -21781,7 +21613,6 @@
     "closes": "2026-12-02"
    },
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "front",
@@ -21837,7 +21668,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "other",
@@ -22107,7 +21937,6 @@
     "closes": "2026-12-02"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "apprentice",
    "function": "other",
@@ -22469,6 +22298,53 @@
    ],
    "workplace_type": "hybrid",
    "summary": "This is a pure tax advisory role, and you will be working with some of the largest corporations in the world advising them on international tax issues.",
+   "currency": "GBP",
+   "base_pay": null,
+   "comp": 85000,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": null,
+   "reach": 0.06,
+   "flags": [],
+   "pros": [
+    "Asks for assurance - core to your 2 yrs of audit"
+   ],
+   "match": 5676,
+   "reach_aca": 0.16,
+   "flags_aca": [],
+   "pros_aca": [
+    "Asks for assurance - core to ACA + about 4 yrs of audit"
+   ],
+   "match_aca": 14191
+  },
+  {
+   "source": "successfactors",
+   "company": "EY",
+   "category": "big4",
+   "title": "Manager, Workforce Advisory, People Consulting UK",
+   "location": "London, United Kingdom, SE1 2AF",
+   "url": "https://careers.ey.com/ey/job/London-Manager%2C-Workforce-Advisory%2C-People-Consulting-UK-SE1-2AF/1458644533/",
+   "posted": "",
+   "department": "",
+   "description": "At EY, we’re all in to shape your future with confidence. We’ll help you succeed in a globally connected powerhouse of diverse teams and take your career wherever you want it to go. Join EY and help to build a better working world. Manager – Workforce Advisory - People Consulting",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "src": "EY",
+   "category_label": "Big 4",
+   "level": "senior",
+   "function": "front",
+   "region": "UK",
+   "interest": 1.0,
+   "tracks": [
+    "Corporate finance / IB"
+   ],
+   "workplace_type": "hybrid",
+   "summary": "We are looking for individuals who can demonstrate real impact for our clients within various areas of People Consulting We want to hear from people who have hands-on experience, that want to keep close to the…",
    "currency": "GBP",
    "base_pay": null,
    "comp": 85000,
@@ -23036,112 +22912,6 @@
    "match_aca": 14191
   },
   {
-   "source": "workday",
-   "company": "Lloyds Banking Group",
-   "category": "retail_bank",
-   "title": "Associate Director, Portfolio Management and Execution, Treasury",
-   "location": "London (United Kingdom)",
-   "url": "https://lbg.wd3.myworkdayjobs.com/LBG_Careers/job/London/Associate-Director--Portfolio-Management-and-Execution--Treasury_165749-3",
-   "posted": "2026-11-04",
-   "department": "",
-   "description": "End Date Wednesday 18 November 2026 Salary Range £0 - £0 We support flexible working – click here for more information on flexible working options Flexible Working Options Hybrid Working, Job Share Job Description Summary We have a rare opportunity to join our Treasury Portfolio ",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {
-    "closes": "2026-11-19"
-   },
-   "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
-   "category_label": "UK bank",
-   "level": "senior",
-   "function": "front",
-   "region": "UK",
-   "interest": 1.0,
-   "tracks": [
-    "Investing",
-    "ACA stepping stone",
-    "Trading"
-   ],
-   "workplace_type": "hybrid",
-   "summary": "About this opportunity We have a rare opportunity to join our Treasury Portfolio Management & Execution team as an Associate Director, helping manage some of the Group’s most significant balance sheet market…",
-   "currency": "GBP",
-   "base_pay": null,
-   "comp": 85000,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": null,
-   "reach": 0.06,
-   "flags": [],
-   "pros": [
-    "Asks for risk and control - core to your 2 yrs of audit"
-   ],
-   "match": 5676,
-   "reach_aca": 0.16,
-   "flags_aca": [],
-   "pros_aca": [
-    "Asks for risk and control - core to ACA + about 4 yrs of audit"
-   ],
-   "match_aca": 14191
-  },
-  {
-   "source": "workday",
-   "company": "MUFG",
-   "category": "bulge_bracket",
-   "title": "Assistant Vice President, Internal Audit - Corporate Functions – Finance, Treasury, Regulatory Reporting (FTRR)",
-   "location": "London (United Kingdom)",
-   "url": "https://mufgub.wd3.myworkdayjobs.com/MUFG-Careers/job/London/Assistant-Vice-President--Internal-Audit---Corporate-Functions---Finance--Treasury--Regulatory-Reporting--FTRR-_10080117-WD-1",
-   "posted": "2026-11-12",
-   "department": "",
-   "description": "Do you want your voice heard and your actions to count? Discover your opportunity with Mitsubishi UFJ Financial Group (MUFG), one of the world’s leading financial groups. Across the globe, we’re 150,000 colleagues, striving to make a difference for every client, organization, and",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {
-    "closes": "2026-11-27"
-   },
-   "src": "MUFG",
-   "stale_since": "2026-11-18",
-   "category_label": "Investment bank",
-   "level": "senior",
-   "function": "back",
-   "region": "UK",
-   "interest": 0.55,
-   "tracks": [
-    "ACA stepping stone",
-    "Finance / accounting",
-    "Corporate finance / IB"
-   ],
-   "workplace_type": "hybrid",
-   "summary": "As Assistant Vice President, Internal Audit – Corporate Functions (Finance, Treasury, Regulatory Reporting), you will be responsible for delivering end-to-end audit engagements across critical business areas.",
-   "currency": "GBP",
-   "base_pay": null,
-   "comp": 117000.0,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": null,
-   "reach": 0.07,
-   "flags": [],
-   "pros": [
-    "Asks for audit, financial reporting, control environment - core to your 2 yrs of audit",
-    "Excel-heavy - your strongest tool"
-   ],
-   "match": 5669,
-   "reach_aca": 0.17,
-   "flags_aca": [],
-   "pros_aca": [
-    "Asks for audit, financial reporting, control environment - core to ACA + about 4 yrs of audit",
-    "Excel-heavy - your strongest tool"
-   ],
-   "match_aca": 14173
-  },
-  {
    "source": "gov.uk apprenticeships",
    "company": "HARDCASTLE BURTON LLP",
    "category": "other",
@@ -23262,7 +23032,7 @@
    "workplace": null,
    "extra": {
     "course": "Financial services professional (level 6)",
-    "closes": "Closes in 13 days (Tuesday 1 December 2026)",
+    "closes": "Closes in 12 days (Tuesday 1 December 2026)",
     "start": "1 April 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -23371,7 +23141,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "front",
@@ -23519,6 +23288,55 @@
    "match_aca": 15230
   },
   {
+   "source": "workday",
+   "company": "MUFG",
+   "category": "bulge_bracket",
+   "title": "Director - Structurer / Trader",
+   "location": "London (United Kingdom)",
+   "url": "https://mufgub.wd3.myworkdayjobs.com/MUFG-Careers/job/London/Director---Structurer---Trader_10079014-WD",
+   "posted": "2026-08-27",
+   "department": "",
+   "description": "Do you want your voice heard and your actions to count? Discover your opportunity with Mitsubishi UFJ Financial Group (MUFG), one of the world’s leading financial groups. Across the globe, we’re 150,000 colleagues, striving to make a difference for every client, organization, and",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "src": "MUFG",
+   "category_label": "Investment bank",
+   "level": "exec",
+   "function": "front",
+   "region": "UK",
+   "interest": 1.0,
+   "tracks": [
+    "Trading",
+    "Corporate finance / IB",
+    "Transaction services"
+   ],
+   "workplace_type": "hybrid",
+   "summary": "Do you want your voice heard and your actions to count?. Discover your opportunity with Mitsubishi UFJ Financial Group (MUFG), one of the world’s leading financial groups.",
+   "currency": "GBP",
+   "base_pay": null,
+   "comp": 450000,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": null,
+   "reach": 0.01,
+   "flags": [
+    "Wants direct experience in origination, structuring and execution of multiple abl… - audit only partly covers this"
+   ],
+   "pros": [],
+   "match": 5366,
+   "reach_aca": 0.01,
+   "flags_aca": [
+    "Wants direct experience in origination, structuring and execution of multiple abl… - audit only partly covers this"
+   ],
+   "pros_aca": [],
+   "match_aca": 7155
+  },
+  {
    "source": "successfactors",
    "company": "EY",
    "category": "big4",
@@ -23586,7 +23404,6 @@
     "closes": "2027-01-27"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "apprentice",
    "function": "other",
@@ -23743,7 +23560,6 @@
    "workplace": null,
    "extra": {},
    "src": "MUFG",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "front",
@@ -23865,7 +23681,58 @@
     "closes": "2026-12-16"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
+   "category_label": "UK bank",
+   "level": "apprentice",
+   "function": "other",
+   "region": "UK",
+   "interest": 0.35,
+   "tracks": [
+    "Finance / accounting"
+   ],
+   "workplace_type": "hybrid",
+   "summary": "As a Consumer Financial Services Professional Apprentice, you’ll build client relationships, learn how banking really works, and earn industry-recognised qualifications - all while getting paid.",
+   "currency": "GBP",
+   "base_pay": 27400,
+   "comp": 27400.0,
+   "comp_basis": "advertised",
+   "base_range": [
+    27400.0,
+    27400.0
+   ],
+   "pay_all_in": false,
+   "comp_usd": null,
+   "reach": 0.34,
+   "flags": [
+    "Level 6 degree apprenticeship - restarts training on apprentice pay, a step back from year 3 of yours"
+   ],
+   "pros": [],
+   "match": 5061,
+   "reach_aca": 0.21,
+   "flags_aca": [
+    "Apprenticeship - you'd already hold a higher qualification"
+   ],
+   "pros_aca": [],
+   "match_aca": 3163
+  },
+  {
+   "source": "workday",
+   "company": "Lloyds Banking Group",
+   "category": "retail_bank",
+   "title": "Consumer Financial Services Professional Apprentice - Birmingham",
+   "location": "Birmingham (United Kingdom)",
+   "url": "https://lbg.wd3.myworkdayjobs.com/LBG_Careers/job/Birmingham/Consumer-Financial-Services-Professional-Apprentice---Birmingham_164908",
+   "posted": "2026-11-03",
+   "department": "",
+   "description": "Please note, this site is only for external candidate applications. If you currently work for Lloyds Banking Group please apply via the internal career site. Please note: In order to complete an apprenticeship there needs to be a significant learning need. You need to consider yo",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {
+    "closes": "2026-12-02"
+   },
+   "src": "Lloyds Banking Group",
    "category_label": "UK bank",
    "level": "apprentice",
    "function": "other",
@@ -23918,7 +23785,6 @@
     "closes": "2027-01-26"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "apprentice",
    "function": "other",
@@ -23971,7 +23837,6 @@
     "closes": "2026-12-30"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "apprentice",
    "function": "other",
@@ -24341,7 +24206,6 @@
     "closes": "2026-12-01"
    },
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "front",
@@ -24399,7 +24263,6 @@
     "closes": "2026-11-24"
    },
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "front",
@@ -24551,7 +24414,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -24825,7 +24687,6 @@
     "closes": "2026-11-20"
    },
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "other",
@@ -24861,60 +24722,6 @@
    "source": "gov.uk apprenticeships",
    "company": "Lloyds Banking Group",
    "category": "retail_bank",
-   "title": "Consumer Financial Services Professional Apprentice - Birmingham",
-   "location": "Birmingham (B1 2JB)",
-   "url": "https://www.findapprenticeship.service.gov.uk/apprenticeship/VAC2000062682",
-   "posted": "2026-11-04",
-   "department": "Apprenticeship",
-   "description": "Apprenticeship. Training course: Financial services professional (level 6).",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "£27,400 a year",
-   "workplace": null,
-   "extra": {
-    "course": "Financial services professional (level 6)",
-    "closes": "Closes in 13 days (Tuesday 1 December 2026)",
-    "start": "1 April 2027"
-   },
-   "src": "Find an apprenticeship (GOV.UK)",
-   "category_label": "UK bank",
-   "level": "apprentice",
-   "function": "other",
-   "region": "UK",
-   "interest": 0.35,
-   "tracks": [
-    "Finance / accounting"
-   ],
-   "workplace_type": "unknown",
-   "summary": "",
-   "currency": "GBP",
-   "base_pay": 27400,
-   "comp": 27400.0,
-   "comp_basis": "advertised",
-   "base_range": [
-    27400.0,
-    27400.0
-   ],
-   "pay_all_in": false,
-   "comp_usd": null,
-   "reach": 0.34,
-   "flags": [
-    "Level 6 degree apprenticeship - restarts training on apprentice pay, a step back from year 3 of yours"
-   ],
-   "pros": [],
-   "match": 4774,
-   "reach_aca": 0.21,
-   "flags_aca": [
-    "Apprenticeship - you'd already hold a higher qualification"
-   ],
-   "pros_aca": [],
-   "match_aca": 2984
-  },
-  {
-   "source": "gov.uk apprenticeships",
-   "company": "Lloyds Banking Group",
-   "category": "retail_bank",
    "title": "Consumer Financial Services Professional Apprentice - Leeds",
    "location": "Leeds (LS1 4AP)",
    "url": "https://www.findapprenticeship.service.gov.uk/apprenticeship/VAC2000062674",
@@ -24928,7 +24735,7 @@
    "workplace": null,
    "extra": {
     "course": "Financial services professional (level 6)",
-    "closes": "Closes in 27 days (Tuesday 15 December 2026)",
+    "closes": "Closes in 26 days (Tuesday 15 December 2026)",
     "start": "1 April 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -25090,7 +24897,7 @@
    "workplace": null,
    "extra": {
     "course": "Accounting finance manager (level 6)",
-    "closes": "Closes in 13 days (Tuesday 1 December 2026)",
+    "closes": "Closes in 12 days (Tuesday 1 December 2026)",
     "start": "1 September 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -25144,7 +24951,7 @@
    "workplace": null,
    "extra": {
     "course": "Accounting finance manager (level 6)",
-    "closes": "Closes in 13 days (Tuesday 1 December 2026)",
+    "closes": "Closes in 12 days (Tuesday 1 December 2026)",
     "start": "1 September 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -25623,7 +25430,6 @@
    "workplace": null,
    "extra": {},
    "src": "Morgan Stanley",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -25677,7 +25483,6 @@
    "workplace": null,
    "extra": {},
    "src": "Blackstone",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (large)",
    "level": "mid",
    "function": "front",
@@ -25741,7 +25546,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "other",
@@ -25802,7 +25606,6 @@
     "closes": "2026-11-30"
    },
    "src": "State Street",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "senior",
    "function": "front",
@@ -25858,7 +25661,6 @@
     "closes": "2026-11-30"
    },
    "src": "State Street",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "senior",
    "function": "front",
@@ -25912,7 +25714,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "back",
@@ -26016,7 +25817,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "front",
@@ -26067,7 +25867,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "front",
@@ -26120,7 +25919,6 @@
     "closes": "2026-11-25"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "apprentice",
    "function": "other",
@@ -26171,7 +25969,7 @@
    "workplace": null,
    "extra": {
     "course": "Internal audit technician (level 4)",
-    "closes": "Closes in 27 days (Tuesday 15 December 2026)",
+    "closes": "Closes in 26 days (Tuesday 15 December 2026)",
     "start": "1 September 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -26537,7 +26335,7 @@
    "workplace": null,
    "extra": {
     "course": "Paraplanner and financial planner (level 4)",
-    "closes": "Closes in 2 days (Friday 20 November 2026 at 11:59pm)",
+    "closes": "Closes tomorrow (Friday 20 November 2026 at 11:59pm)",
     "start": "4 January 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -26593,7 +26391,6 @@
     "closes": "2026-11-27"
    },
    "src": "Barclays",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "other",
@@ -26857,7 +26654,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "front",
@@ -26971,7 +26767,7 @@
    "workplace": null,
    "extra": {
     "course": "Compliance and risk officer (level 3)",
-    "closes": "Closes in 6 days (Tuesday 24 November 2026)",
+    "closes": "Closes in 5 days (Tuesday 24 November 2026)",
     "start": "1 September 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -27274,7 +27070,6 @@
    "workplace": null,
    "extra": {},
    "src": "LSEG",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "mid",
    "function": "other",
@@ -27558,7 +27353,6 @@
     "closes": "2026-11-20"
    },
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "front",
@@ -27649,53 +27443,6 @@
    "match_aca": 9344
   },
   {
-   "source": "oracle",
-   "company": "J.P. Morgan",
-   "category": "bulge_bracket",
-   "title": "Trade & Working Capital - Supply Chain Finance Programme Manager - Associate - London",
-   "location": "LONDON, LONDON, United Kingdom",
-   "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210806777",
-   "posted": "2026-11-05",
-   "department": "Client Management / Client Management",
-   "description": "Join us as an Associate in Trade & Working Capital - Supply Chain Finance team in London!",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "src": "J.P. Morgan",
-   "category_label": "Investment bank",
-   "level": "senior",
-   "function": "other",
-   "region": "UK",
-   "interest": 0.35,
-   "tracks": [
-    "Finance / accounting"
-   ],
-   "workplace_type": "unknown",
-   "summary": "",
-   "currency": "GBP",
-   "base_pay": null,
-   "comp": 143000.0,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": null,
-   "reach": 0.05,
-   "flags": [
-    "Advert text not available - check the requirements yourself"
-   ],
-   "pros": [],
-   "match": 3738,
-   "reach_aca": 0.13,
-   "flags_aca": [
-    "Advert text not available - check the requirements yourself"
-   ],
-   "pros_aca": [],
-   "match_aca": 9344
-  },
-  {
    "source": "eightfold",
    "company": "HSBC",
    "category": "bulge_bracket",
@@ -27761,7 +27508,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "front",
@@ -27817,7 +27563,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "other",
@@ -27876,7 +27621,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "front",
@@ -27923,60 +27667,6 @@
   },
   {
    "source": "gov.uk apprenticeships",
-   "company": "PICKERING & ROBINSON",
-   "category": "other",
-   "title": "Financial Services Customer Adviser Apprentice - NFU Mutual Yorkshire Coast Agency",
-   "location": "EASTFIELD (YO11 3TU)",
-   "url": "https://www.findapprenticeship.service.gov.uk/apprenticeship/VAC2000057963",
-   "posted": "2026-10-12",
-   "department": "Apprenticeship",
-   "description": "Apprenticeship. Training course: Financial services customer adviser (level 3).",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "£24,000 a year",
-   "workplace": null,
-   "extra": {
-    "course": "Financial services customer adviser (level 3)",
-    "closes": "Closes today at 11:59pm",
-    "start": "21 December 2026"
-   },
-   "src": "Find an apprenticeship (GOV.UK)",
-   "category_label": "Other employer",
-   "level": "apprentice",
-   "function": "other",
-   "region": "UK",
-   "interest": 0.35,
-   "tracks": [
-    "Finance / accounting"
-   ],
-   "workplace_type": "unknown",
-   "summary": "",
-   "currency": "GBP",
-   "base_pay": 24000,
-   "comp": 24000.0,
-   "comp_basis": "advertised",
-   "base_range": [
-    24000.0,
-    24000.0
-   ],
-   "pay_all_in": false,
-   "comp_usd": null,
-   "reach": 0.3,
-   "flags": [
-    "Level 3 - at or below a level you already hold"
-   ],
-   "pros": [],
-   "match": 3659,
-   "reach_aca": 0.21,
-   "flags_aca": [
-    "Apprenticeship - you'd already hold a higher qualification"
-   ],
-   "pros_aca": [],
-   "match_aca": 2614
-  },
-  {
-   "source": "gov.uk apprenticeships",
    "company": "Network Rail",
    "category": "other",
    "title": "Level 3 Finance Apprenticeship",
@@ -27992,7 +27682,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional accounting technician (level 4)",
-    "closes": "Closes in 22 days (Thursday 10 December 2026)",
+    "closes": "Closes in 21 days (Thursday 10 December 2026)",
     "start": "1 September 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -28099,7 +27789,6 @@
     "closes": "2026-12-16"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "apprentice",
    "function": "other",
@@ -28152,7 +27841,6 @@
     "closes": "2026-12-16"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "apprentice",
    "function": "other",
@@ -28253,7 +27941,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "front",
@@ -28411,7 +28098,6 @@
     "closes": "2027-01-28"
    },
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "back",
@@ -28467,7 +28153,6 @@
     "closes": "2026-11-23"
    },
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "back",
@@ -28670,7 +28355,6 @@
    "workplace": null,
    "extra": {},
    "src": "RSM UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "other",
@@ -28704,57 +28388,6 @@
   },
   {
    "source": "workday",
-   "company": "Barclays",
-   "category": "bulge_bracket",
-   "title": "Markets Cash Equities & Research VP",
-   "location": "Glasgow Campus (United Kingdom)",
-   "url": "https://barclays.wd3.myworkdayjobs.com/External_Career_Site_Barclays/job/Glasgow-Campus/Markets-Cash-Equities---Research-VP_JR-0000135944",
-   "posted": "2026-11-11",
-   "department": "",
-   "description": "Job Description Purpose of the role To ensure that the activities of the business units in the Markets division are conducted in compliance with applicable laws, rules and regulations, and to help the bank manage legal risk associated with these activities. Accountabilities Devel",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {
-    "closes": "2026-11-19"
-   },
-   "src": "Barclays",
-   "stale_since": "2026-11-18",
-   "category_label": "Investment bank",
-   "level": "senior",
-   "function": "other",
-   "region": "UK",
-   "interest": 0.5,
-   "tracks": [
-    "Trading",
-    "Corporate finance / IB"
-   ],
-   "workplace_type": "unknown",
-   "summary": "You will be responsible for negotiating cash equities trading documentation with clients and counterparties, including: Terms of business Electronic access agreements ETF authorised participant (AP) agreements…",
-   "currency": "GBP",
-   "base_pay": null,
-   "comp": 121600.0,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": null,
-   "reach": 0.04,
-   "flags": [
-    "Nothing in the advert matches audit experience - you'd compete with people already in this field"
-   ],
-   "pros": [],
-   "match": 3419,
-   "reach_aca": 0.11,
-   "flags_aca": [
-    "Nothing in the advert matches audit experience - you'd compete with people already in this field"
-   ],
-   "pros_aca": [],
-   "match_aca": 8546
-  },
-  {
-   "source": "workday",
    "company": "Deutsche Bank",
    "category": "bulge_bracket",
    "title": "Real Estate Investor Relations/Client Capital Manager",
@@ -28770,7 +28403,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "other",
@@ -28783,6 +28415,57 @@
    ],
    "workplace_type": "hybrid",
    "summary": "Employer: DWS Group Title: Real Estate Investor Relations/Client Capital Manager Location: London About DWS: Today, markets face a whole new set of pressures – but also a whole lot of opportunity.",
+   "currency": "GBP",
+   "base_pay": null,
+   "comp": 143000.0,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": null,
+   "reach": 0.04,
+   "flags": [
+    "Asks for a degree or equivalent - lean on AAT L4 + experience",
+    "Nothing in the advert matches audit experience - you'd compete with people already in this field"
+   ],
+   "pros": [],
+   "match": 3411,
+   "reach_aca": 0.11,
+   "flags_aca": [
+    "Asks for a degree or equivalent - ACA should count",
+    "Nothing in the advert matches audit experience - you'd compete with people already in this field"
+   ],
+   "pros_aca": [],
+   "match_aca": 10658
+  },
+  {
+   "source": "workday",
+   "company": "MUFG",
+   "category": "bulge_bracket",
+   "title": "Associate – Client Service Account Manager, Transaction Banking Sales UK",
+   "location": "London (United Kingdom)",
+   "url": "https://mufgub.wd3.myworkdayjobs.com/MUFG-Careers/job/London/Associate---Client-Service-Account-Manager--Transaction-Banking-Sales-UK_10077468-WD",
+   "posted": "2026-06-24",
+   "department": "",
+   "description": "Do you want your voice heard and your actions to count? Discover your opportunity with Mitsubishi UFJ Financial Group (MUFG), one of the world’s leading financial groups. Across the globe, we’re 150,000 colleagues, striving to make a difference for every client, organization, and",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "src": "MUFG",
+   "category_label": "Investment bank",
+   "level": "senior",
+   "function": "other",
+   "region": "UK",
+   "interest": 0.5,
+   "tracks": [
+    "Finance / accounting",
+    "Corporate finance / IB",
+    "ACA stepping stone"
+   ],
+   "workplace_type": "hybrid",
+   "summary": "Our key responsibilities are to drive regional business and support global & regional clients with Transaction Banking solutions for Cash and Liquidity Management, Foreign Exchange, Trade and Working Capital…",
    "currency": "GBP",
    "base_pay": null,
    "comp": 143000.0,
@@ -29048,7 +28731,6 @@
     "closes": "2026-12-01"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "senior",
    "function": "front",
@@ -29099,7 +28781,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional accounting technician (level 4)",
-    "closes": "Closes in 12 days (Monday 30 November 2026)",
+    "closes": "Closes in 11 days (Monday 30 November 2026)",
     "start": "1 September 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -29153,7 +28835,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional accounting technician (level 4)",
-    "closes": "Closes in 12 days (Monday 30 November 2026)",
+    "closes": "Closes in 11 days (Monday 30 November 2026)",
     "start": "1 September 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -29207,7 +28889,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "back",
@@ -29259,7 +28940,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "other",
@@ -29566,7 +29246,6 @@
     "closes": "2026-11-30"
    },
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "other",
@@ -29792,7 +29471,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "other",
@@ -29843,7 +29521,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "other",
@@ -29904,7 +29581,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "other",
@@ -29962,7 +29638,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "front",
@@ -30024,7 +29699,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "front",
@@ -30086,7 +29760,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "front",
@@ -30255,7 +29928,7 @@
    "workplace": null,
    "extra": {
     "course": "Compliance and risk officer (level 3)",
-    "closes": "Closes in 27 days (Tuesday 15 December 2026)",
+    "closes": "Closes in 26 days (Tuesday 15 December 2026)",
     "start": "1 September 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -30309,7 +29982,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "front",
@@ -30360,7 +30032,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "back",
@@ -30411,7 +30082,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional taxation technician (level 4)",
-    "closes": "Closes in 19 days (Monday 7 December 2026)",
+    "closes": "Closes in 18 days (Monday 7 December 2026)",
     "start": "5 April 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -30462,7 +30133,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional taxation technician (level 4)",
-    "closes": "Closes in 19 days (Monday 7 December 2026)",
+    "closes": "Closes in 18 days (Monday 7 December 2026)",
     "start": "5 April 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -30674,7 +30345,6 @@
    "workplace": null,
    "extra": {},
    "src": "LSEG",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "senior",
    "function": "other",
@@ -30813,6 +30483,63 @@
   },
   {
    "source": "workday",
+   "company": "MUFG",
+   "category": "bulge_bracket",
+   "title": "Assistant Vice President, Internal Audit - Corporate Functions – Finance, Treasury, Regulatory Reporting (FTRR)",
+   "location": "London (United Kingdom)",
+   "url": "https://mufgub.wd3.myworkdayjobs.com/MUFG-Careers/job/London/Assistant-Vice-President--Internal-Audit---Corporate-Functions---Finance--Treasury--Regulatory-Reporting--FTRR-_10080117-WD-1",
+   "posted": "2026-11-12",
+   "department": "",
+   "description": "Do you want your voice heard and your actions to count? Discover your opportunity with Mitsubishi UFJ Financial Group (MUFG), one of the world’s leading financial groups. Across the globe, we’re 150,000 colleagues, striving to make a difference for every client, organization, and",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {
+    "closes": "2026-11-27"
+   },
+   "src": "MUFG",
+   "category_label": "Investment bank",
+   "level": "senior",
+   "function": "back",
+   "region": "UK",
+   "interest": 0.55,
+   "tracks": [
+    "ACA stepping stone",
+    "Finance / accounting",
+    "Corporate finance / IB"
+   ],
+   "workplace_type": "hybrid",
+   "summary": "As Assistant Vice President, Internal Audit – Corporate Functions (Finance, Treasury, Regulatory Reporting), you will be responsible for delivering end-to-end audit engagements across critical business areas.",
+   "currency": "GBP",
+   "base_pay": null,
+   "comp": 117000.0,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": null,
+   "reach": 0.03,
+   "flags": [
+    "Asks for a degree - you'd need them to accept AAT L4 + experience"
+   ],
+   "pros": [
+    "Asks for audit, financial reporting, control environment - core to your 2 yrs of audit",
+    "Excel-heavy - your strongest tool"
+   ],
+   "match": 2835,
+   "reach_aca": 0.15,
+   "flags_aca": [
+    "Asks for a degree - many firms accept ACA instead, but check"
+   ],
+   "pros_aca": [
+    "Asks for audit, financial reporting, control environment - core to ACA + about 4 yrs of audit",
+    "Excel-heavy - your strongest tool"
+   ],
+   "match_aca": 12047
+  },
+  {
+   "source": "workday",
    "company": "Deutsche Bank",
    "category": "bulge_bracket",
    "title": "Control Oversight and Advisory – Market Conduct Office",
@@ -30828,7 +30555,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "back",
@@ -30867,6 +30593,104 @@
    "match_aca": 6976
   },
   {
+   "source": "kpmg",
+   "company": "KPMG UK",
+   "category": "big4",
+   "title": "Tax Manager - UK/US High Net Worth",
+   "location": "London",
+   "url": "https://www.kpmgcareers.co.uk/Vacancies/taxmanagerukushighnetworth/109241",
+   "posted": "",
+   "department": "Tax & Law / Private Client",
+   "description": "Manager As a US/UK tax manager, you will be required to manage all aspects of the tax compliance process and the wider client relationship management. You will be required to lead and assist on advisory projects involving various tax and residency queries whilst developing and ma",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {
+    "level": "Manager"
+   },
+   "src": "KPMG UK",
+   "category_label": "Big 4",
+   "level": "senior",
+   "function": "other",
+   "region": "UK",
+   "interest": 0.35,
+   "tracks": [
+    "Finance / accounting"
+   ],
+   "workplace_type": "unknown",
+   "summary": "Manager As a US/UK tax manager, you will be required to manage all aspects of the tax compliance process and the wider client relationship management.",
+   "currency": "GBP",
+   "base_pay": null,
+   "comp": 85000,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": null,
+   "reach": 0.06,
+   "flags": [],
+   "pros": [
+    "Asks for big 4 - core to your 2 yrs of audit"
+   ],
+   "match": 2744,
+   "reach_aca": 0.16,
+   "flags_aca": [],
+   "pros_aca": [
+    "Asks for big 4 - core to ACA + about 4 yrs of audit"
+   ],
+   "match_aca": 6861
+  },
+  {
+   "source": "kpmg",
+   "company": "KPMG UK",
+   "category": "big4",
+   "title": "Tax Manager - GMS - Global Compensation",
+   "location": "London",
+   "url": "https://www.kpmgcareers.co.uk/Vacancies/taxmanagergmsglobalcompensation/108818",
+   "posted": "",
+   "department": "Tax & Law / Tax Managed Services",
+   "description": "Manager Join KPMG's Global Mobility Services practice in London as a Tax Manager within Global Compensation Services, helping clients transform how they manage compensation and payroll compliance for internationally mobile employees. You will combine global mobility tax knowledge",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {
+    "level": "Manager"
+   },
+   "src": "KPMG UK",
+   "category_label": "Big 4",
+   "level": "senior",
+   "function": "other",
+   "region": "UK",
+   "interest": 0.35,
+   "tracks": [
+    "Finance / accounting"
+   ],
+   "workplace_type": "unknown",
+   "summary": "Working with clients, overseas KPMG teams and Tax Technology colleagues, you will lead implementations of Global Payroll Manager and identify opportunities to improve and automate complex processes.",
+   "currency": "GBP",
+   "base_pay": null,
+   "comp": 85000,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": null,
+   "reach": 0.06,
+   "flags": [],
+   "pros": [
+    "Asks for reconciliation - core to your 2 yrs of audit"
+   ],
+   "match": 2744,
+   "reach_aca": 0.16,
+   "flags_aca": [],
+   "pros_aca": [
+    "Asks for reconciliation - core to ACA + about 4 yrs of audit"
+   ],
+   "match_aca": 6861
+  },
+  {
    "source": "gov.uk apprenticeships",
    "company": "Lawrence Clarke Financial Planning",
    "category": "other",
@@ -30883,7 +30707,7 @@
    "workplace": null,
    "extra": {
     "course": "Financial services administrator (level 3)",
-    "closes": "Closes in 23 days (Friday 11 December 2026 at 11:59pm)",
+    "closes": "Closes in 22 days (Friday 11 December 2026 at 11:59pm)",
     "start": "4 January 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -30993,7 +30817,6 @@
     "closes": "2026-11-30"
    },
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "other",
@@ -31047,7 +30870,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional accounting technician (level 4)",
-    "closes": "Closes in 9 days (Friday 27 November 2026 at 11:59pm)",
+    "closes": "Closes in 8 days (Friday 27 November 2026 at 11:59pm)",
     "start": "30 November 2026"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -31101,7 +30924,7 @@
    "workplace": null,
    "extra": {
     "course": "Assistant accountant (level 3)",
-    "closes": "Closes in 30 days (Friday 18 December 2026)",
+    "closes": "Closes in 29 days (Friday 18 December 2026)",
     "start": "4 January 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -31155,7 +30978,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "back",
@@ -31212,7 +31034,6 @@
     "closes": "2026-12-31"
    },
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "other",
@@ -31264,7 +31085,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "back",
@@ -31320,7 +31140,7 @@
    "workplace": null,
    "extra": {
     "course": "Assistant accountant (level 3)",
-    "closes": "Closes in 6 days (Tuesday 24 November 2026)",
+    "closes": "Closes in 5 days (Tuesday 24 November 2026)",
     "start": "25 November 2026"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -31430,7 +31250,6 @@
     "closes": "2026-11-27"
    },
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "back",
@@ -31539,7 +31358,7 @@
    "workplace": null,
    "extra": {
     "course": "Financial services administrator (level 3)",
-    "closes": "Closes in 9 days (Friday 27 November 2026 at 11:59pm)",
+    "closes": "Closes in 8 days (Friday 27 November 2026 at 11:59pm)",
     "start": "18 January 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -31593,7 +31412,7 @@
    "workplace": null,
    "extra": {
     "course": "Assistant accountant (level 3)",
-    "closes": "Closes in 6 days (Tuesday 24 November 2026)",
+    "closes": "Closes in 5 days (Tuesday 24 November 2026)",
     "start": "25 November 2026"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -31647,7 +31466,6 @@
    "workplace": null,
    "extra": {},
    "src": "LSEG",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "senior",
    "function": "other",
@@ -31753,7 +31571,7 @@
    "workplace": null,
    "extra": {
     "course": "Accounts or finance assistant (level 2)",
-    "closes": "Closes in 2 days (Friday 20 November 2026 at 11:59pm)",
+    "closes": "Closes tomorrow (Friday 20 November 2026 at 11:59pm)",
     "start": "14 December 2026"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -31964,7 +31782,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional accounting technician (level 4)",
-    "closes": "Closes in 13 days (Tuesday 1 December 2026)",
+    "closes": "Closes in 12 days (Tuesday 1 December 2026)",
     "start": "4 January 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -32018,7 +31836,6 @@
    "workplace": null,
    "extra": {},
    "src": "RSM UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "other",
@@ -32078,7 +31895,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional accounting technician (level 4)",
-    "closes": "Closes in 29 days (Thursday 17 December 2026)",
+    "closes": "Closes in 28 days (Thursday 17 December 2026)",
     "start": "18 December 2026"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -32188,7 +32005,6 @@
     "closes": "2026-11-23"
    },
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "other",
@@ -32244,7 +32060,6 @@
     "closes": "2026-12-06"
    },
    "src": "Santander",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "senior",
    "function": "front",
@@ -32303,7 +32118,6 @@
    "workplace": null,
    "extra": {},
    "src": "TD Securities",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "entry",
    "function": "back",
@@ -32524,7 +32338,7 @@
    "workplace": null,
    "extra": {
     "course": "Assistant accountant (level 3)",
-    "closes": "Closes in 29 days (Thursday 17 December 2026)",
+    "closes": "Closes in 28 days (Thursday 17 December 2026)",
     "start": "18 December 2026"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -32632,7 +32446,6 @@
     "closes": "2026-11-23"
    },
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "other",
@@ -32739,7 +32552,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "front",
@@ -32800,7 +32612,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "front",
@@ -32846,58 +32657,6 @@
   },
   {
    "source": "workday",
-   "company": "MUFG",
-   "category": "bulge_bracket",
-   "title": "Associate – Client Service Account Manager, Transaction Banking Sales UK",
-   "location": "London (United Kingdom)",
-   "url": "https://mufgub.wd3.myworkdayjobs.com/MUFG-Careers/job/London/Associate---Client-Service-Account-Manager--Transaction-Banking-Sales-UK_10077468-WD",
-   "posted": "2026-06-24",
-   "department": "",
-   "description": "Do you want your voice heard and your actions to count? Discover your opportunity with Mitsubishi UFJ Financial Group (MUFG), one of the world’s leading financial groups. Across the globe, we’re 150,000 colleagues, striving to make a difference for every client, organization, and",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "src": "MUFG",
-   "stale_since": "2026-11-18",
-   "category_label": "Investment bank",
-   "level": "senior",
-   "function": "other",
-   "region": "UK",
-   "interest": 0.5,
-   "tracks": [
-    "Finance / accounting",
-    "Corporate finance / IB",
-    "ACA stepping stone"
-   ],
-   "workplace_type": "unknown",
-   "summary": "Our key responsibilities are to drive regional business and support global & regional clients with Transaction Banking solutions for Cash and Liquidity Management, Foreign Exchange, Trade and Working Capital…",
-   "currency": "GBP",
-   "base_pay": null,
-   "comp": 143000.0,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": null,
-   "reach": 0.02,
-   "flags": [
-    "Asks for a degree - you'd need them to accept AAT L4 + experience",
-    "Nothing in the advert matches audit experience - you'd compete with people already in this field"
-   ],
-   "pros": [],
-   "match": 2011,
-   "reach_aca": 0.1,
-   "flags_aca": [
-    "Asks for a degree - many firms accept ACA instead, but check",
-    "Nothing in the advert matches audit experience - you'd compete with people already in this field"
-   ],
-   "pros_aca": [],
-   "match_aca": 8546
-  },
-  {
-   "source": "workday",
    "company": "RSM UK",
    "category": "mid_tier",
    "title": "Assistant Manager - Finance Business Partnering (12-month FTC)",
@@ -32913,7 +32672,6 @@
    "workplace": null,
    "extra": {},
    "src": "RSM UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "other",
@@ -33072,7 +32830,6 @@
    "workplace": null,
    "extra": {},
    "src": "LSEG",
-   "stale_since": "2026-11-18",
    "category_label": "Asset manager / markets infra",
    "level": "senior",
    "function": "other",
@@ -33232,7 +32989,6 @@
     "closes": "2027-01-13"
    },
    "src": "Lloyds Banking Group",
-   "stale_since": "2026-11-18",
    "category_label": "UK bank",
    "level": "apprentice",
    "function": "other",
@@ -33768,7 +33524,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "front",
@@ -34094,7 +33849,6 @@
    "workplace": null,
    "extra": {},
    "src": "ICG",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (mid-market)",
    "level": "senior",
    "function": "other",
@@ -34137,59 +33891,6 @@
    "match_aca": 9160
   },
   {
-   "source": "successfactors",
-   "company": "EY",
-   "category": "big4",
-   "title": "Senior Manager, Health, Workforce Advisory",
-   "location": "London, United Kingdom, SE1 2AF +4 more…",
-   "url": "https://careers.ey.com/ey/job/London-Senior-Manager%2C-Health%2C-Workforce-Advisory-SE1-2AF/1442273533/",
-   "posted": "",
-   "department": "",
-   "description": "At EY, we’re all in to shape your future with confidence. We’ll help you succeed in a globally connected powerhouse of diverse teams and take your career wherever you want it to go. Join EY and help to build a better working world. Senior Manager, Health, People Consulting Overvi",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "src": "EY",
-   "category_label": "Big 4",
-   "level": "senior",
-   "function": "front",
-   "region": "UK",
-   "interest": 1.0,
-   "tracks": [
-    "Corporate finance / IB"
-   ],
-   "workplace_type": "unknown",
-   "summary": "Senior Manager, Health, People Consulting Overview We are seeking experienced leaders to join our Health Workforce Transformation & People Experience team.",
-   "currency": "GBP",
-   "base_pay": null,
-   "comp": 85000,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": null,
-   "reach": 0.02,
-   "flags": [
-    "Asks for several years' experience (senior role, no years stated) - audit only partly counts here",
-    "Asks for a degree or equivalent - lean on AAT L4 + experience"
-   ],
-   "pros": [
-    "Asks for assurance - core to your 2 yrs of audit"
-   ],
-   "match": 1285,
-   "reach_aca": 0.09,
-   "flags_aca": [
-    "Asks for several years' experience (senior role, no years stated) - audit only partly counts here",
-    "Asks for a degree or equivalent - ACA should count"
-   ],
-   "pros_aca": [
-    "Asks for assurance - core to ACA + about 4 yrs of audit"
-   ],
-   "match_aca": 8032
-  },
-  {
    "source": "workday",
    "company": "Citi",
    "category": "bulge_bracket",
@@ -34208,7 +33909,6 @@
     "closes": "2026-12-26"
    },
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "other",
@@ -34264,7 +33964,6 @@
    "workplace": null,
    "extra": {},
    "src": "ICG",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (mid-market)",
    "level": "senior",
    "function": "back",
@@ -34377,7 +34076,6 @@
    "workplace": null,
    "extra": {},
    "src": "Deutsche Bank",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "mid",
    "function": "other",
@@ -34587,9 +34285,9 @@
    "source": "successfactors",
    "company": "EY",
    "category": "big4",
-   "title": "Assurance - Transaction Forensics - Sale & Purchase Agreements - Manager - London",
+   "title": "Assurance - Transaction Forensics - Sale & Purchase Agreements - Manager - London/Regions",
    "location": "London, United Kingdom, SE1 2AF +3 more…",
-   "url": "https://careers.ey.com/ey/job/London-Assurance-Transaction-Forensics-Sale-&amp;-Purchase-Agreements-Manager-London-SE1-2AF/1446348333/",
+   "url": "https://careers.ey.com/ey/job/London-Assurance-Transaction-Forensics-Sale-&amp;-Purchase-Agreements-Manager-LondonRegions-SE1-2AF/1446348233/",
    "posted": "",
    "department": "",
    "description": "At EY, we’re all in to shape your future with confidence. We’ll help you succeed in a globally connected powerhouse of diverse teams and take your career wherever you want it to go. Join EY and help to build a better working world. UKI Assurance - Transaction Forensics - Sales & ",
@@ -34639,9 +34337,9 @@
    "source": "successfactors",
    "company": "EY",
    "category": "big4",
-   "title": "Assurance - Transaction Forensics - Sale & Purchase Agreements - Manager - London/Regions",
+   "title": "Assurance - Transaction Forensics - Sale & Purchase Agreements - Manager - London",
    "location": "London, United Kingdom, SE1 2AF +3 more…",
-   "url": "https://careers.ey.com/ey/job/London-Assurance-Transaction-Forensics-Sale-&amp;-Purchase-Agreements-Manager-LondonRegions-SE1-2AF/1446348233/",
+   "url": "https://careers.ey.com/ey/job/London-Assurance-Transaction-Forensics-Sale-&amp;-Purchase-Agreements-Manager-London-SE1-2AF/1446348333/",
    "posted": "",
    "department": "",
    "description": "At EY, we’re all in to shape your future with confidence. We’ll help you succeed in a globally connected powerhouse of diverse teams and take your career wherever you want it to go. Join EY and help to build a better working world. UKI Assurance - Transaction Forensics - Sales & ",
@@ -34814,7 +34512,6 @@
    "workplace": null,
    "extra": {},
    "src": "Morgan Stanley",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "other",
@@ -35030,7 +34727,6 @@
    "workplace": null,
    "extra": {},
    "src": "ICG",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (mid-market)",
    "level": "senior",
    "function": "other",
@@ -35088,7 +34784,6 @@
    "workplace": null,
    "extra": {},
    "src": "RSM UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "mid",
    "function": "other",
@@ -35206,7 +34901,6 @@
    "workplace": null,
    "extra": {},
    "src": "RSM UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "front",
@@ -35262,7 +34956,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "front",
@@ -35423,7 +35116,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "front",
@@ -35484,7 +35176,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "front",
@@ -35545,7 +35236,6 @@
    "workplace": null,
    "extra": {},
    "src": "ICG",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (mid-market)",
    "level": "senior",
    "function": "other",
@@ -35600,7 +35290,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "front",
@@ -35772,7 +35461,6 @@
    "workplace": null,
    "extra": {},
    "src": "RSM UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "front",
@@ -35882,7 +35570,6 @@
    "workplace": null,
    "extra": {},
    "src": "RSM UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "other",
@@ -35935,7 +35622,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "other",
@@ -35987,7 +35673,6 @@
    "workplace": null,
    "extra": {},
    "src": "Apollo",
-   "stale_since": "2026-11-18",
    "category_label": "Private equity (large)",
    "level": "mid",
    "function": "back",
@@ -36155,7 +35840,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "other",
@@ -36209,7 +35893,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "other",
@@ -36264,7 +35947,6 @@
    "workplace": null,
    "extra": {},
    "src": "Citi",
-   "stale_since": "2026-11-18",
    "category_label": "Investment bank",
    "level": "senior",
    "function": "front",
@@ -36375,7 +36057,6 @@
    "workplace": null,
    "extra": {},
    "src": "RSM UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "other",
@@ -36542,7 +36223,6 @@
    "workplace": null,
    "extra": {},
    "src": "Grant Thornton UK",
-   "stale_since": "2026-11-18",
    "category_label": "Mid-tier advisory",
    "level": "senior",
    "function": "other",

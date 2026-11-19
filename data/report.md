@@ -1,20 +1,20 @@
-# Best live UK and US roles for you - 2026-11-18 23:09 UTC
+# Best live UK and US roles for you - 2026-11-19 07:49 UTC
 
-4842 UK and US vacancies scanned from 48 sources; 653 kept after filtering for your target areas.
+4831 UK and US vacancies scanned from 75 sources; 652 kept after filtering for your target areas.
 
 Match = pay x how reachable it is for you now x fit with your interests x work-from-home bonus. Reach after ACA is the same score once you are ACA-qualified. US pay is converted at $1 = £0.759 (ECB rate 2026-11-18).
 
 | # | Role | Employer | Where | Pay | Level | WFH | Reach now | Reach after ACA | Match |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | [BXMA - Business & Financial Evaluation - Analyst](https://blackstone.wd1.myworkdayjobs.com/Blackstone_Careers/job/New-York/BXMA---Business---Financial-Evaluation---Analyst_45566) | Blackstone | New York (United States  | £162k ($213k) est | entry | unknown | 31% | 35% | £51k |
-| 2 | [Strategy and Product Specialist](https://www.janestreet.com/join-jane-street/apply/8056116002?gh_jid=8056116002) | Jane Street | New York, New York, Unit | £263k ($346k) | mid | unknown | 27% | 30% | £44k |
+| 1 | [Strategy and Product Specialist](https://www.janestreet.com/join-jane-street/apply/8056116002?gh_jid=8056116002) | Jane Street | New York, New York, Unit | £263k ($346k) | mid | unknown | 27% | 30% | £44k |
+| 2 | [BXMA - Business & Financial Evaluation - Analyst](https://blackstone.wd1.myworkdayjobs.com/Blackstone_Careers/job/New-York/BXMA---Business---Financial-Evaluation---Analyst_45566) | Blackstone | New York (United States  | £134k ($176k) | entry | unknown | 31% | 35% | £42k |
 | 3 | [Junior Associate – Chemicals Advisory](https://evercore.tal.net/vx/mobile-0/appcentre-ext/brand-4/candidate/so/pm/1/pl/3/opp/3131-Junior-Associate-Chemicals-Advisory/en-GB) | Evercore | New York | £218k ($287k) | mid | office | 19% | 21% | £40k |
 | 4 | [Analyst – Equity Capital Markets – New York](https://evercore.tal.net/vx/mobile-0/appcentre-ext/brand-4/candidate/so/pm/1/pl/3/opp/3347-Analyst-Equity-Capital-Markets-New-York/en-GB) | Evercore | New York | £138k ($182k) | entry | office | 30% | 33% | £40k |
 | 5 | [Assistant Manager, Transaction Management Office (TMO), Equity Capital](https://apply.deloitte.co.uk/UKCareers/JobDetail/Assistant-Manager-Transaction-Management-Office-TMO-Equity-Capital-Markets-Finance-and-Transaction-Management-EFT/25698) | Deloitte UK | London | £58k est | mid | hybrid | 65% | 65% | £40k |
 | 6 | [Equity Capital Markets, Analyst](https://mufgub.wd3.myworkdayjobs.com/MUFG-Careers/job/London/Equity-Capital-Markets--Analyst_10079971-WD-1) | MUFG | London (United Kingdom) | £100k est | entry | hybrid | 37% | 37% | £39k |
 | 7 | [Investment Banking - EMEA Leveraged Finance Mid-Cap - Analyst - London](https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210795741) | J.P. Morgan | LONDON, LONDON, United K | £100k est | entry | unknown | 39% | 39% | £39k |
-| 8 | [Analyst, Corporate Sales (FX & Rates)](https://portal.careers.hsbc.com/careers/job/563774612124385) | HSBC | New York, New York, Unit | £135k ($178k) est | entry | office | 30% | 33% | £39k |
-| 9 | [CIB Markets Program Analyst - Commercial Rates & FX Sales](https://wd1.myworkdaysite.com/recruiting/wf/WellsFargoJobs/job/CHICAGO-IL/CIB-Markets-Program-Analyst---Commercial-Rates---FX-Sales_R-586793) | Wells Fargo | CHICAGO, IL (United Stat | £135k ($178k) est | entry | office | 30% | 33% | £39k |
+| 8 | [CIB Markets Program Analyst - Commercial Rates & FX Sales](https://wd1.myworkdaysite.com/recruiting/wf/WellsFargoJobs/job/CHICAGO-IL/CIB-Markets-Program-Analyst---Commercial-Rates---FX-Sales_R-586793) | Wells Fargo | CHICAGO, IL (United Stat | £135k ($178k) est | entry | office | 30% | 33% | £39k |
+| 9 | [Analyst, Corporate Sales (FX & Rates)](https://portal.careers.hsbc.com/careers/job/563774612124385) | HSBC | New York, New York, Unit | £135k ($178k) est | entry | office | 30% | 33% | £39k |
 | 10 | [Investment & Corporate Banking – DCM: Capital Structure Solutions, Ana](https://mizuho.wd1.myworkdayjobs.com/mizuhoamericas/job/New-York-NY-1271-AOA6th-Ave/Investment---Corporate-Banking---DCM--Capital-Structure-Solutions--Analyst_R7487) | Mizuho | New York, NY (1271 AOA/6 | £123k ($162k) | entry | hybrid | 30% | 33% | £39k |
 | 11 | [Junior Commodities Fundamental Analyst](https://www.squarepoint-capital.com/open-opportunities?id=5929246&gh_jid=5929246) | Squarepoint Capital | Geneva, London, Paris, S | £110k est | entry | unknown | 34% | 34% | £38k |
 | 12 | [Futures & Derivatives Clearing Ops In-Business Risk & Control Hybrid](https://citi.wd5.myworkdayjobs.com/2/job/Jersey-City-New-Jersey-United-States/Futures---Derivatives-Clearing-Ops-In-Business-Risk---Control-Hybrid_26995180) | Citi | Jersey City New Jersey U | £107k ($141k) | mid | hybrid | 33% | 47% | £38k |
