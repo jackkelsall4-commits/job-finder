@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-22T07:40:08Z",
- "seconds": 728,
+ "generated_at": "2026-11-23T08:03:44Z",
+ "seconds": 662,
  "sources": [
   {
    "source": "AQR",
@@ -168,19 +168,19 @@
    "source": "GoCardless",
    "kind": "greenhouse",
    "ok": true,
-   "count": 15
+   "count": 14
   },
   {
    "source": "Goldman Sachs",
    "kind": "goldman",
    "ok": true,
-   "count": 431
+   "count": 430
   },
   {
    "source": "Grant Thornton UK",
    "kind": "workday",
    "ok": true,
-   "count": 78
+   "count": 76
   },
   {
    "source": "HSBC",
@@ -228,7 +228,7 @@
    "source": "J.P. Morgan",
    "kind": "oracle",
    "ok": true,
-   "count": 383
+   "count": 382
   },
   {
    "source": "Jane Street",
@@ -282,7 +282,7 @@
    "source": "Lloyds Banking Group",
    "kind": "workday",
    "ok": true,
-   "count": 53
+   "count": 52
   },
   {
    "source": "MUFG",
@@ -294,7 +294,7 @@
    "source": "Man Group",
    "kind": "greenhouse",
    "ok": true,
-   "count": 39
+   "count": 40
   },
   {
    "source": "Maven Securities",
@@ -306,7 +306,7 @@
    "source": "Millennium",
    "kind": "eightfold",
    "ok": true,
-   "count": 79
+   "count": 78
   },
   {
    "source": "Mizuho",
@@ -318,7 +318,7 @@
    "source": "Monzo",
    "kind": "greenhouse",
    "ok": true,
-   "count": 51
+   "count": 45
   },
   {
    "source": "Morgan Stanley",
@@ -384,7 +384,7 @@
    "source": "Santander",
    "kind": "workday",
    "ok": true,
-   "count": 130
+   "count": 126
   },
   {
    "source": "Schonfeld",
@@ -471,7 +471,7 @@
    "count": 2
   }
  ],
- "total_seen": 4823,
+ "total_seen": 4807,
  "usd_to_gbp": 0.7619,
  "fx_note": "ECB rate 2026-11-20",
  "jobs": [
@@ -2225,68 +2225,6 @@
    "match_aca": 32555
   },
   {
-   "source": "workday",
-   "company": "Wells Fargo",
-   "category": "bulge_bracket",
-   "title": "Corporate Banking Analyst - Fund Finance Portfolio Management",
-   "location": "CHARLOTTE, NC (United States of America)",
-   "url": "https://wd1.myworkdaysite.com/recruiting/wf/WellsFargoJobs/job/CHARLOTTE-NC/Corporate-Banking-Analyst---Fund-Finance-Portfolio-Management_R-585144",
-   "posted": "2026-11-19",
-   "department": "",
-   "description": "Corporate & Investment Banking (“CIB”) delivers a comprehensive suite of capital markets, banking, and financial products and services. A trusted partner to our clients, we provide corporate and transactional banking; commercial real estate lending and servicing; investment banki",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {
-    "closes": "2026-11-23"
-   },
-   "src": "Wells Fargo",
-   "category_label": "Investment bank",
-   "level": "entry",
-   "function": "front",
-   "region": "US",
-   "interest": 1.0,
-   "tracks": [
-    "Investing",
-    "ACA stepping stone",
-    "Finance / accounting",
-    "Trading",
-    "Corporate finance / IB"
-   ],
-   "workplace_type": "unknown",
-   "summary": "About this role: Wells Fargo’s Fund Finance Group (FFG) is seeking an Analyst to join its Portfolio Management team, supporting the management and oversight of a diverse portfolio spanning subscription…",
-   "currency": "USD",
-   "base_pay": 80002,
-   "comp": 108000.0,
-   "comp_basis": "advertised",
-   "base_range": [
-    100000.0,
-    110000.0
-   ],
-   "pay_all_in": false,
-   "comp_usd": 142000.0,
-   "reach": 0.3,
-   "flags": [
-    "US role: AAT isn't known in the US - lean on your audit experience",
-    "Front-office analyst roles are fiercely competitive and often degree-screened"
-   ],
-   "pros": [
-    "Excel-heavy - your strongest tool"
-   ],
-   "match": 32141,
-   "reach_aca": 0.33,
-   "flags_aca": [
-    "US role: ACA is respected, but some US employers prefer a CPA",
-    "Front-office analyst roles are fiercely competitive and often degree-screened"
-   ],
-   "pros_aca": [
-    "Excel-heavy - your strongest tool"
-   ],
-   "match_aca": 36159
-  },
-  {
    "source": "greenhouse",
    "company": "DRW",
    "category": "prop_trading",
@@ -3239,57 +3177,6 @@
    "match_aca": 32543
   },
   {
-   "source": "successfactors",
-   "company": "EY",
-   "category": "big4",
-   "title": "Executive, Operational Due Diligence, Strategy & Execution, EY-Parthenon, Belfast",
-   "location": "Belfast, United Kingdom, BT2 7DT",
-   "url": "https://careers.ey.com/ey/job/Belfast-Executive%2C-Operational-Due-Diligence%2C-Strategy-&amp;-Execution%2C-EY-Parthenon%2C-Belfast-BT2-7DT/1450353033/",
-   "posted": "",
-   "department": "",
-   "description": "At EY, we’re all in to shape your future with confidence. We’ll help you succeed in a globally connected powerhouse of diverse teams and take your career wherever you want it to go. Join EY and help to build a better working world. At EY, we’re all in to shape your future with co",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "src": "EY",
-   "category_label": "Big 4",
-   "level": "entry",
-   "function": "front",
-   "region": "UK",
-   "interest": 1.0,
-   "tracks": [
-    "Transaction services",
-    "Trading",
-    "Corporate finance / IB"
-   ],
-   "workplace_type": "unknown",
-   "summary": "Part of your role will also involve developing experience across a range of different type of engagements, including pre-deal (e.g. operational and IT due diligence, carve-out planning), post-deal (e.g.…",
-   "currency": "GBP",
-   "base_pay": null,
-   "comp": 32300.0,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": null,
-   "reach": 0.89,
-   "flags": [],
-   "pros": [
-    "Asks for assurance, financial statements, due diligence - core to your 2 yrs of audit",
-    "Audit -> deal advisory (TS, restructuring, forensic) is a well-trodden move"
-   ],
-   "match": 28787,
-   "reach_aca": 0.89,
-   "flags_aca": [],
-   "pros_aca": [
-    "Asks for assurance, financial statements, due diligence - core to ACA + about 4 yrs of audit",
-    "Audit -> deal advisory (TS, restructuring, forensic) is a well-trodden move"
-   ],
-   "match_aca": 28787
-  },
-  {
    "source": "workday",
    "company": "MUFG",
    "category": "bulge_bracket",
@@ -3745,6 +3632,64 @@
    ],
    "pros_aca": [],
    "match_aca": 30918
+  },
+  {
+   "source": "greenhouse",
+   "company": "Man Group",
+   "category": "hedge_fund",
+   "title": "Trade Operations Analyst",
+   "location": "Boston; Massachusetts",
+   "url": "https://job-boards.eu.greenhouse.io/mangroup/jobs/5034464101",
+   "posted": "2026-11-22",
+   "department": "Operations",
+   "description": "About Man Group Man Group is a global alternative investment management firm focused on pursuing outperformance for sophisticated clients via our Systematic, Discretionary and Solutions offerings. Powered by talent and advanced technology, our single and multi-manager investment ",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "src": "Man Group",
+   "category_label": "Hedge fund",
+   "level": "entry",
+   "function": "back",
+   "region": "US",
+   "interest": 0.5,
+   "tracks": [
+    "Finance / accounting",
+    "Ops / risk",
+    "Trading",
+    "Investing",
+    "Corporate finance / IB"
+   ],
+   "workplace_type": "hybrid",
+   "summary": "As a Trade Operations Analyst you will ensures that all trades booked by these fund managers are true and accurate, while maintaining strong risk management standards.",
+   "currency": "USD",
+   "base_pay": 68573,
+   "comp": 82300.0,
+   "comp_basis": "advertised",
+   "base_range": [
+    80000.0,
+    100000.0
+   ],
+   "pay_all_in": false,
+   "comp_usd": 108000.0,
+   "reach": 0.5,
+   "flags": [
+    "US role: AAT isn't known in the US - lean on your audit experience"
+   ],
+   "pros": [
+    "Excel-heavy - your strongest tool"
+   ],
+   "match": 27040,
+   "reach_aca": 0.56,
+   "flags_aca": [
+    "US role: ACA is respected, but some US employers prefer a CPA"
+   ],
+   "pros_aca": [
+    "Excel-heavy - your strongest tool"
+   ],
+   "match_aca": 30420
   },
   {
    "source": "oracle",
@@ -4729,66 +4674,6 @@
    ],
    "pros_aca": [],
    "match_aca": 27094
-  },
-  {
-   "source": "workday",
-   "company": "Santander",
-   "category": "retail_bank",
-   "title": "CIB Emerging Markets & Foreign Exchange Institutional Sales, Analyst Title",
-   "location": "Madison Ave Corp (United States of America)",
-   "url": "https://santander.wd3.myworkdayjobs.com/SantanderCareers/job/Madison-Ave-Corp/CIB-Markets-Analyst---Institutional-Sales_Req1626323",
-   "posted": "2026-11-02",
-   "department": "",
-   "description": "CIB Emerging Markets & Foreign Exchange Institutional Sales, Analyst Title Country: United States of America It Starts With You: Santander is a global leader and innovator in the financial services industry and is evolving from a high-impact brand into a technology-driven organiz",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {
-    "closes": "2026-11-23"
-   },
-   "src": "Santander",
-   "category_label": "UK bank",
-   "level": "entry",
-   "function": "other",
-   "region": "US",
-   "interest": 0.5,
-   "tracks": [
-    "Finance / accounting",
-    "Trading",
-    "Corporate finance / IB"
-   ],
-   "workplace_type": "unknown",
-   "summary": "Will include, but will not be limited to, the following responsibilities: Providing comprehensive support to the Sales team in daily commercial activities, contributing to the development of client…",
-   "currency": "USD",
-   "base_pay": 93335,
-   "comp": 97100.0,
-   "comp_basis": "advertised",
-   "base_range": [
-    110000.0,
-    135000.0
-   ],
-   "pay_all_in": false,
-   "comp_usd": 127000.0,
-   "reach": 0.4,
-   "flags": [
-    "Asks for a degree or equivalent - lean on AAT L4 + experience",
-    "US role: AAT isn't known in the US - lean on your audit experience"
-   ],
-   "pros": [
-    "Needs US work rights / no visa sponsorship - your US citizenship covers this"
-   ],
-   "match": 24073,
-   "reach_aca": 0.56,
-   "flags_aca": [
-    "Asks for a degree or equivalent - ACA should count",
-    "US role: ACA is respected, but some US employers prefer a CPA"
-   ],
-   "pros_aca": [
-    "Needs US work rights / no visa sponsorship - your US citizenship covers this"
-   ],
-   "match_aca": 33853
   },
   {
    "source": "workday",
@@ -9490,6 +9375,124 @@
    "match_aca": 24077
   },
   {
+   "source": "workday",
+   "company": "TD Securities",
+   "category": "bulge_bracket",
+   "title": "Financial Advisor - Great Falls, VA",
+   "location": "Great Falls, Virginia (United States of America)",
+   "url": "https://td.wd3.myworkdayjobs.com/TD_Bank_Careers/job/Great-Falls-Virginia/Financial-Advisor---Great-Falls--VA_R_1485761",
+   "posted": "2026-11-20",
+   "department": "",
+   "description": "Work Location: Great Falls, Virginia, United States of America Hours: 40 Pay Details: $78,520 - $117,520 USD TD is committed to providing fair and equitable compensation opportunities to all colleagues. Growth opportunities and skill development are defining features of the colle",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {
+    "closes": "2026-12-11"
+   },
+   "src": "TD Securities",
+   "category_label": "Investment bank",
+   "level": "mid",
+   "function": "other",
+   "region": "US",
+   "interest": 0.5,
+   "tracks": [
+    "Finance / accounting",
+    "Transaction services"
+   ],
+   "workplace_type": "unknown",
+   "summary": "Line of Business: TD Wealth Job Description: The Financial Advisor (FA) role is a three-year program with a forgivable draw, for financial advisors or planners who will be providing financial planning guidance…",
+   "currency": "USD",
+   "base_pay": 74683,
+   "comp": 85100.0,
+   "comp_basis": "advertised",
+   "base_range": [
+    78500.0,
+    117500.0
+   ],
+   "pay_all_in": false,
+   "comp_usd": 112000.0,
+   "reach": 0.32,
+   "flags": [
+    "A degree is preferred, not required",
+    "US role: AAT isn't known in the US - lean on your audit experience"
+   ],
+   "pros": [
+    "Asks for due diligence - core to your 2 yrs of audit"
+   ],
+   "match": 17097,
+   "reach_aca": 0.43,
+   "flags_aca": [
+    "A degree is preferred, not required",
+    "US role: ACA is respected, but some US employers prefer a CPA"
+   ],
+   "pros_aca": [
+    "Asks for due diligence - core to ACA + about 4 yrs of audit"
+   ],
+   "match_aca": 22628
+  },
+  {
+   "source": "workday",
+   "company": "TD Securities",
+   "category": "bulge_bracket",
+   "title": "Financial Advisor- Great Neck, Long Island",
+   "location": "Great Neck, New York (United States of America)",
+   "url": "https://td.wd3.myworkdayjobs.com/TD_Bank_Careers/job/Great-Neck-New-York/Financial-Advisor--East-Meadow--Long-Island_R_1492003",
+   "posted": "2026-11-20",
+   "department": "",
+   "description": "Work Location: Great Neck, New York, United States of America Hours: 40 Pay Details: $78,520 - $117,520 USD TD is committed to providing fair and equitable compensation opportunities to all colleagues. Growth opportunities and skill development are defining features of the collea",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {
+    "closes": "2026-12-11"
+   },
+   "src": "TD Securities",
+   "category_label": "Investment bank",
+   "level": "mid",
+   "function": "other",
+   "region": "US",
+   "interest": 0.5,
+   "tracks": [
+    "Finance / accounting",
+    "Transaction services"
+   ],
+   "workplace_type": "unknown",
+   "summary": "Line of Business: TD Wealth Job Description: The Financial Advisor (FA) role is a three-year program with a forgivable draw, for financial advisors or planners who will be providing financial planning guidance…",
+   "currency": "USD",
+   "base_pay": 74683,
+   "comp": 85100.0,
+   "comp_basis": "advertised",
+   "base_range": [
+    78500.0,
+    117500.0
+   ],
+   "pay_all_in": false,
+   "comp_usd": 112000.0,
+   "reach": 0.32,
+   "flags": [
+    "A degree is preferred, not required",
+    "US role: AAT isn't known in the US - lean on your audit experience"
+   ],
+   "pros": [
+    "Asks for due diligence - core to your 2 yrs of audit"
+   ],
+   "match": 17097,
+   "reach_aca": 0.43,
+   "flags_aca": [
+    "A degree is preferred, not required",
+    "US role: ACA is respected, but some US employers prefer a CPA"
+   ],
+   "pros_aca": [
+    "Asks for due diligence - core to ACA + about 4 yrs of audit"
+   ],
+   "match_aca": 22628
+  },
+  {
    "source": "greenhouse",
    "company": "General Atlantic",
    "category": "pe_megafund",
@@ -11621,51 +11624,6 @@
    "source": "workday",
    "company": "Barclays",
    "category": "bulge_bracket",
-   "title": "Business Analyst",
-   "location": "Glasgow Campus (United Kingdom)",
-   "url": "https://barclays.wd3.myworkdayjobs.com/External_Career_Site_Barclays/job/Glasgow-Campus/Business-Analyst_JR-0000130045-1",
-   "posted": "2026-11-20",
-   "department": "",
-   "description": "Job Description Purpose of the role To support the organisation, achieve its strategic objectives by the identification of business requirements and solutions that address business problems and opportunities. Accountabilities Identification and analysis of business problems and c",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {
-    "closes": "2026-11-23"
-   },
-   "src": "Barclays",
-   "category_label": "Investment bank",
-   "level": "entry",
-   "function": "other",
-   "region": "UK",
-   "interest": 0.35,
-   "tracks": [
-    "Finance / accounting"
-   ],
-   "workplace_type": "unknown",
-   "summary": "To support the organisation, achieve its strategic objectives by the identification of business requirements and solutions that address business problems and opportunities.",
-   "currency": "GBP",
-   "base_pay": null,
-   "comp": 46800.0,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": null,
-   "reach": 0.62,
-   "flags": [],
-   "pros": [],
-   "match": 14855,
-   "reach_aca": 0.62,
-   "flags_aca": [],
-   "pros_aca": [],
-   "match_aca": 14855
-  },
-  {
-   "source": "workday",
-   "company": "Barclays",
-   "category": "bulge_bracket",
    "title": "Specialist Support Analyst",
    "location": "Knutsford, Radbroke Hall (United Kingdom)",
    "url": "https://barclays.wd3.myworkdayjobs.com/External_Career_Site_Barclays/job/Knutsford-Radbroke-Hall/Specialist-Support-Analyst_JR-0000140907-1",
@@ -12942,68 +12900,6 @@
     "Excel-heavy - your strongest tool"
    ],
    "match_aca": 26852
-  },
-  {
-   "source": "greenhouse",
-   "company": "Point72",
-   "category": "hedge_fund",
-   "title": "Macro And Alternatives Trade Support Analyst",
-   "location": "Stamford, CT",
-   "url": "https://boards.greenhouse.io/point72/jobs/8845107002?gh_jid=8845107002",
-   "posted": "2026-11-09",
-   "department": "Operations",
-   "description": "A Career with Point72’s Operations Team Point72’s Operations team supports all operational aspects of trade processing, reconciliation, financing, and reporting firmwide for all products, including equities, derivatives, bonds, foreign exchange and futures, and digital assets acr",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "src": "Point72",
-   "category_label": "Hedge fund",
-   "level": "entry",
-   "function": "back",
-   "region": "US",
-   "interest": 0.5,
-   "tracks": [
-    "Finance / accounting",
-    "Trading",
-    "Investing"
-   ],
-   "workplace_type": "unknown",
-   "summary": "A Career with Point72’s Operations Team Point72’s Operations team supports all operational aspects of trade processing, reconciliation, financing, and reporting firmwide for all products, including equities…",
-   "currency": "USD",
-   "base_pay": 78097,
-   "comp": 93700.0,
-   "comp_basis": "advertised",
-   "base_range": [
-    90000.0,
-    115000.0
-   ],
-   "pay_all_in": false,
-   "comp_usd": 123000.0,
-   "reach": 0.24,
-   "flags": [
-    "Python/SQL is a plus, not required - worth learning",
-    "Asks for a degree - you'd need them to accept AAT L4 + experience",
-    "US role: AAT isn't known in the US - lean on your audit experience"
-   ],
-   "pros": [
-    "Asks for accounting - core to your 2 yrs of audit",
-    "Excel-heavy - your strongest tool"
-   ],
-   "match": 14032,
-   "reach_aca": 0.46,
-   "flags_aca": [
-    "Python/SQL is a plus, not required - worth learning",
-    "Asks for a degree - many firms accept ACA instead, but check",
-    "US role: ACA is respected, but some US employers prefer a CPA"
-   ],
-   "pros_aca": [
-    "Asks for accounting - core to ACA + about 4 yrs of audit",
-    "Excel-heavy - your strongest tool"
-   ],
-   "match_aca": 26836
   },
   {
    "source": "workday",
@@ -15911,6 +15807,68 @@
     "Asks for assurance - core to ACA + about 4 yrs of audit"
    ],
    "match_aca": 10377
+  },
+  {
+   "source": "jibe",
+   "company": "Susquehanna (SIG)",
+   "category": "prop_trading",
+   "title": "Staff Accountant",
+   "location": "Bala Cynwyd (Philadelphia Area), Pennsylvania",
+   "url": "https://careers.sig.com/jobs/13103",
+   "posted": "2026-11-18",
+   "department": "Experienced Professionals",
+   "description": "Overview Susquehanna is currently looking for a Financial Accountant to join our team based in our Bala Cynwyd, PA headquarters. As a member of this team, you will have end-to-end ownership of the business entities assigned to you, gathering the information needed to prepare and ",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "src": "Susquehanna (SIG)",
+   "category_label": "Prop trading / market maker",
+   "level": "mid",
+   "function": "back",
+   "region": "US",
+   "interest": 0.5,
+   "tracks": [
+    "Finance / accounting",
+    "Trading"
+   ],
+   "workplace_type": "unknown",
+   "summary": "As a member of this team, you will have end-to-end ownership of the business entities assigned to you, gathering the information needed to prepare and manage their financials and reporting.",
+   "currency": "USD",
+   "base_pay": null,
+   "comp": 104600.0,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": 137000.0,
+   "reach": 0.18,
+   "flags": [
+    "Python/SQL is a plus, not required - worth learning",
+    "Asks for a degree - you'd need them to accept AAT L4 + experience",
+    "US role: AAT isn't known in the US - lean on your audit experience"
+   ],
+   "pros": [
+    "Asks for 2+ yrs (corporate or public accounting experience…) - you have 2",
+    "Asks for financial statements, accounting experience - core to your 2 yrs of audit",
+    "Excel-heavy - your strongest tool",
+    "Needs US work rights / no visa sponsorship - your US citizenship covers this"
+   ],
+   "match": 11914,
+   "reach_aca": 0.35,
+   "flags_aca": [
+    "Python/SQL is a plus, not required - worth learning",
+    "Asks for a degree - many firms accept ACA instead, but check",
+    "US role: ACA is respected, but some US employers prefer a CPA"
+   ],
+   "pros_aca": [
+    "Asks for 2+ yrs (corporate or public accounting experience…) - you have 4",
+    "Asks for financial statements, accounting experience - core to ACA + about 4 yrs of audit",
+    "Excel-heavy - your strongest tool",
+    "Needs US work rights / no visa sponsorship - your US citizenship covers this"
+   ],
+   "match_aca": 22786
   },
   {
    "source": "workday",
@@ -19645,64 +19603,6 @@
   },
   {
    "source": "workday",
-   "company": "Barclays",
-   "category": "bulge_bracket",
-   "title": "Equity Research Aerospace & Defense/Defense Tech, AVP",
-   "location": "New York, 745 7th Avenue (United States of America)",
-   "url": "https://barclays.wd3.myworkdayjobs.com/External_Career_Site_Barclays/job/New-York-745-7th-Avenue/Equity-Research-Aerospace---Defense-Defense-Tech--AVP_JR-0000101827-1",
-   "posted": "2026-11-17",
-   "department": "",
-   "description": "Job Description Purpose of the role To produce and deliver Research with differentiated market insights and actionable ideas to Barclays Clients. Accountabilities Analysis of market, sector, corporate and/or economic data to help develop investment theses for your coverage univer",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {
-    "closes": "2026-11-23"
-   },
-   "src": "Barclays",
-   "category_label": "Investment bank",
-   "level": "senior",
-   "function": "front",
-   "region": "US",
-   "interest": 1.0,
-   "tracks": [
-    "Investing"
-   ],
-   "workplace_type": "hybrid",
-   "summary": "Join Barclays as an Equity Research Aerospace & Defense/Defense Tech, AVP, where you’ll have the chance to collaborate with senior analysts to produce comprehensive research reports and presentations while…",
-   "currency": "USD",
-   "base_pay": 114288,
-   "comp": 154300.0,
-   "comp_basis": "advertised",
-   "base_range": [
-    125000.0,
-    175000.0
-   ],
-   "pay_all_in": false,
-   "comp_usd": 202000.0,
-   "reach": 0.05,
-   "flags": [
-    "US role: AAT isn't known in the US - lean on your audit experience"
-   ],
-   "pros": [
-    "Asks for financial statements - core to your 2 yrs of audit",
-    "Excel-heavy - your strongest tool"
-   ],
-   "match": 8243,
-   "reach_aca": 0.14,
-   "flags_aca": [
-    "US role: ACA is respected, but some US employers prefer a CPA"
-   ],
-   "pros_aca": [
-    "Asks for financial statements - core to ACA + about 4 yrs of audit",
-    "Excel-heavy - your strongest tool"
-   ],
-   "match_aca": 23183
-  },
-  {
-   "source": "workday",
    "company": "RSM UK",
    "category": "mid_tier",
    "title": "Managing Consultant - Financial Crime",
@@ -19865,61 +19765,6 @@
     "Needs US work rights / no visa sponsorship - your US citizenship covers this"
    ],
    "match_aca": 25796
-  },
-  {
-   "source": "greenhouse",
-   "company": "Jane Street",
-   "category": "prop_trading",
-   "title": "Quantitative Trader",
-   "location": "London, England, United Kingdom",
-   "url": "https://www.janestreet.com/join-jane-street/apply/8576270002?gh_jid=8576270002",
-   "posted": "2026-11-03",
-   "department": "Quantitative Trading",
-   "description": "About the Position At Jane Street, quantitative traders identify market signals, analyse and execute strategies, construct quantitative models, conduct statistical analyses, build algorithmic trading systems, manage risk, develop new businesses, and more. Our trading desks are ce",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {},
-   "src": "Jane Street",
-   "category_label": "Prop trading / market maker",
-   "level": "mid",
-   "function": "front",
-   "region": "UK",
-   "interest": 1.0,
-   "tracks": [
-    "Trading"
-   ],
-   "workplace_type": "unknown",
-   "summary": "At Jane Street, quantitative traders identify market signals, analyse and execute strategies, construct quantitative models, conduct statistical analyses, build algorithmic trading systems, manage risk…",
-   "currency": "GBP",
-   "base_pay": null,
-   "comp": 260000,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": null,
-   "reach": 0.03,
-   "flags": [
-    "Python/SQL is a plus, not required - worth learning",
-    "Nothing in the advert matches audit experience - you'd compete with people already in this field",
-    "Quant role: usually needs a maths / physics / CS degree",
-    "Stretch: hires on intense maths/probability tests",
-    "Associate-level: usually hired from 2-3 yrs as an analyst or Big 4 deals"
-   ],
-   "pros": [],
-   "match": 8073,
-   "reach_aca": 0.03,
-   "flags_aca": [
-    "Python/SQL is a plus, not required - worth learning",
-    "Nothing in the advert matches audit experience - you'd compete with people already in this field",
-    "Quant role: usually needs a maths / physics / CS degree",
-    "Stretch: hires on intense maths/probability tests",
-    "Associate-level: usually hired from 2-3 yrs as an analyst or Big 4 deals"
-   ],
-   "pros_aca": [],
-   "match_aca": 8073
   },
   {
    "source": "workday",
@@ -21044,6 +20889,58 @@
    ],
    "pros_aca": [],
    "match_aca": 11731
+  },
+  {
+   "source": "goldman",
+   "company": "Goldman Sachs",
+   "category": "bulge_bracket",
+   "title": "Global Banking and Markets - Execution Solutions Strats - Associate - London",
+   "location": "London, United Kingdom",
+   "url": "https://higher.gs.com/roles/184165_GS_MID_CAREER",
+   "posted": "",
+   "department": "Global Banking & Markets / Quantitative Engineering",
+   "description": "Corporate title: Associate. Job Summary Are you fascinated by high-paced algorithmic trading, data science and complex engineering systems? The Execution Solutions team sits at the heart of our European Electronic Trading business, working closely with clients, Sales, Trading, En",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "src": "Goldman Sachs",
+   "category_label": "Investment bank",
+   "level": "mid",
+   "function": "other",
+   "region": "UK",
+   "interest": 0.5,
+   "tracks": [
+    "Trading",
+    "Investing"
+   ],
+   "workplace_type": "unknown",
+   "summary": "The Execution Solutions team sits at the heart of our European Electronic Trading business, working closely with clients, Sales, Trading, Engineering and Quantitative Research to improve our platform’s…",
+   "currency": "GBP",
+   "base_pay": null,
+   "comp": 88000.0,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": null,
+   "reach": 0.12,
+   "flags": [
+    "Python/SQL is a plus, not required - worth learning",
+    "Nothing in the advert matches audit experience - you'd compete with people already in this field",
+    "Quant role: usually needs a maths / physics / CS degree"
+   ],
+   "pros": [],
+   "match": 6831,
+   "reach_aca": 0.12,
+   "flags_aca": [
+    "Python/SQL is a plus, not required - worth learning",
+    "Nothing in the advert matches audit experience - you'd compete with people already in this field",
+    "Quant role: usually needs a maths / physics / CS degree"
+   ],
+   "pros_aca": [],
+   "match_aca": 6831
   },
   {
    "source": "workday",
@@ -23183,7 +23080,7 @@
    "workplace": null,
    "extra": {
     "course": "Financial services professional (level 6)",
-    "closes": "Closes in 9 days (Tuesday 1 December 2026)",
+    "closes": "Closes in 8 days (Tuesday 1 December 2026)",
     "start": "1 April 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -24777,7 +24674,7 @@
    "workplace": null,
    "extra": {
     "course": "Financial services professional (level 6)",
-    "closes": "Closes in 23 days (Tuesday 15 December 2026)",
+    "closes": "Closes in 22 days (Tuesday 15 December 2026)",
     "start": "1 April 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -24939,7 +24836,7 @@
    "workplace": null,
    "extra": {
     "course": "Accounting finance manager (level 6)",
-    "closes": "Closes in 9 days (Tuesday 1 December 2026)",
+    "closes": "Closes in 8 days (Tuesday 1 December 2026)",
     "start": "1 September 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -24993,7 +24890,7 @@
    "workplace": null,
    "extra": {
     "course": "Accounting finance manager (level 6)",
-    "closes": "Closes in 9 days (Tuesday 1 December 2026)",
+    "closes": "Closes in 8 days (Tuesday 1 December 2026)",
     "start": "1 September 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -26066,7 +25963,7 @@
    "workplace": null,
    "extra": {
     "course": "Internal audit technician (level 4)",
-    "closes": "Closes in 23 days (Tuesday 15 December 2026)",
+    "closes": "Closes in 22 days (Tuesday 15 December 2026)",
     "start": "1 September 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -26760,7 +26657,7 @@
    "workplace": null,
    "extra": {
     "course": "Compliance and risk officer (level 3)",
-    "closes": "Closes in 2 days (Tuesday 24 November 2026)",
+    "closes": "Closes tomorrow (Tuesday 24 November 2026)",
     "start": "1 September 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -27565,7 +27462,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional accounting technician (level 4)",
-    "closes": "Closes in 18 days (Thursday 10 December 2026)",
+    "closes": "Closes in 17 days (Thursday 10 December 2026)",
     "start": "1 September 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -27925,7 +27822,7 @@
    "workplace": null,
    "extra": {
     "course": "Accountancy or taxation professional (level 7)",
-    "closes": "Closes in 19 days (Friday 11 December 2026)",
+    "closes": "Closes in 18 days (Friday 11 December 2026)",
     "start": "4 January 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -28095,60 +27992,6 @@
    "interest": 0.5,
    "tracks": [
     "Finance / accounting",
-    "Ops / risk",
-    "Trading"
-   ],
-   "workplace_type": "unknown",
-   "summary": "This role is to plan, execute and report the results of control testing covering Markets Trading and Sales businesses.",
-   "currency": "GBP",
-   "base_pay": null,
-   "comp": 99400.0,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": null,
-   "reach": 0.06,
-   "flags": [
-    "A degree is preferred, not required"
-   ],
-   "pros": [
-    "Asks for external audit, controls testing - core to your 2 yrs of audit"
-   ],
-   "match": 3487,
-   "reach_aca": 0.17,
-   "flags_aca": [
-    "A degree is preferred, not required"
-   ],
-   "pros_aca": [
-    "Asks for external audit, controls testing - core to ACA + about 4 yrs of audit"
-   ],
-   "match_aca": 10256
-  },
-  {
-   "source": "workday",
-   "company": "Citi",
-   "category": "bulge_bracket",
-   "title": "Risk Control Testing - Vice President",
-   "location": "Belfast  United Kingdom",
-   "url": "https://citi.wd5.myworkdayjobs.com/2/job/Belfast--United-Kingdom/Business-Risk-Officer---Vice-President_26981419",
-   "posted": "2026-10-12",
-   "department": "",
-   "description": "Citi Global Markets provides world-class solutions and an unmatched global presence. Citi Global Markets serve corporates, institutional investors and governments from trading floors in almost 80 countries. The strength of our underwriting, sales and trading and distribution capa",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {
-    "closes": "2026-11-23"
-   },
-   "src": "Citi",
-   "category_label": "Investment bank",
-   "level": "senior",
-   "function": "back",
-   "region": "UK",
-   "interest": 0.5,
-   "tracks": [
     "Ops / risk",
     "Trading"
    ],
@@ -28874,7 +28717,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional accounting technician (level 4)",
-    "closes": "Closes in 8 days (Monday 30 November 2026)",
+    "closes": "Closes in 7 days (Monday 30 November 2026)",
     "start": "1 September 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -28928,7 +28771,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional accounting technician (level 4)",
-    "closes": "Closes in 8 days (Monday 30 November 2026)",
+    "closes": "Closes in 7 days (Monday 30 November 2026)",
     "start": "1 September 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -29966,7 +29809,7 @@
    "workplace": null,
    "extra": {
     "course": "Compliance and risk officer (level 3)",
-    "closes": "Closes in 23 days (Tuesday 15 December 2026)",
+    "closes": "Closes in 22 days (Tuesday 15 December 2026)",
     "start": "1 September 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -30020,7 +29863,7 @@
    "workplace": null,
    "extra": {
     "course": "Financial services administrator (level 3)",
-    "closes": "Closes in 19 days (Friday 11 December 2026 at 11:59pm)",
+    "closes": "Closes in 18 days (Friday 11 December 2026 at 11:59pm)",
     "start": "4 January 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -30174,7 +30017,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional taxation technician (level 4)",
-    "closes": "Closes in 15 days (Monday 7 December 2026)",
+    "closes": "Closes in 14 days (Monday 7 December 2026)",
     "start": "5 April 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -30225,7 +30068,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional taxation technician (level 4)",
-    "closes": "Closes in 15 days (Monday 7 December 2026)",
+    "closes": "Closes in 14 days (Monday 7 December 2026)",
     "start": "5 April 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -30329,7 +30172,7 @@
    "workplace": null,
    "extra": {
     "course": "Assistant accountant (level 3)",
-    "closes": "Closes in 15 days (Monday 7 December 2026 at 11:59pm)",
+    "closes": "Closes in 14 days (Monday 7 December 2026 at 11:59pm)",
     "start": "4 January 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -30853,7 +30696,7 @@
    "workplace": null,
    "extra": {
     "course": "Financial services administrator (level 3)",
-    "closes": "Closes in 19 days (Friday 11 December 2026 at 11:59pm)",
+    "closes": "Closes in 18 days (Friday 11 December 2026 at 11:59pm)",
     "start": "4 January 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -31001,6 +30844,111 @@
   },
   {
    "source": "workday",
+   "company": "MUFG",
+   "category": "bulge_bracket",
+   "title": "Associate, Client Implementation Manager",
+   "location": "London (United Kingdom)",
+   "url": "https://mufgub.wd3.myworkdayjobs.com/MUFG-Careers/job/London/Associate--Client-Implementation-Manager_10079344-WD",
+   "posted": "2026-09-25",
+   "department": "",
+   "description": "Do you want your voice heard and your actions to count? Discover your opportunity with Mitsubishi UFJ Financial Group (MUFG), one of the world’s leading financial groups. Across the globe, we’re 150,000 colleagues, striving to make a difference for every client, organization, and",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "src": "MUFG",
+   "category_label": "Investment bank",
+   "level": "senior",
+   "function": "other",
+   "region": "UK",
+   "interest": 0.5,
+   "tracks": [
+    "ACA stepping stone"
+   ],
+   "workplace_type": "hybrid",
+   "summary": "MUFG is seeking a Client Implementation Manager to join its Transaction Banking division in London. This esteemed organisation, renowned for its rich heritage and extensive international footprint, offers an…",
+   "currency": "GBP",
+   "base_pay": null,
+   "comp": 143000.0,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": null,
+   "reach": 0.03,
+   "flags": [
+    "Wants direct experience in customer-facing positions has endowed you with refined… - audit only partly covers this",
+    "Wants finance-system experience (e.g. SAP/Kyriba) - you've seen clients' systems in audit, not run them",
+    "Nothing in the advert matches audit experience - you'd compete with people already in this field"
+   ],
+   "pros": [
+    "Excel-heavy - your strongest tool"
+   ],
+   "match": 2718,
+   "reach_aca": 0.07,
+   "flags_aca": [
+    "Wants direct experience in customer-facing positions has endowed you with refined… - audit only partly covers this",
+    "Wants finance-system experience (e.g. SAP/Kyriba) - you've seen clients' systems in audit, not run them",
+    "Nothing in the advert matches audit experience - you'd compete with people already in this field"
+   ],
+   "pros_aca": [
+    "Excel-heavy - your strongest tool"
+   ],
+   "match_aca": 6794
+  },
+  {
+   "source": "kpmg",
+   "company": "KPMG UK",
+   "category": "big4",
+   "title": "Transfer Pricing Manager - Financial Services",
+   "location": "London",
+   "url": "https://www.kpmgcareers.co.uk/Vacancies/transferpricingmanagerfinancialservices/108816",
+   "posted": "",
+   "department": "Tax & Law / Corporate Tax Services",
+   "description": "Manager This role involves working on a range of projects with a client base in the Financial Services sector. This primarily involves clients in the Banking, Insurance, Asset Management, Fintech and Commodity Trading sectors.",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {
+    "level": "Manager"
+   },
+   "src": "KPMG UK",
+   "category_label": "Big 4",
+   "level": "senior",
+   "function": "other",
+   "region": "UK",
+   "interest": 0.5,
+   "tracks": [
+    "Finance / accounting",
+    "Trading"
+   ],
+   "workplace_type": "unknown",
+   "summary": "Manager This role involves working on a range of projects with a client base in the Financial Services sector. This primarily involves clients in the Banking, Insurance, Asset Management, Fintech and Commodity…",
+   "currency": "GBP",
+   "base_pay": null,
+   "comp": 85000,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": null,
+   "reach": 0.05,
+   "flags": [
+    "Advert text not available - check the requirements yourself"
+   ],
+   "pros": [],
+   "match": 2709,
+   "reach_aca": 0.13,
+   "flags_aca": [
+    "Advert text not available - check the requirements yourself"
+   ],
+   "pros_aca": [],
+   "match_aca": 6773
+  },
+  {
+   "source": "workday",
    "company": "Citi",
    "category": "bulge_bracket",
    "title": "Monitoring & Testing Lead Analyst - C13 - BELFAST",
@@ -31071,7 +31019,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional accounting technician (level 4)",
-    "closes": "Closes in 5 days (Friday 27 November 2026 at 11:59pm)",
+    "closes": "Closes in 4 days (Friday 27 November 2026 at 11:59pm)",
     "start": "30 November 2026"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -31125,7 +31073,7 @@
    "workplace": null,
    "extra": {
     "course": "Assistant accountant (level 3)",
-    "closes": "Closes in 26 days (Friday 18 December 2026)",
+    "closes": "Closes in 25 days (Friday 18 December 2026)",
     "start": "4 January 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -31341,7 +31289,7 @@
    "workplace": null,
    "extra": {
     "course": "Assistant accountant (level 3)",
-    "closes": "Closes in 2 days (Tuesday 24 November 2026)",
+    "closes": "Closes tomorrow (Tuesday 24 November 2026)",
     "start": "25 November 2026"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -31505,7 +31453,7 @@
    "workplace": null,
    "extra": {
     "course": "Financial services administrator (level 3)",
-    "closes": "Closes in 5 days (Friday 27 November 2026 at 11:59pm)",
+    "closes": "Closes in 4 days (Friday 27 November 2026 at 11:59pm)",
     "start": "18 January 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -31559,7 +31507,7 @@
    "workplace": null,
    "extra": {
     "course": "Assistant accountant (level 3)",
-    "closes": "Closes in 2 days (Tuesday 24 November 2026)",
+    "closes": "Closes tomorrow (Tuesday 24 November 2026)",
     "start": "25 November 2026"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -31875,7 +31823,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional accounting technician (level 4)",
-    "closes": "Closes in 9 days (Tuesday 1 December 2026)",
+    "closes": "Closes in 8 days (Tuesday 1 December 2026)",
     "start": "4 January 2027"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -31988,7 +31936,7 @@
    "workplace": null,
    "extra": {
     "course": "Professional accounting technician (level 4)",
-    "closes": "Closes in 25 days (Thursday 17 December 2026)",
+    "closes": "Closes in 24 days (Thursday 17 December 2026)",
     "start": "18 December 2026"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -32078,61 +32026,6 @@
    ],
    "pros_aca": [],
    "match_aca": 9698
-  },
-  {
-   "source": "workday",
-   "company": "Grant Thornton UK",
-   "category": "mid_tier",
-   "title": "Public sector Audit AM",
-   "location": "Manchester (United Kingdom)",
-   "url": "https://ukgrantt.wd3.myworkdayjobs.com/CareersGrantThornton/job/Manchester/Public-sector-Audit-AM_R1036610-1",
-   "posted": "2026-10-06",
-   "department": "",
-   "description": "Alternatively, Grant Thornton At Grant Thornton we do things differently - looking to the future, driving ambitious growth and pioneering positive change in our industry. Providing audit, tax and advisory services, we empower clients through strategic insight, curiosity, and genu",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {
-    "closes": "2026-11-23"
-   },
-   "src": "Grant Thornton UK",
-   "category_label": "Mid-tier advisory",
-   "level": "mid",
-   "function": "other",
-   "region": "UK",
-   "interest": 0.5,
-   "tracks": [
-    "Finance / accounting",
-    "Trading",
-    "Corporate finance / IB",
-    "ACA stepping stone"
-   ],
-   "workplace_type": "hybrid",
-   "summary": "Public Sector Audit Assistant Manager - Manchester Alternatively, Grant Thornton At Grant Thornton we do things differently - looking to the future, driving ambitious growth and pioneering positive change in…",
-   "currency": "GBP",
-   "base_pay": null,
-   "comp": 44200.0,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": null,
-   "reach": 0.08,
-   "flags": [
-    "Needs a qualified accountant - you're part-way through ACA, not qualified yet"
-   ],
-   "pros": [
-    "Asks for audit, ifrs, accounting - core to your 2 yrs of audit"
-   ],
-   "match": 2273,
-   "reach_aca": 0.6,
-   "flags_aca": [],
-   "pros_aca": [
-    "Wants a qualified accountant - ACA ticks this",
-    "Asks for audit, ifrs, accounting - core to ACA + about 4 yrs of audit"
-   ],
-   "match_aca": 17427
   },
   {
    "source": "workday",
@@ -32431,7 +32324,7 @@
    "workplace": null,
    "extra": {
     "course": "Assistant accountant (level 3)",
-    "closes": "Closes in 25 days (Thursday 17 December 2026)",
+    "closes": "Closes in 24 days (Thursday 17 December 2026)",
     "start": "18 December 2026"
    },
    "src": "Find an apprenticeship (GOV.UK)",
@@ -32519,59 +32412,6 @@
    ],
    "pros_aca": [],
    "match_aca": 1376
-  },
-  {
-   "source": "workday",
-   "company": "Grant Thornton UK",
-   "category": "mid_tier",
-   "title": "Public Sector Audit Assistant Manager",
-   "location": "Birmingham (United Kingdom)",
-   "url": "https://ukgrantt.wd3.myworkdayjobs.com/CareersGrantThornton/job/Birmingham/Public-Sector-Audit-Assistant-Manager_R1037087",
-   "posted": "2026-10-13",
-   "department": "",
-   "description": "Alternatively, Grant Thornton At Grant Thornton we do things differently - looking to the future, driving ambitious growth and pioneering positive change in our industry. Providing audit, tax and advisory services, we empower clients through strategic insight, curiosity, and genu",
-   "salary_min": null,
-   "salary_max": null,
-   "salary_currency": null,
-   "salary_text": "",
-   "workplace": null,
-   "extra": {
-    "closes": "2026-11-23"
-   },
-   "src": "Grant Thornton UK",
-   "category_label": "Mid-tier advisory",
-   "level": "mid",
-   "function": "other",
-   "region": "UK",
-   "interest": 0.5,
-   "tracks": [
-    "Finance / accounting",
-    "ACA stepping stone"
-   ],
-   "workplace_type": "hybrid",
-   "summary": "A look into the role As an Audit Assistant Manager within our Public Sector Audit service line, you will have: Excellent Knowledge of NHS and Local Government Financial Reporting.",
-   "currency": "GBP",
-   "base_pay": null,
-   "comp": 44200.0,
-   "comp_basis": "estimated",
-   "base_range": null,
-   "pay_all_in": null,
-   "comp_usd": null,
-   "reach": 0.07,
-   "flags": [
-    "Needs a qualified accountant - you're part-way through ACA, not qualified yet"
-   ],
-   "pros": [
-    "Asks for audit, financial reporting - core to your 2 yrs of audit"
-   ],
-   "match": 2174,
-   "reach_aca": 0.57,
-   "flags_aca": [],
-   "pros_aca": [
-    "Wants a qualified accountant - ACA ticks this",
-    "Asks for audit, financial reporting - core to ACA + about 4 yrs of audit"
-   ],
-   "match_aca": 16669
   },
   {
    "source": "goldman",
@@ -33931,6 +33771,59 @@
     "Asks for accountancy, due diligence - core to ACA + about 4 yrs of audit"
    ],
    "match_aca": 9160
+  },
+  {
+   "source": "successfactors",
+   "company": "EY",
+   "category": "big4",
+   "title": "Senior Manager, Health, Workforce Advisory",
+   "location": "London, United Kingdom, SE1 2AF +4 more…",
+   "url": "https://careers.ey.com/ey/job/London-Senior-Manager%2C-Health%2C-Workforce-Advisory-SE1-2AF/1442273533/",
+   "posted": "",
+   "department": "",
+   "description": "At EY, we’re all in to shape your future with confidence. We’ll help you succeed in a globally connected powerhouse of diverse teams and take your career wherever you want it to go. Join EY and help to build a better working world. Senior Manager, Health, People Consulting Overvi",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "src": "EY",
+   "category_label": "Big 4",
+   "level": "senior",
+   "function": "front",
+   "region": "UK",
+   "interest": 1.0,
+   "tracks": [
+    "Corporate finance / IB"
+   ],
+   "workplace_type": "unknown",
+   "summary": "Senior Manager, Health, People Consulting Overview We are seeking experienced leaders to join our Health Workforce Transformation & People Experience team.",
+   "currency": "GBP",
+   "base_pay": null,
+   "comp": 85000,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": null,
+   "reach": 0.02,
+   "flags": [
+    "Asks for several years' experience (senior role, no years stated) - audit only partly counts here",
+    "Asks for a degree or equivalent - lean on AAT L4 + experience"
+   ],
+   "pros": [
+    "Asks for assurance - core to your 2 yrs of audit"
+   ],
+   "match": 1285,
+   "reach_aca": 0.09,
+   "flags_aca": [
+    "Asks for several years' experience (senior role, no years stated) - audit only partly counts here",
+    "Asks for a degree or equivalent - ACA should count"
+   ],
+   "pros_aca": [
+    "Asks for assurance - core to ACA + about 4 yrs of audit"
+   ],
+   "match_aca": 8032
   },
   {
    "source": "workday",
@@ -36136,6 +36029,109 @@
     "Excel-heavy - your strongest tool"
    ],
    "match_aca": 7285
+  },
+  {
+   "source": "workday",
+   "company": "Grant Thornton UK",
+   "category": "mid_tier",
+   "title": "Restructuring Associate Director",
+   "location": "London (United Kingdom)",
+   "url": "https://ukgrantt.wd3.myworkdayjobs.com/CareersGrantThornton/job/London/Restructuring-Associate-Director_R1036429",
+   "posted": "2026-11-20",
+   "department": "",
+   "description": "Alternatively, Grant Thornton At Grant Thornton we do things differently - looking to the future, driving ambitious growth and pioneering positive change in our industry. Providing audit, tax and advisory services, we empower clients through strategic insight, curiosity, and genu",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {},
+   "src": "Grant Thornton UK",
+   "category_label": "Mid-tier advisory",
+   "level": "senior",
+   "function": "front",
+   "region": "UK",
+   "interest": 1.0,
+   "tracks": [
+    "Trading",
+    "Transaction services",
+    "ACA stepping stone"
+   ],
+   "workplace_type": "hybrid",
+   "summary": "Grant Thornton’s Restructuring Team supports companies and their stakeholders to navigate periods of stress and distress with thoughtful, pragmatic solutions.",
+   "currency": "GBP",
+   "base_pay": null,
+   "comp": 75000,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": null,
+   "reach": 0.0,
+   "flags": [
+    "Wants direct experience in actively supporting marketing and bd activities as well as… - audit doesn't cover this",
+    "Needs a qualified accountant - you're part-way through ACA, not qualified yet",
+    "Nothing in the advert matches audit experience - you'd compete with people already in this field"
+   ],
+   "pros": [],
+   "match": 268,
+   "reach_aca": 0.09,
+   "flags_aca": [
+    "Wants direct experience in actively supporting marketing and bd activities as well as… - audit doesn't cover this"
+   ],
+   "pros_aca": [
+    "Wants a qualified accountant - ACA ticks this"
+   ],
+   "match_aca": 6857
+  },
+  {
+   "source": "kpmg",
+   "company": "KPMG UK",
+   "category": "big4",
+   "title": "Tax Manager - Family Office & Private Client - Bristol",
+   "location": "Bristol",
+   "url": "https://www.kpmgcareers.co.uk/Vacancies/taxmanagerfamilyofficeprivateclientbristol/108458",
+   "posted": "",
+   "department": "Tax & Law / Corporate Tax Services",
+   "description": "Manager Join KPMG's Family Office & Private Client team in Bristol as a Tax Manager, advising high-net-worth individuals, entrepreneurial families, trusts, estates and partnerships on complex UK and international personal tax matters. You will manage a varied portfolio, lead besp",
+   "salary_min": null,
+   "salary_max": null,
+   "salary_currency": null,
+   "salary_text": "",
+   "workplace": null,
+   "extra": {
+    "level": "Manager"
+   },
+   "src": "KPMG UK",
+   "category_label": "Big 4",
+   "level": "senior",
+   "function": "other",
+   "region": "UK",
+   "interest": 0.35,
+   "tracks": [
+    "Finance / accounting"
+   ],
+   "workplace_type": "hybrid",
+   "summary": "You will manage a varied portfolio, lead bespoke advisory assignments and help clients navigate inheritance tax, capital gains tax, income tax and cross-border issues.",
+   "currency": "GBP",
+   "base_pay": null,
+   "comp": 72200.0,
+   "comp_basis": "estimated",
+   "base_range": null,
+   "pay_all_in": null,
+   "comp_usd": null,
+   "reach": 0.01,
+   "flags": [
+    "Needs a qualified accountant - you're part-way through ACA, not qualified yet",
+    "Nothing in the advert matches audit experience - you'd compete with people already in this field"
+   ],
+   "pros": [],
+   "match": 265,
+   "reach_aca": 0.17,
+   "flags_aca": [],
+   "pros_aca": [
+    "Wants a qualified accountant - ACA ticks this"
+   ],
+   "match_aca": 6771
   },
   {
    "source": "successfactors",
